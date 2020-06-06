@@ -14,62 +14,7 @@
                     <view key="view" contentMode="scaleToFill" id="Eak-g3-uh1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zub-W9-iWm">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
-                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="separatorColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="tS5-8H-LTs" customClass="RecipeListTableViewCell" customModule="RecipeMealPlanApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="80"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tS5-8H-LTs" id="5YB-ci-qdf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Iv-SL-IMR">
-                                                    <rect key="frame" x="20" y="11" width="66" height="58"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="66" id="zI2-Mu-gC0"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAo-Op-2fL">
-                                                    <rect key="frame" x="110" y="12" width="284" height="56"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="wAo-Op-2fL" secondAttribute="bottom" constant="12" id="3M4-Y4-jyG"/>
-                                                <constraint firstItem="wAo-Op-2fL" firstAttribute="leading" secondItem="6Iv-SL-IMR" secondAttribute="trailing" constant="24" id="9Zc-N0-Ak4"/>
-                                                <constraint firstItem="6Iv-SL-IMR" firstAttribute="bottom" secondItem="5YB-ci-qdf" secondAttribute="bottomMargin" id="ShH-P0-uEt"/>
-                                                <constraint firstItem="6Iv-SL-IMR" firstAttribute="leading" secondItem="5YB-ci-qdf" secondAttribute="leadingMargin" id="eLJ-ZZ-Y2s"/>
-                                                <constraint firstItem="6Iv-SL-IMR" firstAttribute="top" secondItem="5YB-ci-qdf" secondAttribute="topMargin" id="kfr-RI-pTb"/>
-                                                <constraint firstItem="wAo-Op-2fL" firstAttribute="top" secondItem="5YB-ci-qdf" secondAttribute="top" constant="12" id="s6K-A8-wPc"/>
-                                                <constraint firstAttribute="trailing" secondItem="wAo-Op-2fL" secondAttribute="trailing" constant="20" id="woZ-68-kB6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <outlet property="imageViewCell" destination="6Iv-SL-IMR" id="mEY-D5-Wli"/>
-                                            <outlet property="nameOfRecipeCell" destination="wAo-Op-2fL" id="x6Z-9o-RSq"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="5Iv-nw-lwq" id="jMH-5G-QGQ"/>
-                                    <outlet property="delegate" destination="5Iv-nw-lwq" id="JFy-3w-aSY"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="zub-W9-iWm" firstAttribute="leading" secondItem="Eak-g3-uh1" secondAttribute="leading" id="Azw-5L-F7y"/>
-                            <constraint firstAttribute="bottom" secondItem="zub-W9-iWm" secondAttribute="bottom" id="WQK-Hx-hVx"/>
-                            <constraint firstItem="zub-W9-iWm" firstAttribute="top" secondItem="qGf-Nv-GgR" secondAttribute="top" id="iOS-KE-MdM"/>
-                            <constraint firstAttribute="trailing" secondItem="zub-W9-iWm" secondAttribute="trailing" id="p0v-Yw-HOv"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qGf-Nv-GgR"/>
                     </view>
                     <navigationItem key="navigationItem" id="mFf-aJ-t9e">
@@ -80,7 +25,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="recipeListTableView" destination="zub-W9-iWm" id="K4S-ai-U0J"/>
                         <segue destination="lnQ-gv-qGW" kind="show" identifier="toDetailVC" id="Sj1-eh-dmv"/>
                     </connections>
                 </viewController>
@@ -272,7 +216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8te-he-Tr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="495.6521739130435" y="1593.75"/>
+            <point key="canvasLocation" x="496" y="1555"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JMd-mz-oVe">

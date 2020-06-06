@@ -13,9 +13,15 @@ import CoreData
 
 class RecipeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    @IBOutlet weak var recipeListTableView: UITableView!
+    //@IBOutlet weak var recipeListTableView: UITableView!
     
-    
+    let recipeListTableView: UITableView = {
+        let tv = UITableView()
+        tv.separatorColor = UIColor.white
+        tv.backgroundColor = UIColor.black
+        tv.translatesAutoresizingMaskIntoConstraints = false
+        return tv
+    }()
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
 //    var coreDataStack: CoreDataStack!
@@ -46,10 +52,12 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         // Do any additional setup after loading the view.
         //loadSampleRecipes()
         
+        setupTableView()
+        
         fetchedResultsController = recipeListFetchedResultsController()
         
-        self.recipeListTableView.delegate = self
-        self.recipeListTableView.dataSource = self
+//        self.recipeListTableView.delegate = self
+//        self.recipeListTableView.dataSource = self
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
@@ -63,19 +71,36 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
+    func setupTableView() {
+        
+        recipeListTableView.delegate = self
+        recipeListTableView.dataSource = self
+        
+        recipeListTableView.register(RecipeListTableViewCell.self, forCellReuseIdentifier: "Cell")
+        
+        view.addSubview(recipeListTableView)
+        
+        NSLayoutConstraint.activate([
+            recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150),
+            recipeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            recipeListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            recipeListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)])
+        
+    }
+    
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {
 
         guard let cell = cell as? RecipeListTableViewCell else {
           return
         }
-        
+
        let currentRecipe = fetchedResultsController.object(at: indexPath)
-        cell.nameOfRecipeCell.text = currentRecipe.name
-        
+        cell.recipeName.text = currentRecipe.name
+
         if let image = currentRecipe.image {
-            cell.imageViewCell.image = UIImage(data: image)
+            cell.recipeImage.image = UIImage(data: image)
         } else {
-            cell.imageViewCell.image = UIImage(named: "No photo")
+            cell.recipeImage.image = UIImage(named: "No photo")
         }
       }
     
@@ -92,17 +117,29 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? RecipeListTableViewCell else {
-                    fatalError("The dequeued cell is not an instance of RecipeListTableViewCell.")
-                }
+        let cell = recipeListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
         configure(cell: cell, for: indexPath)
+        cell.backgroundColor = UIColor.black
+//        let currentRecipe = fetchedResultsController.object(at: indexPath)
+//
+//        cell.recipeNameLabel.text = currentRecipe.name
+//
+//        if let image = currentRecipe.image{
+//            cell.recipeImage.image = UIImage(data: image)
+//        } else {
+//            cell.recipeImage.image = UIImage(named: "No photo")
+//        }
+        
+        
+        //configure(cell: cell, for: indexPath)
         
         return cell
     
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

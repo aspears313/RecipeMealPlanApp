@@ -22,6 +22,9 @@ class DescriptionViewController: UIViewController {
                } else {
             recipePic.image = UIImage(named: "No photo")
                }
+        
+        recipePic.layer.cornerRadius = recipePic.frame.size.width / 2
+        recipePic.clipsToBounds = true
 
         //recipePic.image = recipe?.image
         // Do any additional setup after loading the view.

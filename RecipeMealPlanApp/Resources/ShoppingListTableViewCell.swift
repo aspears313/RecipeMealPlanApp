@@ -14,7 +14,7 @@ class ShoppingListTableViewCell: UITableViewCell {
     let cellView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.red
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 25.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -23,7 +23,7 @@ class ShoppingListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Item 1"
         label.textColor = UIColor.white
-        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.font = UIFont.boldSystemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

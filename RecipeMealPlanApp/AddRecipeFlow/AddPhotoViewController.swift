@@ -20,6 +20,9 @@ class AddPhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        recipePic.layer.cornerRadius = 25.0
+        recipePic.clipsToBounds = true
 
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipeTitle

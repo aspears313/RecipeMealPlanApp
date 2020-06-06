@@ -29,7 +29,7 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
     let shoppingListTableView: UITableView = {
         let tv = UITableView()
         tv.separatorColor = UIColor.white
-        tv.backgroundColor = UIColor.white
+        tv.backgroundColor = UIColor.black
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -104,9 +104,6 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
             shoppingListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             shoppingListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
             ])
-        
-        
-        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -123,8 +120,8 @@ class ShoppingListViewController: UIViewController, UITableViewDelegate, UITable
         
         let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ShoppingListTableViewCell
         
+        cell.backgroundColor = UIColor.black
         cell.ingredientLabel.textAlignment = .center
-        cell.backgroundColor = UIColor.white
         cell.ingredientLabel.text = selectedIngredients[indexPath.row]
         //configure(cell: cell, for: indexPath)
         
