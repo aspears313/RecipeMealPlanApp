@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Recipe" representedClassName=".Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="ingredients" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="mealType" optional="YES" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <relationship name="selections" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Selections" inverseName="selectedRecipes" inverseEntity="Selections"/>
+    </entity>
+    <entity name="Selections" representedClassName=".Selections" syncable="YES" codeGenerationType="class">
+        <attribute name="selectedDate" optional="YES" attributeType="String"/>
+        <relationship name="selectedRecipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="selections" inverseEntity="Recipe"/>
+    </entity>
+    <elements>
+        <element name="Selections" positionX="-63" positionY="-18" width="128" height="73"/>
+        <element name="Recipe" positionX="-54" positionY="-9" width="128" height="118"/>
+    </elements>
+</model>
