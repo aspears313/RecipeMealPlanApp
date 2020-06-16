@@ -1,6 +1,6 @@
 //
 //  AddDirectionsViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 2/29/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -13,6 +13,7 @@ class AddDirectionsViewController: UIViewController {
     var recipeTitle: String = ""
     var recipePicture: UIImageView?
     var listOfIngredients: [String] = []
+    var coreIngredients: [Ingredients] = []
     var selectedMealType: String = ""
     
     

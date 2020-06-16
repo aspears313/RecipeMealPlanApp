@@ -1,6 +1,6 @@
 //
 //  CalendarViewController.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/2/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -47,7 +47,7 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
             
             //view.addSubview(mealPlannerView)
             mealChoiceView.isHidden = false
-            let mealPlannerVC = storyboard?.instantiateViewController(withIdentifier: "MealPlannerViewController") as! MealPlannerViewController
+            let mealPlannerVC = storyboard?.instantiateViewController(withIdentifier: "MealPlannerViewController") as! MealTypeAndCountViewController
             mealPlannerVC.selectionDelegate = self
             addChild(mealPlannerVC)
             mealPlannerVC.view.translatesAutoresizingMaskIntoConstraints = false
@@ -115,6 +115,7 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
 
 
 //MARK: - Calendar DataSource and Delegate Methods
+
 extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func calendar(_ calendar: FSCalendar, cellFor date: Date, at position: FSCalendarMonthPosition) -> FSCalendarCell {
@@ -144,8 +145,5 @@ extension CalendarViewController: MealSelectDelegate {
     func didSelectMeals(selectedMeals: [String]) {
         let theSelectedMeals = selectedMeals
         plannedMeal(selectedMeals: theSelectedMeals)
-//        theSelectedMeals = selectedMeals
-//        plannedMeals(selectedMeals: theSelectedMeals)
-//        theSelectedMeals.removeAll()
     }
 }

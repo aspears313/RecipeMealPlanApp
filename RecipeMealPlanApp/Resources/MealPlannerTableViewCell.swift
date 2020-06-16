@@ -1,6 +1,6 @@
 //
 //  MealPlannerTableViewCell.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/11/20.
 //  Copyright © 2020 Anthony. All rights reserved.

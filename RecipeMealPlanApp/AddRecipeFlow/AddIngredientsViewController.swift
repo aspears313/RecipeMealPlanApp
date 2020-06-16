@@ -1,12 +1,13 @@
 //
 //  AddIngredientsViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 3/6/20.
 //  Copyright © 2020 Anthony. All rights reserved.
 //
 
 import UIKit
+import CoreData
 
 class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
@@ -22,6 +23,10 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
     var userIngredient: String = ""
     var thisMeasure: String = ""
     var thisIngredientList: [String] = []
+    var coreIngredientList: [Ingredients] = []
+//    var coreIngredientList: [Ingredients] = []
+    
+    lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
 
     let pickerData: [[String]] = [["","1","2","3","4","5","6","7","8","9","10"],
                                   ["","1/8","1/4","1/3","1/2","2/3","3/4"],
@@ -113,16 +118,22 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
             userIngredient = "\(thisMeasure) \(thisIngredientName)"
             
+            var ingredient = Ingredients(context: coreDataStack.mainContext)
+            ingredient.measurement = thisMeasure
+            ingredient.ingredientName = thisIngredientName
+            
+            coreIngredientList.append(ingredient)
+            
             labelForIngredient.text = userIngredient
             
             //To Reset the pickerView
-            measurementPickerView.selectRow(0, inComponent: 0, animated: false)
-            measurementPickerView.selectRow(0, inComponent: 1, animated: false)
-            measurementPickerView.selectRow(0, inComponent: 2, animated: false)
+            measurementPickerView.selectRow(0, inComponent: 0, animated: true)
+            measurementPickerView.selectRow(0, inComponent: 1, animated: true)
+            measurementPickerView.selectRow(0, inComponent: 2, animated: true)
             //To Reset UITextfield
             ingredientNameTextField.text = ""
             thisMeasure = ""
-
+            
             thisIngredientList.append(userIngredient)
             //print(userIngredientList!)
             nextBtn.isHidden = false
@@ -208,6 +219,7 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
             addDirectionsVC.recipePicture = self.recipePicture
             addDirectionsVC.listOfIngredients = self.thisIngredientList
             addDirectionsVC.selectedMealType = self.selectedMealType
+            addDirectionsVC.coreIngredients = self.coreIngredientList
         }
     }
     

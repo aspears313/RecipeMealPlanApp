@@ -1,6 +1,6 @@
 //
 //  MealPlannerViewController.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/11/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -15,7 +15,7 @@ protocol MealSelectDelegate: class {
     func didSelectMeals(selectedMeals: [String])
 }
 
-class MealPlannerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var mealTypeTableView: UITableView!
     

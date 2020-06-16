@@ -194,29 +194,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-36-aGS">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ad4-36-aGS">
+                                <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                                 <items>
                                     <navigationItem title="Shopping List" id="ex2-q3-snc"/>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Week of: 6/20/2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hBr-ZO-bWD">
+                                <rect key="frame" x="0.0" y="140" width="414" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="bWO-rg-4w6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ad4-36-aGS" firstAttribute="centerX" secondItem="hjn-rd-opH" secondAttribute="centerX" id="3dh-80-k5h"/>
                             <constraint firstItem="ad4-36-aGS" firstAttribute="leading" secondItem="ydc-gc-lyY" secondAttribute="leading" id="Df2-dH-wd0"/>
+                            <constraint firstItem="hBr-ZO-bWD" firstAttribute="top" secondItem="ad4-36-aGS" secondAttribute="bottom" id="TpT-Pd-MvM"/>
+                            <constraint firstItem="hBr-ZO-bWD" firstAttribute="leading" secondItem="ydc-gc-lyY" secondAttribute="leading" id="WDH-Sa-n96"/>
                             <constraint firstItem="ad4-36-aGS" firstAttribute="top" secondItem="ydc-gc-lyY" secondAttribute="top" id="X1C-PS-AAV"/>
+                            <constraint firstItem="hBr-ZO-bWD" firstAttribute="trailing" secondItem="ydc-gc-lyY" secondAttribute="trailing" id="vfc-3m-4ic"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ydc-gc-lyY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Shopping List" image="list.number" catalog="system" selectedImage="list.number" id="mIQ-Ee-ctS"/>
                     <connections>
                         <outlet property="navigationBar" destination="ad4-36-aGS" id="OL5-V0-BrG"/>
+                        <outlet property="weekOfLabel" destination="hBr-ZO-bWD" id="WDs-ze-ks8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8te-he-Tr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="496" y="1555"/>
+            <point key="canvasLocation" x="495.6521739130435" y="1577.6785714285713"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JMd-mz-oVe">
@@ -235,75 +249,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bb4-21-TIz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-532" y="850"/>
-        </scene>
-        <!--Calendar And Meal Plan View Controller-->
-        <scene sceneID="KQq-7U-LIs">
-            <objects>
-                <viewController storyboardIdentifier="CalendarAndMealPlannerViewController" id="Zbf-cz-Ueh" customClass="CalendarAndMealPlanViewController" customModule="RecipeMealPlanApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="fBG-FS-A8N">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Dx-Qy-KQS">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <subviews>
-                                    <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fQV-9V-A1X">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <textAttributes key="largeTitleTextAttributes">
-                                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </textAttributes>
-                                        <items>
-                                            <navigationItem title="Meal Planner" id="8xt-Ls-j5W">
-                                                <barButtonItem key="rightBarButtonItem" title="Toggle" id="Jxt-xZ-QrA">
-                                                    <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                                                    <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </barButtonItem>
-                                            </navigationItem>
-                                        </items>
-                                    </navigationBar>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32l-87-DKN">
-                                        <rect key="frame" x="0.0" y="140" width="414" height="350"/>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lPP-T8-bd4">
-                                        <rect key="frame" x="0.0" y="290" width="414" height="523"/>
-                                    </containerView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="fQV-9V-A1X" firstAttribute="leading" secondItem="2Dx-Qy-KQS" secondAttribute="leading" id="3Ue-Il-b8h"/>
-                                    <constraint firstItem="fQV-9V-A1X" firstAttribute="top" secondItem="2Dx-Qy-KQS" secondAttribute="top" constant="44" id="DBg-1Q-S7v"/>
-                                    <constraint firstItem="fQV-9V-A1X" firstAttribute="centerX" secondItem="2Dx-Qy-KQS" secondAttribute="centerX" id="GyZ-qd-09K"/>
-                                    <constraint firstAttribute="bottom" secondItem="lPP-T8-bd4" secondAttribute="bottom" constant="83" id="Qqs-cc-3do"/>
-                                    <constraint firstItem="lPP-T8-bd4" firstAttribute="trailing" secondItem="fQV-9V-A1X" secondAttribute="trailing" id="c7T-fd-GpX"/>
-                                    <constraint firstItem="lPP-T8-bd4" firstAttribute="leading" secondItem="fQV-9V-A1X" secondAttribute="leading" id="ddZ-Gz-z0p"/>
-                                    <constraint firstItem="lPP-T8-bd4" firstAttribute="leading" secondItem="32l-87-DKN" secondAttribute="leading" id="jKx-22-nKq"/>
-                                    <constraint firstAttribute="bottom" secondItem="32l-87-DKN" secondAttribute="bottom" constant="406" id="nHg-sI-ZoB"/>
-                                    <constraint firstItem="lPP-T8-bd4" firstAttribute="top" secondItem="2Dx-Qy-KQS" secondAttribute="top" constant="290" id="sbM-Bz-fza"/>
-                                    <constraint firstItem="32l-87-DKN" firstAttribute="top" secondItem="fQV-9V-A1X" secondAttribute="bottom" id="tj9-XM-DFT"/>
-                                    <constraint firstItem="lPP-T8-bd4" firstAttribute="trailing" secondItem="32l-87-DKN" secondAttribute="trailing" id="xOw-Yc-xTA"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="2Dx-Qy-KQS" firstAttribute="top" secondItem="fBG-FS-A8N" secondAttribute="topMargin" constant="-44" id="5h0-lG-NoD"/>
-                            <constraint firstItem="2Dx-Qy-KQS" firstAttribute="leading" secondItem="jOr-TX-h76" secondAttribute="leading" id="Sds-sc-gce"/>
-                            <constraint firstItem="2Dx-Qy-KQS" firstAttribute="centerY" secondItem="fBG-FS-A8N" secondAttribute="centerY" id="Sn3-tX-cVd"/>
-                            <constraint firstItem="2Dx-Qy-KQS" firstAttribute="centerX" secondItem="fBG-FS-A8N" secondAttribute="centerX" id="jja-bQ-yla"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="jOr-TX-h76"/>
-                    </view>
-                    <connections>
-                        <outlet property="calendarView" destination="32l-87-DKN" id="TGk-8k-Lw7"/>
-                        <outlet property="calendarViewBtn" destination="Jxt-xZ-QrA" id="O7E-PC-RCn"/>
-                        <outlet property="mealPlannerView" destination="lPP-T8-bd4" id="KJq-66-M0C"/>
-                        <outlet property="navigationBar" destination="fQV-9V-A1X" id="KZI-mV-Sif"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R02-jq-BD6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1584" y="2424"/>
         </scene>
         <!--Add Name Of Recipe View Controller-->
         <scene sceneID="nma-Jc-jwK">
@@ -921,10 +866,10 @@
             </objects>
             <point key="canvasLocation" x="516" y="129"/>
         </scene>
-        <!--Meal Planner View Controller-->
+        <!--Meal Type And Count View Controller-->
         <scene sceneID="41Y-zB-BJG">
             <objects>
-                <viewController storyboardIdentifier="MealPlannerViewController" id="KJ8-wu-l7p" customClass="MealPlannerViewController" customModule="RecipeMealPlanApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MealPlannerViewController" id="KJ8-wu-l7p" customClass="MealTypeAndCountViewController" customModule="RecipeMealPlanApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yho-hG-mes">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1108,96 +1053,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1o-fd-Wd5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2036" y="850"/>
-        </scene>
-        <!--My Calendar View Controller-->
-        <scene sceneID="PLH-Li-Fx6">
-            <objects>
-                <viewController storyboardIdentifier="MyCalendarViewController" id="5jT-jx-5m6" customClass="MyCalendarViewController" customModule="RecipeMealPlanApp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ESV-of-g7y" customClass="FSCalendar">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="yna-IF-pAU"/>
-                        <connections>
-                            <outlet property="dataSource" destination="5jT-jx-5m6" id="33y-PW-CvI"/>
-                            <outlet property="delegate" destination="5jT-jx-5m6" id="LOO-8I-zs6"/>
-                        </connections>
-                    </view>
-                    <connections>
-                        <outlet property="calendar" destination="ESV-of-g7y" id="pll-6W-4KP"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eO7-h1-Njr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-812" y="2424"/>
-        </scene>
-        <!--My Meal Planner View Controller-->
-        <scene sceneID="TCx-eV-gN8">
-            <objects>
-                <viewController storyboardIdentifier="MyMealPlannerViewController" id="SZG-GI-XrH" customClass="MyMealPlannerViewController" customModule="RecipeMealPlanApp" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Mo7-GV-ZbN">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8pv-JU-ay4">
-                                <rect key="frame" x="0.0" y="82" width="414" height="839"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" textLabel="toE-Wg-iWm" detailTextLabel="plw-iU-WnY" rowHeight="100" style="IBUITableViewCellStyleSubtitle" id="XaO-w9-Cy3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XaO-w9-Cy3" id="Y3i-le-n4V">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Breakfast" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="toE-Wg-iWm">
-                                                    <rect key="frame" x="20" y="21" width="97.5" height="29"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="plw-iU-WnY">
-                                                    <rect key="frame" x="20" y="54" width="62" height="21.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSN-8H-lJB">
-                                <rect key="frame" x="344" y="44" width="50" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="u2o-NB-EI3"/>
-                                </constraints>
-                                <state key="normal" title="Done"/>
-                                <connections>
-                                    <action selector="doneBtnTapped:" destination="SZG-GI-XrH" eventType="touchUpInside" id="y5l-cy-bqY"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="8pv-JU-ay4" firstAttribute="centerX" secondItem="Mo7-GV-ZbN" secondAttribute="centerX" id="3q7-Ou-AQO"/>
-                            <constraint firstItem="qSN-8H-lJB" firstAttribute="top" secondItem="Mo7-GV-ZbN" secondAttribute="topMargin" id="HoY-hU-55T"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qSN-8H-lJB" secondAttribute="trailing" id="Ikh-t5-Sfh"/>
-                            <constraint firstItem="8pv-JU-ay4" firstAttribute="top" secondItem="qSN-8H-lJB" secondAttribute="bottom" constant="8" id="bAJ-k8-yfw"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="8pv-JU-ay4" secondAttribute="bottom" constant="-59" id="deZ-Rx-Iv8"/>
-                            <constraint firstItem="8pv-JU-ay4" firstAttribute="leading" secondItem="Mo7-GV-ZbN" secondAttribute="leadingMargin" constant="-20" id="uT8-go-OOz"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="XdK-F3-oLZ"/>
-                    </view>
-                    <connections>
-                        <outlet property="mealPlanTableView" destination="8pv-JU-ay4" id="YE9-vS-3KT"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KWe-FY-Sr8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-58" y="2424"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

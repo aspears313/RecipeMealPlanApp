@@ -1,6 +1,6 @@
 //
 //  IngredientsChildViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 2/23/20.
 //  Copyright © 2020 Anthony. All rights reserved.

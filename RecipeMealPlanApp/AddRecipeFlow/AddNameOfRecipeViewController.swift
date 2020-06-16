@@ -1,6 +1,6 @@
 //
 //  NameOfRecipeViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 3/5/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -15,16 +15,23 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate, UITa
     @IBOutlet weak var mealTypeTableView: UITableView!
     
     let mealType = ["Breakfast","Lunch","Dinner","Snack","Dessert","Side Dish"]
+    var recipeTitle = "Your Recipe Name"
     var nameOfNewRecipe: String = ""
     var selectedMealType: String = ""
     var limit = 1
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         nextToAddPhotoViewBtn.isHidden = true
+        //self.navigationItem.title = recipeTitle
+  //      setNavigationBar()
+        
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = "Your Recipe Name"
+        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        
         nameOfRecipeTextField.delegate = self
         mealTypeTableView.allowsMultipleSelection = true
         // Do any additional setup after loading the view.
@@ -35,7 +42,28 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate, UITa
 //        view.endEditing(true)
 //        super.touchesBegan(touches, with: event)
         hideKeyboard()
+    }
+    
+    private func setNavigationBar() {
+        
+        let title = recipeTitle
+        
+        let maxWidth = UIScreen.main.bounds.size.width - 60
+        var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+        var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+        
+        while width > maxWidth {
+            fontSize -= 1
+            width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
         }
+        if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
+            titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
+            titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+            
+            navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+            navigationItem.title = title
+        }
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -48,7 +76,8 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate, UITa
             nextToAddPhotoViewBtn.isHidden = true
         } else {
             nextToAddPhotoViewBtn.isHidden = false
-            navigationItem.title = nameOfRecipeTextField.text!
+            recipeTitle = nameOfRecipeTextField.text!
+            setNavigationBar()
             nameOfNewRecipe = nameOfRecipeTextField.text!
             nameOfRecipeTextField.resignFirstResponder()
         }
@@ -73,12 +102,6 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate, UITa
                 cell.accessoryType = .checkmark
             }
         }
-//        selectedMealType.append(mealType[indexPath.row])
-//        if let cell = mealTypeTableView.cellForRow(at: indexPath) {
-//            if cell.isSelected {
-//                cell.accessoryType = .checkmark
-//            }
-        
         
         if let selectedRows = tableView.indexPathsForSelectedRows {
             print("didDeselectRowAtIndexPath selected rows:\(selectedRows)")

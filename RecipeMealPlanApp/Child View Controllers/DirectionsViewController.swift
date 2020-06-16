@@ -1,6 +1,6 @@
 //
 //  DirectionsViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 3/6/20.
 //  Copyright © 2020 Anthony. All rights reserved.

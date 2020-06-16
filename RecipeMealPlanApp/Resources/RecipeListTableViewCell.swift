@@ -1,6 +1,6 @@
 //
 //  RecipeListTableViewCell.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 1/1/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -31,6 +31,7 @@ class RecipeListTableViewCell: UITableViewCell {
         let label = UILabel()
         label.text = "Recipe 1"
         label.textColor = UIColor.white
+        label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -56,10 +57,10 @@ class RecipeListTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         
         NSLayoutConstraint.activate([
-            cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
+            cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),
             cellView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10),
             cellView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10),
-            cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            cellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])
         
         recipeImage.widthAnchor.constraint(equalToConstant: 66).isActive = true
@@ -69,7 +70,7 @@ class RecipeListTableViewCell: UITableViewCell {
         
         
         recipeName.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 90).isActive = true
-        recipeName.widthAnchor.constraint(equalToConstant: 284).isActive = true
+        recipeName.widthAnchor.constraint(equalToConstant: 275).isActive = true
         recipeName.heightAnchor.constraint(equalToConstant: 56).isActive = true
         recipeName.centerYAnchor.constraint(equalTo: cellView.centerYAnchor).isActive = true
         

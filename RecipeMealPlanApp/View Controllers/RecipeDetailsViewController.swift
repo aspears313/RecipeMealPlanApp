@@ -1,6 +1,6 @@
 //
 //  RecipeDetailsViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 12/31/19.
 //  Copyright © 2019 Anthony. All rights reserved.
@@ -21,9 +21,38 @@ class RecipeDetailsViewController: UIViewController {
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipe?.name
+        setNavigationBar()
         setupView()
         
         // Do any additional setup after loading the view.
+    }
+    
+    private func setNavigationBar() {
+        
+        guard let title = recipe?.name, #available(iOS 11.0, *) else { return}
+        
+        let maxWidth = UIScreen.main.bounds.size.width - 60
+        var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+        var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+        
+        while width > maxWidth {
+            fontSize -= 1
+            width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+        }
+        if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
+            titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
+            titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+            
+            navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+        }
+        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: fontSize)]
+        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.red]
+        
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationItem.title = recipe?.name
+        
+        
+        
     }
     
     private func setupView() {

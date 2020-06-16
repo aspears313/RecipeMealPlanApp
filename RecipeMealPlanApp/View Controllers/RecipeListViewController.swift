@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 12/30/19.
 //  Copyright © 2019 Anthony. All rights reserved.
@@ -14,10 +14,11 @@ import CoreData
 class RecipeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //@IBOutlet weak var recipeListTableView: UITableView!
+    let listTitle = "Recipe List"
     
     let recipeListTableView: UITableView = {
         let tv = UITableView()
-        tv.separatorColor = UIColor.white
+        tv.separatorColor = UIColor.black
         tv.backgroundColor = UIColor.black
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -51,13 +52,13 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         // Do any additional setup after loading the view.
         //loadSampleRecipes()
-        
+       // setNavigationBar()
         setupTableView()
         
-        fetchedResultsController = recipeListFetchedResultsController()
+        view.backgroundColor = UIColor.black
+        recipeListTableView.backgroundColor = UIColor.black
         
-//        self.recipeListTableView.delegate = self
-//        self.recipeListTableView.dataSource = self
+        fetchedResultsController = recipeListFetchedResultsController()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
@@ -69,6 +70,27 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
 //            print("Fetching error: \(error), \(error.userInfo)")
 //        }
         
+    }
+    
+   private func setNavigationBar() {
+    
+       let title = listTitle
+    
+       let maxWidth = UIScreen.main.bounds.size.width - 60
+       var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+       var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+       
+       while width > maxWidth {
+           fontSize -= 1
+           width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+       }
+       if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
+           titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
+           titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+           
+           navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+           navigationItem.title = title
+       }
     }
     
     func setupTableView() {
@@ -104,7 +126,16 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         }
       }
     
-
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let springTransform = CGAffineTransform(translationX: 0, y: recipeListTableView.bounds.size.height)
+        cell.transform = springTransform
+        
+        UIView.animate(withDuration: 1.0, delay: 0.08, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options:
+            .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
@@ -179,8 +210,13 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         newRecipe.image = addDirectionsVC.recipePicture?.image?.pngData()
         newRecipe.ingredients = addDirectionsVC.listOfIngredients
         newRecipe.mealType = addDirectionsVC.selectedMealType
+//        for ingredient in addDirectionsVC.coreIngredients {
+//            let (inserted, membe
+//        }
+//        newRecipe.theseIngredients = addDirectionsVC.coreIngredients
         
         coreDataStack.saveContext()
+        setNavigationBar()
 
     }
     
@@ -225,6 +261,7 @@ private extension RecipeListViewController {
         fetchRequest.sortDescriptors = [sort]
         return fetchRequest
     }
+    
 }
 
 

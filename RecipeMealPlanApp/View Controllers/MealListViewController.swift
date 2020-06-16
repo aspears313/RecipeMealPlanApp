@@ -1,6 +1,6 @@
 //
 //  MealListViewController.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/16/20.
 //  Copyright © 2020 Anthony. All rights reserved.

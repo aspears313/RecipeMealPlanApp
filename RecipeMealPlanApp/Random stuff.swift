@@ -1,6 +1,6 @@
 //
 //  Random stuff.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/9/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -137,3 +137,37 @@
 //        coreDataStack.saveContext()
         //mealsForTheDay[theSelectedDate] = selectedMeals
         //self.calendar.scope = .month
+
+
+
+//    func configure(cell: UITableViewCell, for indexPath: IndexPath) {
+//
+//        guard let cell = cell as? ShoppingListTableViewCell else {
+//            return
+//        }
+//
+//        let currentIngredient = selectedIngredients[indexPath.row]
+//
+////        cell.recipeName.textAlignment = .center
+//        cell.backgroundColor = UIColor.white
+//        cell.ingredientName.text = currentIngredient
+//
+////        let currentRecipe = selectedRecipesWithDatesObjects[indexPath.section].sectionObjects[indexPath.row]
+////
+////        //cell.recipeName.text = currentRecipe.name
+////        if let name = currentRecipe.name {
+////            if let image = currentRecipe.image{
+////                cell.recipeName.text = name
+////                cell.recipeImage.image = UIImage(data: image)
+////            }
+////            else {
+////                cell.recipeName.text = name
+////                cell.recipeImage.image = UIImage(named: "No photo")
+////            }
+////        }
+//    }
+    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return selectedRecipesWithDatesObjects[section].sectionName
+//
+//    }

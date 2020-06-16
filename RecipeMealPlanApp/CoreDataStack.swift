@@ -1,6 +1,6 @@
 //
 //  CoreDataStack.swift
-//  RecipeAndMealPlanApp2
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 4/25/20.
 //  Copyright © 2020 Anthony. All rights reserved.

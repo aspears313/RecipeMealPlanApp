@@ -1,6 +1,6 @@
 //
 //  PickerViewDataSource.swift
-//  RecipeListApp
+//  RecipeMealPlanApp
 //
 //  Created by Anthony on 1/18/20.
 //  Copyright © 2020 Anthony. All rights reserved.
@@ -17,13 +17,6 @@ class PickerViewDataSource: NSObject, UIPickerViewDataSource, UIPickerViewDelega
     let pickerData: [[String]] = [["","1","2","3","4","5","6","7","8","9","10"],
                                   ["","1/8","1/4","1/3","1/2","2/3","3/4"],
                                   ["","tsp(s)","tbsp(s)","cup(s)","Oz","gram(s)","whole","lbs","fl Oz(s)","Qt","Gal(s)","L","pinch"]]
-    //let addIngredView: AddIngredientsViewController = AddIngredientsViewController()
-
-    //var delegate: pickerViewModelDelegate?
-
-//    let wholeNumbersComponent1: [String] = ["","1","2","3","4","5","6","7","8","9","10"]
-//    let fractionNumbersComponent2: [String] = ["","1/8","1/4","1/3","1/2","2/3","3/4"]
-//    let unitOfMeasureComponent3: [String] = ["tsp","tbsp","cup","Oz","gram","lbs","fl Oz","Qt","Gal","L","pinch"]
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
