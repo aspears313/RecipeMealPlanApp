@@ -118,13 +118,7 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         print(selectedMeals.count)
         selectionDelegate?.didSelectMeals(selectedMeals: selectedMeals)
         selectedMeals.removeAll()
-        
-        //self.dismiss(animated: true, completion: nil)
-
-        //var selectedMeals = toBeCopiedSelectedMeals
-//        print(selectedMeals.count)
-//        selectionDelegate.didSelectMeals(selectedMeals: selectedMeals)
-//        selectedMeals.removeAll()
+       
     }
     
     @IBAction func addMealBtn(_ unwindSegue: UIStoryboardSegue) {
@@ -132,11 +126,7 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         
         if let recipeName = recipeDetailsVC.recipe?.name {
             selectedMeals.append(recipeName)
-//            if let recipeName = recipe.name {
-//                selectedMeals.append(recipeName)
-//            }
-            
-            
+
         }
       
     }

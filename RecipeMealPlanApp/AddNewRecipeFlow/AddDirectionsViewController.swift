@@ -10,19 +10,19 @@ import UIKit
 
 class AddDirectionsViewController: UIViewController {
 
-    var recipeTitle: String = ""
-    var recipePicture: UIImageView?
-    var listOfIngredients: [String] = []
-    var coreIngredients: [Ingredients] = []
-    var selectedMealType: String = ""
+    @IBOutlet weak var doneBtn: UIButton!
     
+    var newRecipe: Recipe?
+    var newIngredients: [Ingredients] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipeTitle
-        // Do any additional setup after loading the view.
+        self.navigationItem.title = newRecipe!.name!
+        
+        doneBtn.layer.cornerRadius = doneBtn.frame.height / 2.0
     }
     
 

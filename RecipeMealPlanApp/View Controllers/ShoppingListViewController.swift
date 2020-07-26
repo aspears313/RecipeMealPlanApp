@@ -15,8 +15,6 @@ class ShoppingListViewController: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var weekOfLabel: UILabel!
     
-    lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
-    
     fileprivate weak var thisCalendar: FSCalendar!
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -25,25 +23,6 @@ class ShoppingListViewController: UIViewController {
         return formatter
     }()
     
-    struct plannedMeals {
-        var sectionName: String!
-        var sectionObjects: [Recipe]!
-    }
-    
-    let todayDate = Date()
-    let calendar = Calendar(identifier: .gregorian)
-    
-    var startOfWeekDate = Date()
-    var endOfWeekDate = Date()
-    
-    var testDictionary: [String: [Recipe]] = [:]
-    
-    var selectedRecipesWithDates: [String:[Recipe]] = [:]
-    var selectedRecipesWithDatesObjects = [plannedMeals]()
-    var selectedIngredients = [String]()
-    
-    var ingredients = [String]()
-    
     let shoppingListTableView: UITableView = {
         let tv = UITableView()
         tv.separatorColor = .black
@@ -51,6 +30,17 @@ class ShoppingListViewController: UIViewController {
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
+
+    lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
+    
+    var ingredientsList = [Ingredients]()
+    var selectedRecipes = [Recipe]()
+    
+    let todayDate = Date()
+    var startOfWeekDate = Date()
+    var endOfWeekDate = Date()
+    let calendar = Calendar(identifier: .gregorian)
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,20 +54,18 @@ class ShoppingListViewController: UIViewController {
         
         getStartAndEndDates(for: calendar)
         
-        testDictionary = fetchDatesAndRecipesThenConvertToObjects2()
         
-        ingredients = getJustIngredientName(toUpdateIngredList: selectedIngredients)
- //       selectedRecipesWithDates = fetchDatesAndRecipesConvertToObjects()
- 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        shoppingListTableView.reloadData()
+        
+        refreshView()
+        
     }
-    
     //MARK: - Setup my Views
+    
+
     
     func setCalendarView() {
         
@@ -118,7 +106,8 @@ class ShoppingListViewController: UIViewController {
         
         shoppingListTableView.backgroundView?.backgroundColor = .black
         
-        shoppingListTableView.register(ShoppingListTableViewCell.self, forCellReuseIdentifier: "Cell")
+        shoppingListTableView.register(ShoppingListTableViewCellSection.self, forCellReuseIdentifier: "CellSection")
+        shoppingListTableView.register(ShoppingListTableViewCells.self, forCellReuseIdentifier: "Cell")
         
         view.addSubview(shoppingListTableView)
         
@@ -130,25 +119,17 @@ class ShoppingListViewController: UIViewController {
             ])
     }
     
-    func getJustIngredientName(toUpdateIngredList: [String]) -> [String] {
+    func refreshView() {
         
-        var delimiter = " "
+        ingredientsList.removeAll()
         
-        var ingredients = [String]()
+        selectedRecipes = fetchSelectedRecipes()
+        getIngredientsForSelectedRecipes(selectedRecipes: selectedRecipes)
         
-        for ingredient in toUpdateIngredList {
-            let token = ingredient.components(separatedBy: delimiter)
-//            print(token[0])
-//            print(token[1])
-//            print(token[2])
-        }
-        
-        return ingredients
-        
+        shoppingListTableView.reloadData()
     }
-    
-    // MARK: - Functions for getting dates
-    
+        // MARK: - Function to set the initial start/end of week dates
+        
     func getStartAndEndDates(for calendar: Calendar) {
         
         let weekday = calendar.component(.weekday, from: todayDate)
@@ -158,210 +139,162 @@ class ShoppingListViewController: UIViewController {
         case 1:
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: todayDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: todayDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 2:
             startOfWeekDate = calendar.date(byAdding: .day, value: -1, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 3:
             startOfWeekDate = calendar.date(byAdding: .day, value: -2, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 4:
             startOfWeekDate = calendar.date(byAdding: .day, value: -3, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 5:
             startOfWeekDate = calendar.date(byAdding: .day, value: -4, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 6:
             startOfWeekDate = calendar.date(byAdding: .day, value: -5, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         case 7:
             startOfWeekDate = calendar.date(byAdding: .day, value: -6, to: todayDate)!
             weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
             endOfWeekDate = calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-            print(self.dateFormatter.string(from: endOfWeekDate))
+            //print(self.dateFormatter.string(from: endOfWeekDate))
         default:
             weekOfLabel.text = "No Date"
         }
     }
-    
-    // MARK: - Will move these Functions
-    
-    // Will Probably move almost all these functions out of this view controller
-    
-    func fetchDatesAndRecipesThenConvertToObjects2() -> [String: [Recipe]] {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Selections")
-        
-        let sort = NSSortDescriptor(key: "selectedDate", ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        
-        var myDictionary: [String: [String]] = [:]
-        
-        do {
-            let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
-            for result in results {
-                
-                let currentDay = result.value(forKey: "selectedDate") as! String
-                print(currentDay)
-                let reverseDateFormatter = DateFormatter()
-                reverseDateFormatter.dateFormat = "MM/dd/yyyy"
-                let date = reverseDateFormatter.date(from: currentDay)
-                
-                if let date = date {
-                    if startOfWeekDate <= date && date <= endOfWeekDate {
-                        print("date is between startOfWeekDate and endOfWeekDate")
-                        myDictionary.updateValue(result.value(forKey: "selectedRecipes") as! [String], forKey: result.value(forKey: "selectedDate") as! String)
-                    } else
-                    {
-                        print("date is outside of the startOfWeekDate and endOfWeekDate")
-                    }
-                }
-            }
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-        }
-        //return myDictionary
-        let theConvertedDictionary = getTheRecipeObject(theDatesWithMealsDictionary: myDictionary)
-        return theConvertedDictionary
-    }
-    
-    func fetchDatesAndRecipesConvertToObjects() -> [String:[Recipe]] {
-            
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Selections")
-            
-            let sort = NSSortDescriptor(key: "selectedDate", ascending: true)
-            fetchRequest.sortDescriptors = [sort]
-            
-            var myDictionary: [String:[String]] = [:]
+//MARK: -  1st Fetch Selected Recipes
+       
+   func fetchSelectedRecipes() -> [Recipe] {
+       
+       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Selections")
+       
+       let sort = NSSortDescriptor(key: "selectedDate", ascending: true)
+       fetchRequest.sortDescriptors = [sort]
+       
+       var userSelectedRecipes = [Recipe]()
+       var recipeNamesAndDates: [String:[String]] = [:]
+       
+       //This works but needs some refining
+       do {
+           let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
+           for result in results {
+               
+               if let date = dateFormatter.date(from: result.value(forKey: "selectedDate") as! String) {
+                   
+                   //print(self.dateFormatter.string(from: date))
+                   if startOfWeekDate <= date && date <= endOfWeekDate {
+                       //print("Is between both dates")
+                       //Now we have a positive selection
+                       recipeNamesAndDates.updateValue(result.value(forKey: "selectedRecipes") as! [String], forKey: result.value(forKey: "selectedDate") as! String)
+                   }
+               }
+           }
+           //Get the recipe array
+           userSelectedRecipes = getRecipeObjects(dictionary: recipeNamesAndDates)
+       } catch let error as NSError {
+           print("ERROR: \(error.localizedDescription)")
+       }
+       
+       return userSelectedRecipes
+   }
+// MARK: - 2nd
+    // Convert the array for the name of recipes to an array of Recipe objects
+   func getRecipeObjects(dictionary: [String:[String]]) -> [Recipe] {
+          var userSelectedRecipes = [Recipe]()
+          let allRecipes = fetchAllRecipes()
 
-            do {
-                let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
-                for result in results {
-                    myDictionary.updateValue(result.value(forKey: "selectedRecipes") as! [String], forKey: result.value(forKey: "selectedDate") as! String)
-                }
-            } catch let error as NSError {
-                print("ERROR: \(error.localizedDescription)")
-                //return [String:[String]]()
-            }
-        // This is where I can return my dictionary: [String:[String]]
-            let theReturnedDictionary = getTheRecipeObject(theDatesWithMealsDictionary: myDictionary)
-            getTheObjectsDictionary(recipeObjects: getTheRecipeObject(theDatesWithMealsDictionary: myDictionary))
-        
-            return theReturnedDictionary
-        }
-    // This function converts the array of recipe names as String to an array of Recipe
+          //First convert the [String] to [Recipe]
+          for (_,recipeNames) in dictionary {
+              for recipeName in recipeNames {
+                  for recipe in allRecipes {
+                      if let name = recipe.name {
+                          if recipeName == name {
+                              //This is the important part collects the selectedRecipes if there is a match
+                              userSelectedRecipes.append(recipe)
+                              }
+                          }
+                      }
+                  }
+              }
+          return userSelectedRecipes
+       }
+    // MARK: - 3rd
+    // Fetch all the recipes for comparison
+       
+   func fetchAllRecipes() -> [Recipe] {
+
+       let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
+
+       let sort = NSSortDescriptor(key: "name", ascending: true)
+       fetchRequest.sortDescriptors = [sort]
+
+       var recipes: [Recipe] = []
+
+       do {
+           let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
+           for result in results {
+               recipes.append(result as! Recipe)
+           }
+       } catch let error as NSError {
+           print("ERROR: \(error.localizedDescription)")
+           return [Recipe]()
+       }
+       return recipes
+   }
+    //MARK: - 4th
+    //From the selected recipes create the list of ingredients
     
-    func getTheIngredients(theDatesWithMealsDictionary: [String:[String]]) {
+    func getIngredientsForSelectedRecipes(selectedRecipes: [Recipe]) {
         
-        //This is not very efficient find a better way. If I have 100s of Recipes will completely slow down or crash
+        var haveSeen = Set<String>()
         
-        var selectedRecipe: [Recipe] = []
-        let fetchedRecipes = theFetchedRecipes()
-        var updatedDictonary: [String:[Recipe]] = [:]
-        var selectedIngredients: [String] = []
-        
-        for (date,recipeNames) in theDatesWithMealsDictionary {
-            //print(date)
-            for selectedRecipeName in recipeNames {
-                //print(selectedRecipeName)
-                for recipe in fetchedRecipes {
-                    
-                    if let recipeName = recipe.name {
-                        
-                        //print(recipeName)
-                        if selectedRecipeName == recipeName {
-                            
-                            selectedRecipe.append(recipe)
-                            if let ingredients = recipe.ingredients {
-                                
-                                for ingredient in ingredients {
-                                    
-                                    selectedIngredients.append(ingredient)
-                                }
-                            }
-                        }
+        for recipe in selectedRecipes {
+            let ingredients = recipe.theseIngredients?.allObjects as! [Ingredients]
+            //Leaving off right here
+            for ingredient in ingredients {
+                //The measure and ingredient name
+                let fullIngredient = "\(ingredient.measurement!) \(ingredient.ingredientName!)"
+                if let name = ingredient.ingredientName  {
+                    if !haveSeen.contains(name) {
+                        ingredient.ingredientList = [fullIngredient]
+                        //ingredient.ingredientList?.append(fullIngredient)
+                        ingredientsList.append(ingredient)
+                        haveSeen.insert(name)
+                    } else {
+                        let index = find(value: name, in: ingredientsList)
+                        ingredientsList[index!].ingredientList?.append(fullIngredient)
+                        //print(coreIngredients[index!])
                     }
                 }
             }
-            updatedDictonary.updateValue(selectedRecipe, forKey: date)
-            selectedRecipe.removeAll()
         }
-        //return selectedIngredients
+        //print(ingredientsList)
     }
     
-    func getTheRecipeObject(theDatesWithMealsDictionary: [String:[String]]) -> [String:[Recipe]] {
+    func find(value searchValue: String, in ingredientsList: [Ingredients]) -> Int? {
         
-        //This is not very efficient find a better way. If I have 100s of Recipes will completely slow down or crash
+        var currentIndex = 0
         
-        var selectedRecipe: [Recipe] = []
-        let fetchedRecipes = theFetchedRecipes()
-        var updatedDictonary: [String:[Recipe]] = [:]
-        
-        for (date,recipeNames) in theDatesWithMealsDictionary {
-            //print(date)
-            for selectedRecipeName in recipeNames {
-                //print(selectedRecipeName)
-                for recipe in fetchedRecipes {
-                    
-                    if let recipeName = recipe.name {
-                        
-                        //print(recipeName)
-                        if selectedRecipeName == recipeName {
-                            
-                            selectedRecipe.append(recipe)
-                            if let ingredients = recipe.ingredients {
-                                
-                                for ingredient in ingredients {
-                                    
-                                    selectedIngredients.append(ingredient)
-                                }
-                            }
-                        }
-                    }
-                }
+        for ingredient in ingredientsList {
+            if ingredient.ingredientName == searchValue {
+                return currentIndex
+            } else {
+                currentIndex += 1
             }
-            updatedDictonary.updateValue(selectedRecipe, forKey: date)
-            selectedRecipe.removeAll()
         }
-        return updatedDictonary
-    }
-    
-    func theFetchedRecipes() -> [Recipe] {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recipe")
-        
-        let sort = NSSortDescriptor(key: "name", ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        
-        var recipes: [Recipe] = []
-        
-        do {
-            let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
-            for result in results {
-                recipes.append(result as! Recipe)
-            }
-        } catch let error as NSError {
-            print("ERROR: \(error.localizedDescription)")
-            return [Recipe]()
-        }
-        return recipes
-    }
-    
-    func getTheObjectsDictionary(recipeObjects: [String:[Recipe]]){
-        
-        for (key, value) in recipeObjects {
-            selectedRecipesWithDatesObjects.append(plannedMeals(sectionName: key, sectionObjects: value))
-        }
+        return nil
     }
 }
 
@@ -385,12 +318,12 @@ extension ShoppingListViewController: FSCalendarDelegate, FSCalendarDataSource {
         startOfWeekDate = calendar.currentPage
         weekOfLabel.text = "Week of: \(self.dateFormatter.string(from: startOfWeekDate))"
         endOfWeekDate = self.calendar.date(byAdding: .day, value: 6, to: startOfWeekDate)!
-        print(self.dateFormatter.string(from: endOfWeekDate))
+        //print(self.dateFormatter.string(from: endOfWeekDate))
         
-        selectedIngredients.removeAll()
-        testDictionary = fetchDatesAndRecipesThenConvertToObjects2()
+        refreshView()
         
-        reloadWithAnimation()
+
+       //reloadWithAnimation()
         
         //UIView.transition(with: shoppingListTableView, duration: 1.0, options: .transitionFlipFromRight, animations: {self.shoppingListTableView.reloadData()}, completion: nil)
 //        let range = NSMakeRange(0, self.shoppingListTableView.numberOfSections)
@@ -404,86 +337,128 @@ extension ShoppingListViewController: FSCalendarDelegate, FSCalendarDataSource {
 }
 
 
+
+
 // MARK: - TableView Methods
 
 extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let dataIndex = indexPath.row - 1
+        if indexPath.row == 0 {
+            let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "CellSection", for: indexPath) as! ShoppingListTableViewCellSection
+            cell.backgroundColor = UIColor.black
+            cell.ingredientNameLabel.text = "\(ingredientsList[indexPath.section].ingredientName!)"
+            cell.checkMarkButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+            return cell
+        } else {
+            //Use different cell identfier if needed
+            let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ShoppingListTableViewCells
+            cell.backgroundColor = UIColor.black
+            cell.ingredientLabel.font = UIFont.boldSystemFont(ofSize: 22)
+            cell.ingredientLabel.text = "          \(ingredientsList[indexPath.section].ingredientList![dataIndex])"
+            return cell
+        }
+    }
+    
+    @objc func checkMarkButtonClicked( sender: UIButton) {
+        print("button pressed")
         
-        let ingredientToMove = selectedIngredients[indexPath.row]
-        
-        selectedIngredients.remove(at: indexPath.row)
-        selectedIngredients.insert(ingredientToMove, at: 0)
-        let desitnationIndexPath = NSIndexPath(row: 1, section: indexPath.section)
-        shoppingListTableView.moveRow(at: indexPath, to: desitnationIndexPath as IndexPath)
-        
+        if sender.isSelected {
+            //Uncheck the button
+            let image = UIImage(named: "unchecked") as UIImage?
+            sender.setImage(image, for: .normal)
+            sender.isSelected = false
+        } else {
+            //Check the button
+            let image = UIImage(named: "checked") as UIImage?
+            sender.setImage(image, for: .normal)
+            sender.isSelected = true
+        }
+        shoppingListTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let ingredientToMove = selectedIngredients[indexPath.row]
+        let cell = shoppingListTableView.cellForRow(at: indexPath) as! ShoppingListTableViewCellSection
         
-        selectedIngredients.remove(at: indexPath.row)
-        selectedIngredients.append(ingredientToMove)
-        let destinationIndexPath = NSIndexPath(row: selectedIngredients.count - 1, section: indexPath.section)
-        shoppingListTableView.moveRow(at: indexPath, to: destinationIndexPath as IndexPath)
-        
+        if indexPath.row == 0 {
+            
+            if ingredientsList[indexPath.section].isExpanded == true {
+                
+                ingredientsList[indexPath.section].isExpanded = false
+                let sections = IndexSet.init(integer: indexPath.section)
+                shoppingListTableView.reloadSections(sections, with: .none)
+            } else {
+                if cell.checkMarkButton.isSelected == true {
+                    ingredientsList[indexPath.section].isExpanded = true
+                    let sections = IndexSet.init(integer: indexPath.section)
+                    shoppingListTableView.reloadSections(sections, with: .none)
+                   // checkMarkButtonClicked(sender: cell.checkMarkButton)
+                } else {
+                    ingredientsList[indexPath.section].isExpanded = true
+                    let sections = IndexSet.init(integer: indexPath.section)
+                    shoppingListTableView.reloadSections(sections, with: .none)
+                    cell.checkMarkButton.isSelected = true
+                    cell.checkMarkButton.setImage(UIImage(named: "checked"), for: .normal)
+                }
+            }
+            checkMarkButtonClicked(sender: cell.checkMarkButton)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 60
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        //return selectedRecipesWithDatesObjects[section].sectionObjects.count
-        return selectedIngredients.count
+        if ingredientsList[section].isExpanded == true {
+            return ingredientsList[section].ingredientList!.count + 1
+        }
+        else {
+            return 1
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        //return selectedRecipesWithDatesObjects.count
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ShoppingListTableViewCell
-
-        cell.backgroundColor = UIColor.black
-        cell.ingredientLabel.textAlignment = .left
-        cell.ingredientLabel.text = selectedIngredients[indexPath.row]
-        cell.checkMarkImageView.image = UIImage(named: "unchecked")
-        
-        return cell
+        ingredientsList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 60
     }
     
+    //Might be some changes to this
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // animation 1
+        
+        //reloadWithAnimation()
 //        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 10, 0)
 //        cell.layer.transform = rotationTransform
 //
 //        UIView.animate(withDuration: 1.0, animations: {
 //            cell.layer.transform = CATransform3DIdentity
 //        })
+        // animation 2
+//        let springTransform = CGAffineTransform(translationX: 0, y: shoppingListTableView.bounds.size.height)
+//        cell.transform = springTransform
 //
-        let springTransform = CGAffineTransform(translationX: 0, y: shoppingListTableView.bounds.size.height)
-        cell.transform = springTransform
-        
-        UIView.animate(withDuration: 1.0, delay: 0.08, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options:
-            .curveEaseInOut, animations: {
-                cell.transform = CGAffineTransform.identity
-        }, completion: nil)
-
+//        UIView.animate(withDuration: 1.0, delay: 0.08, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options:
+//            .curveEaseInOut, animations: {
+//                cell.transform = CGAffineTransform.identity
+//        }, completion: nil)
+//
 //        UIView.animate(withDuration: 1.6, animations: {
 //            cell.transform = CGAffineTransform.identity
 //        })
 
-        // animation 2
+        // animation 3
 //        cell.alpha = 0
 //        UIView.animate(withDuration: 0.75, animations: {
 //            cell.alpha = 1.0
 //        })
-        
+//
     }
     
     
@@ -503,3 +478,4 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
 }
+

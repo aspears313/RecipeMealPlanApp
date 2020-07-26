@@ -10,15 +10,17 @@ import UIKit
 
 class AddDescriptionViewController: UIViewController {
     
-    var recipeTitle: String = ""
-    var recipePicture: UIImageView?
-    var selectedMealType: String = ""
+    @IBOutlet weak var nextBtn: UIButton!
+    
+    var newRecipe: Recipe?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipeTitle
+        self.navigationItem.title = newRecipe!.name!
+        
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         // Do any additional setup after loading the view.
     }
     
@@ -29,15 +31,10 @@ class AddDescriptionViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "toAddIngredientsVC" {
             let addIngredientsVC = segue.destination as! AddIngredientsViewController
-            addIngredientsVC.recipeTitle = self.recipeTitle
-            addIngredientsVC.recipePicture = self.recipePicture
-            addIngredientsVC.selectedMealType = self.selectedMealType
+            addIngredientsVC.newRecipe = self.newRecipe!
         }
     }
     

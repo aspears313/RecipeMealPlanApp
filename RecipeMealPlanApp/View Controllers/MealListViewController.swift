@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-
-
 class MealListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
    
     var coreDataStack: CoreDataStack!

@@ -171,3 +171,176 @@
 //        return selectedRecipesWithDatesObjects[section].sectionName
 //
 //    }
+
+//    private func setView() {
+//
+//        mealTypeTableView.delegate = self
+//        mealTypeTableView.dataSource = self
+//        mealTypeTableView.allowsMultipleSelection = true
+//
+//        nameOfRecipeTextField.delegate = self
+//
+//        nextToAddPhotoViewBtn.isHidden = true
+//
+//        self.view.addSubview(nameYourRecipe)
+//        self.view.addSubview(nameOfRecipeTextField)
+//        self.view.addSubview(mealTypeTableView)
+//        self.view.addSubview(nextToAddPhotoViewBtn)
+//
+//
+//        nameYourRecipe.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        nameYourRecipe.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 37).isActive = true
+//        nameYourRecipe.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -37).isActive = true
+//        nameYourRecipe.heightAnchor.constraint(equalToConstant: 73).isActive = true
+//        nameYourRecipe.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 160).isActive = true
+//
+//        nameOfRecipeTextField.topAnchor.constraint(equalTo: nameYourRecipe.topAnchor, constant: 81).isActive = true
+//        nameOfRecipeTextField.heightAnchor.constraint(equalToConstant: 34).isActive = true
+//        nameOfRecipeTextField.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 28).isActive = true
+//        nameOfRecipeTextField.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -28).isActive = true
+//
+//        mealTypeTableView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+//        mealTypeTableView.topAnchor.constraint(equalTo: nameOfRecipeTextField.bottomAnchor, constant: 15).isActive = true
+//        mealTypeTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 15).isActive = true
+//        mealTypeTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -15).isActive = true
+//        mealTypeTableView.heightAnchor.constraint(equalToConstant: 345).isActive = true
+//
+//        nextToAddPhotoViewBtn.heightAnchor.constraint(equalToConstant: 50).isActive = true
+//        nextToAddPhotoViewBtn.topAnchor.constraint(equalTo: mealTypeTableView.bottomAnchor, constant: 20).isActive = true
+//        nextToAddPhotoViewBtn.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 80).isActive = true
+//        nextToAddPhotoViewBtn.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -80).isActive = true
+//
+//        mealTypeTableView.register(MealTypeTableViewCell.self, forCellReuseIdentifier: "Cell")
+//        mealTypeTableView.isScrollEnabled = false
+//    }
+
+//    let nameYourRecipe: UILabel = {
+//        let label = UILabel()
+//        label.text = "What is the name of your recipe?"
+//        label.numberOfLines = 2
+//        label.textAlignment = .center
+//        label.textColor = UIColor.red
+//        label.font = UIFont.init(name: "Helvetica Neue", size: 28)
+//        label.font = label.font.with([.traitBold, .traitItalic])
+//        label.backgroundColor = UIColor.black
+//        label.translatesAutoresizingMaskIntoConstraints = false
+//        return label
+//    }()
+//
+//    let nameOfRecipeTextField: UITextField = {
+//        let textField = UITextField()
+//        textField.placeholder = "What is the name of your recipe?"
+//        textField.borderStyle = .roundedRect
+//        textField.translatesAutoresizingMaskIntoConstraints = false
+//        return textField
+//    }()
+//
+//    let mealTypeTableView: UITableView = {
+//        let tableView = UITableView()
+//        tableView.separatorColor = UIColor.black
+//        tableView.backgroundColor = UIColor.white
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        return tableView
+//    }()
+//
+//    let nextToAddPhotoViewBtn: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.backgroundColor = UIColor.red
+//        button.setTitle("Next", for: .normal)
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+//        button.isHidden = true
+//        button.addTarget(self, action: #selector(nextBtnClicked(_:)), for: .touchUpInside)
+//
+//        return button
+//    }()
+
+
+ // MARK: - TableView Methods
+//    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        if let selectedRows = mealTypeTableView.indexPathsForSelectedRows {
+//            if selectedRows.count == limit {//could use variable named
+//            displayMessage(userMessage: "You are limited to \(limit) selections")
+//            return nil
+//            }
+//        }
+//        return indexPath
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        print("selected \(mealType[indexPath.row])")
+//
+//        selectedMealType = mealType[indexPath.row]
+//        if let cell = mealTypeTableView.cellForRow(at: indexPath){
+//            if cell.isSelected {
+//                cell.accessoryType = .checkmark
+//            }
+//        }
+//
+//        if let selectedRows = tableView.indexPathsForSelectedRows {
+//            print("didDeselectRowAtIndexPath selected rows:\(selectedRows)")
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+//        print("deselected \(mealType[indexPath.row])")
+//        //mealType.remove(at: indexPath.row)
+//
+//        //selectedMealType.remove(at: indexPath.row)
+//        if let cell = mealTypeTableView.cellForRow(at: indexPath) {
+//            cell.accessoryType = .none
+//            selectedMealType = ""
+//        }
+//
+//        if let selectedRows = mealTypeTableView.indexPathsForSelectedRows {
+//            print("did DeselectRowAtIndexPath selected rows: \(selectedRows)")
+//        }
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return mealType.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+//
+//        cell.textLabel?.text = mealType[indexPath.row]
+//
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 53
+//    }
+//
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//    }
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        return "What kind of meal is this?"
+//    }
+    
+//    @objc func nextBtnClicked(_ sender: Any) {
+//        performSegue(withIdentifier: "toAddPhotoVC", sender: self)
+//
+//    }
+
+//        let title = recipeTitle
+//
+//        let maxWidth = UIScreen.main.bounds.size.width - 60
+//        var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+//        var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+//
+//        while width > maxWidth {
+//            fontSize -= 1
+//            width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+//        }
+//        if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
+//            titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
+//            titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+//
+//            navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+//            navigationItem.title = title
+//        }

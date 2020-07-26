@@ -10,28 +10,27 @@ import UIKit
 
 class AddPhotoViewController: UIViewController {
     
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var recipePic: UIImageView!
     @IBOutlet weak var SelectAPictureBtn: UIButton!
     
-    var selectedMealType: String = ""
-    var picture: UIImageView?
     var imagePicker: ImagePicker!
-    var recipeTitle: String = ""
+    var newRecipe: Recipe?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recipePic.layer.cornerRadius = 25.0
+        //change how it is displayed
+        recipePic.layer.cornerRadius = recipePic.frame.height / 2.0
         recipePic.clipsToBounds = true
 
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipeTitle
-                
+        self.navigationItem.title = newRecipe!.name!
+                nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(recognizer:)))
         view.addGestureRecognizer(tap)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,7 +39,6 @@ class AddPhotoViewController: UIViewController {
 
     @IBAction func selectAPicBtnPressed(_ sender: Any) {
         self.imagePicker.present(from: sender as! UIView)
-
     }
     
     @IBAction func tapGesture(recognizer: UITapGestureRecognizer) {
@@ -57,24 +55,19 @@ class AddPhotoViewController: UIViewController {
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "toAddDescriptionVC" {
             let addDescriptionVC = segue.destination as! AddDescriptionViewController
-            addDescriptionVC.recipeTitle = self.recipeTitle
-            addDescriptionVC.recipePicture = self.recipePic
-            addDescriptionVC.selectedMealType = self.selectedMealType
+            addDescriptionVC.newRecipe = self.newRecipe!
         }
     }
-    
-
 }
 
 extension AddPhotoViewController: ImagePickerDelegate {
     
     func didSelect(image: UIImage?) {
         self.recipePic.image = image
+        self.newRecipe!.image = image?.pngData()
     }
 }

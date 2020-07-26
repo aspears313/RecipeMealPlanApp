@@ -15,19 +15,15 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
     @IBOutlet weak var labelForIngredient: UILabel!
     @IBOutlet weak var ingredientNameTextField: UITextField!
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var addIngredientBtn: UIButton!
     
-    var selectedMealType: String = ""
-    var recipePicture: UIImageView?
-    var recipeTitle: String = ""
-    var pickerDataSource = PickerViewDataSource()
-    var userIngredient: String = ""
+    var newRecipe: Recipe?
+    var ingredientsForNewRecipe: [Ingredients] = []
     var thisMeasure: String = ""
-    var thisIngredientList: [String] = []
-    var coreIngredientList: [Ingredients] = []
-//    var coreIngredientList: [Ingredients] = []
+    //var pickerDataSource = PickerViewDataSource()
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
-
+    
     let pickerData: [[String]] = [["","1","2","3","4","5","6","7","8","9","10"],
                                   ["","1/8","1/4","1/3","1/2","2/3","3/4"],
                                   ["","tsp(s)","tbsp(s)","cup(s)","Oz","gram(s)","whole","lbs","fl Oz(s)","Qt","Gal(s)","L","pinch","can(s)"]]
@@ -36,9 +32,11 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipeTitle
+        self.navigationItem.title = newRecipe?.name!
         
         nextBtn.isHidden = true
+        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
+        addIngredientBtn.layer.cornerRadius = addIngredientBtn.frame.height / 2.0
         ingredientNameTextField.delegate = self
         measurementPickerView.dataSource = self
         measurementPickerView.delegate = self
@@ -89,9 +87,7 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         let stringForComponenet3: String! = pickerData[2][selectedRowInComponent3]
         
         if (stringForComponent1 == "" && stringForComponent2 == "" && stringForComponenet3 == "") {
-          
-//            displayMessage(userMessage: "Must enter a measure")
-            
+                      
         } else if stringForComponent1 == "" {
             
             thisMeasure = "\(stringForComponent2 ?? "") \(stringForComponenet3 ?? "")"
@@ -107,39 +103,37 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
 
     @IBAction func addIngredientsBtn(_ sender: Any) {
-            hideKeyboard()
         
-        if thisMeasure.isEmpty {
-            displayMessage(userMessage: "Please enter an amount before adding an Ingredient")
-        } else {
-            var thisIngredientName: String
-            
-            thisIngredientName = ingredientNameTextField.text!
-        
-            userIngredient = "\(thisMeasure) \(thisIngredientName)"
-            
-            var ingredient = Ingredients(context: coreDataStack.mainContext)
-            ingredient.measurement = thisMeasure
-            ingredient.ingredientName = thisIngredientName
-            
-            coreIngredientList.append(ingredient)
-            
-            labelForIngredient.text = userIngredient
-            
-            //To Reset the pickerView
-            measurementPickerView.selectRow(0, inComponent: 0, animated: true)
-            measurementPickerView.selectRow(0, inComponent: 1, animated: true)
-            measurementPickerView.selectRow(0, inComponent: 2, animated: true)
-            //To Reset UITextfield
-            ingredientNameTextField.text = ""
-            thisMeasure = ""
-            
-            thisIngredientList.append(userIngredient)
-            //print(userIngredientList!)
-            nextBtn.isHidden = false
+        hideKeyboard()
+        if let ingredientName = ingredientNameTextField.text {
+            if thisMeasure == "" {
+                displayMessage(userMessage: "Please enter an amount before adding an ingredient")
+            } else if ingredientName.isEmpty {
+                displayMessage(userMessage: "Please enter the ingredients name to add the ingredient")
+            } else {
+                
+                let newIngredient = NSEntityDescription.insertNewObject(forEntityName: "Ingredients", into: coreDataStack.mainContext) as! Ingredients
+                
+                newIngredient.measurement = thisMeasure
+                newIngredient.ingredientName = ingredientName.capitalized
+                
+                ingredientsForNewRecipe.append(newIngredient)
+                
+                labelForIngredient.text = "\(newIngredient.measurement!) \(newIngredient.ingredientName!)"
+                
+                //To Reset the pickerView
+                measurementPickerView.selectRow(0, inComponent: 0, animated: true)
+                measurementPickerView.selectRow(0, inComponent: 1, animated: true)
+                measurementPickerView.selectRow(0, inComponent: 2, animated: true)
+                //To Reset UITextfield
+                ingredientNameTextField.text = ""
+                thisMeasure = ""
+                
+                nextBtn.isHidden = false
+            }
         }
-            
     }
+    
     func hideKeyboard () {
         ingredientNameTextField.resignFirstResponder()
     }
@@ -155,15 +149,12 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         } else {
             view.frame.origin.y = 0
         }
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         hideKeyboard()
     }
    
-        
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             
         hideKeyboard()
@@ -175,27 +166,40 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         return true
     }
 
+    func addIngredientsToRecipe() {
         
+        var ingredientsForNewRecipeSet = Set<Ingredients>()
         
+        for ingredient in ingredientsForNewRecipe {
+            
+            let entity = NSEntityDescription.entity(forEntityName: "Ingredients", in: coreDataStack.mainContext)
+            
+            let currentIngredient = Ingredients(entity: entity!, insertInto: coreDataStack.mainContext)
+            
+            currentIngredient.measurement = ingredient.measurement
+            currentIngredient.ingredientName = ingredient.ingredientName
+            
+            ingredientsForNewRecipeSet.insert(currentIngredient)
+        }
+    }
+    
     func displayMessage(userMessage:String) -> Void {
         DispatchQueue.main.async {
         let alertController = UIAlertController(title: "Alert", message: userMessage, preferredStyle: .alert)
         
-        let OKAction = UIAlertAction(title: "OK", style: .default) {
-            (action:UIAlertAction!) in
-            // Code in this block will trigger when OK button tapped.
-            print("Ok button tapped")
-            //DispatchQueue.main.async {
-              //  self.dismiss(animated: true, completion: nil)
-            //}
-        }
+            let OKAction = UIAlertAction(title: "OK", style: .default) {
+                (action:UIAlertAction!) in
+                print("Ok button tapped")
+            }
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
         }
     }
     
     @IBAction func nextBtnClicked(_ sender: Any) {
+        
         if thisMeasure.isEmpty && ingredientNameTextField.text!.isEmpty {
+            addIngredientsToRecipe()
             performSegue(withIdentifier: "toAddDirectionsVC", sender: self)
         } else if !thisMeasure.isEmpty && ingredientNameTextField.text!.isEmpty {
             displayMessage(userMessage: "Please enter the name of your ingredient before continuing.")
@@ -203,25 +207,19 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
             displayMessage(userMessage: "Please enter a measurement for your ingredient before continuing")
         } else {
             addIngredientsBtn(self)
+            addIngredientsToRecipe()
             performSegue(withIdentifier: "toAddDirectionsVC", sender: self)
         }
     }
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+       
         if segue.identifier == "toAddDirectionsVC" {
             let addDirectionsVC = segue.destination as! AddDirectionsViewController
-            addDirectionsVC.recipeTitle = self.recipeTitle
-            addDirectionsVC.recipePicture = self.recipePicture
-            addDirectionsVC.listOfIngredients = self.thisIngredientList
-            addDirectionsVC.selectedMealType = self.selectedMealType
-            addDirectionsVC.coreIngredients = self.coreIngredientList
+            addDirectionsVC.newRecipe = self.newRecipe!
+            addDirectionsVC.newIngredients = self.ingredientsForNewRecipe
         }
     }
-    
-
 }

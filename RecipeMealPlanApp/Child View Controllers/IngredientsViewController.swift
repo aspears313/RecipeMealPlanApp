@@ -16,23 +16,17 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var ingredientListTableView: UITableView!
     
     var recipe: Recipe?
-    //var ingredients: [String] = []
     
-    
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.ingredientListTableView.dataSource = self
         self.ingredientListTableView.delegate = self
         
-        
-        // Do any additional setup after loading the view.
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipe?.ingredients!.count ?? 0
+        return (recipe?.theseIngredients!.count)!
         }
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,31 +35,19 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
             
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
             
-            if let ingredients = recipe?.ingredients {
-                cell.textLabel?.text = ingredients[indexPath.row]
+            let recipeIngredients = recipe?.theseIngredients?.allObjects
+            
+            if let ingredients = recipeIngredients as? [Ingredients] {
+                cell.textLabel?.text = "\(ingredients[indexPath.row].measurement!) \(ingredients[indexPath.row].ingredientName!)"
                 cell.textLabel?.textAlignment = .center
             } else {
                 cell.textLabel?.text = "Wrong"
                 cell.textLabel?.textAlignment = .center
             }
-            
-            //let ingredient = recipe?.ingredients?.allObjects
-            
-//            cell.textLabel?.text = ingredients[indexPath.row] as? String
-//            cell.textLabel?.textAlignment = .center
-            
             return cell
         }
         
         func numberOfSections(in tableView: UITableView) -> Int {
             return 1
         }
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-   // override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    //}
-    
-
 }

@@ -32,7 +32,7 @@ class RecipeListTableViewCell: UITableViewCell {
         label.text = "Recipe 1"
         label.textColor = UIColor.white
         label.adjustsFontSizeToFitWidth = true
-        label.font = UIFont.boldSystemFont(ofSize: 24)
+        label.font = UIFont.boldSystemFont(ofSize: 26)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -76,18 +76,6 @@ class RecipeListTableViewCell: UITableViewCell {
         
         
     }
-//    @IBOutlet weak var imageViewCell: UIImageView!
-//    @IBOutlet weak var nameOfRecipeCell: UILabel!
-//
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+}
 
 

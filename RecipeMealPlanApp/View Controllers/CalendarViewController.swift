@@ -18,7 +18,6 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
     @IBOutlet weak var mealChoiceView: UIView!
     @IBOutlet weak var calendarViewBtn: UIBarButtonItem!
     
-    //lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     let coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
     var theSelectedDate: String = ""

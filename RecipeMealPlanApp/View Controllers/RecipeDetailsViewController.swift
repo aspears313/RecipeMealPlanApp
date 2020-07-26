@@ -12,6 +12,8 @@ class RecipeDetailsViewController: UIViewController {
     
     @IBOutlet weak var customSegmentedControl: CustomSegmentedControl!
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     var recipe: Recipe?
         
     @IBOutlet weak var addMealBtn: UIBarButtonItem!
@@ -21,12 +23,10 @@ class RecipeDetailsViewController: UIViewController {
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipe?.name
-        setNavigationBar()
+
         setupView()
-        
-        // Do any additional setup after loading the view.
     }
-    
+
     private func setNavigationBar() {
         
         guard let title = recipe?.name, #available(iOS 11.0, *) else { return}
@@ -39,31 +39,24 @@ class RecipeDetailsViewController: UIViewController {
             fontSize -= 1
             width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
         }
+        
         if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
             titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
             titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
             
             navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
         }
-        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: fontSize)]
-        //navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.red]
-        
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationItem.title = recipe?.name
-        
-        
-        
     }
     
     private func setupView() {
         setupSegmentedControl()
         updateView()
-        
+        setNavigationBar()
     }
     
     private func updateView() {
         
-        switch customSegmentedControl.selectedSegmentIndex {
+        switch segmentedControl.selectedSegmentIndex {
                 case 0:
                     let descriptionViewController: DescriptionViewController = {
                         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -83,12 +76,6 @@ class RecipeDetailsViewController: UIViewController {
                         let viewController = storyboard.instantiateViewController(withIdentifier: "ingredientsViewController") as! IngredientsViewController
                         //Setup View Controller
                         viewController.recipe = recipe
-                    
-//                        if let ingredients = recipe?.ingredients {
-//                            viewController.ingredients =
-//                        }
-//                        viewController.ingredients = recipe?.ingredients as? [String]
-                                              
                            self.addViewControllerAsChildViewController(childViewController: viewController)
 
                            return viewController
@@ -113,9 +100,13 @@ class RecipeDetailsViewController: UIViewController {
             }
 
     private func setupSegmentedControl() {
-        customSegmentedControl.addTarget(self, action: #selector(selectionDidChange), for: .valueChanged)
         
-        customSegmentedControl.selectedSegmentIndex = 0
+        let font = UIFont.systemFont(ofSize: 18)
+        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        
+        segmentedControl.addTarget(self, action: #selector(selectionDidChange), for: .valueChanged)
+        
+        segmentedControl.selectedSegmentIndex = 0
     }
     
     @objc private func selectionDidChange() {
@@ -146,18 +137,5 @@ class RecipeDetailsViewController: UIViewController {
             childViewController.view.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
         ])
         childViewController.didMove(toParent: self)
-        
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-
 }

@@ -110,22 +110,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
     }
     
-    func configure(cell: UITableViewCell, for indexPath: IndexPath) {
-
-        guard let cell = cell as? RecipeListTableViewCell else {
-          return
-        }
-
-       let currentRecipe = fetchedResultsController.object(at: indexPath)
-        cell.recipeName.text = currentRecipe.name
-
-        if let image = currentRecipe.image {
-            cell.recipeImage.image = UIImage(data: image)
-        } else {
-            cell.recipeImage.image = UIImage(named: "No photo")
-        }
-      }
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         let springTransform = CGAffineTransform(translationX: 0, y: recipeListTableView.bounds.size.height)
@@ -152,21 +136,22 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         configure(cell: cell, for: indexPath)
         cell.backgroundColor = UIColor.black
-//        let currentRecipe = fetchedResultsController.object(at: indexPath)
-//
-//        cell.recipeNameLabel.text = currentRecipe.name
-//
-//        if let image = currentRecipe.image{
-//            cell.recipeImage.image = UIImage(data: image)
-//        } else {
-//            cell.recipeImage.image = UIImage(named: "No photo")
-//        }
-        
-        
-        //configure(cell: cell, for: indexPath)
         
         return cell
+    }
     
+    func configure(cell: UITableViewCell, for indexPath: IndexPath) {
+
+        guard let cell = cell as? RecipeListTableViewCell else { return }
+
+        let currentRecipe = fetchedResultsController.object(at: indexPath)
+        cell.recipeName.text = currentRecipe.name
+
+        if let image = currentRecipe.image {
+            cell.recipeImage.image = UIImage(data: image)
+        } else {
+            cell.recipeImage.image = UIImage(named: "No photo")
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -177,7 +162,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
 
         self.performSegue(withIdentifier: "toDetailVC", sender: indexPath.row)
         tableView.deselectRow(at: indexPath, animated: true)
-        
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -185,7 +169,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        var coreRecipes = fetchedResultsController.fetchedObjects!
         
         if editingStyle == .delete {
             let recipeToRemove = self.fetchedResultsController.object(at: indexPath)
@@ -195,7 +178,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func toAddRecipeVC(_ sender: Any) {
-
         self.performSegue(withIdentifier: "toAddRecipeFlow", sender: self)
     }
 
@@ -204,20 +186,35 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         let addDirectionsVC = unwindSegue.source as! AddDirectionsViewController
         
-        let newRecipe = Recipe(context: coreDataStack.mainContext)
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Recipe", in: coreDataStack.mainContext)
         
-        newRecipe.name = addDirectionsVC.recipeTitle
-        newRecipe.image = addDirectionsVC.recipePicture?.image?.pngData()
-        newRecipe.ingredients = addDirectionsVC.listOfIngredients
-        newRecipe.mealType = addDirectionsVC.selectedMealType
-//        for ingredient in addDirectionsVC.coreIngredients {
-//            let (inserted, membe
-//        }
-//        newRecipe.theseIngredients = addDirectionsVC.coreIngredients
+        let newRecipe = Recipe(entity: entityDescription!, insertInto: coreDataStack.mainContext)
+
+        newRecipe.name = addDirectionsVC.newRecipe?.name
+        newRecipe.image = addDirectionsVC.newRecipe?.image
+        newRecipe.mealType = addDirectionsVC.newRecipe?.mealType
         
+        let newIngredients = addDirectionsVC.newIngredients
+
+        var newIngredientsSet = Set<Ingredients>()
+
+        for newIngredient in newIngredients {
+
+            let entityDescriptionTwo = NSEntityDescription.entity(forEntityName: "Ingredients", in: coreDataStack.mainContext)
+            
+            let ingredient = Ingredients(entity: entityDescriptionTwo!, insertInto: coreDataStack.mainContext)
+
+            ingredient.ingredientName = newIngredient.ingredientName
+            ingredient.measurement = newIngredient.measurement
+
+            newIngredientsSet.insert(ingredient)
+        }
+        
+        //print(newIngredientsSet)
+        newRecipe.theseIngredients = newIngredientsSet as NSSet
+
         coreDataStack.saveContext()
         setNavigationBar()
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -229,8 +226,8 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
                 recipeDetailsViewController.recipe = self.fetchedResultsController.object(at: indexPath)
                 recipeDetailsViewController.addMealBtn.isEnabled = false
             }
-            }
         }
+    }
 }
 
 private extension RecipeListViewController {
@@ -261,10 +258,7 @@ private extension RecipeListViewController {
         fetchRequest.sortDescriptors = [sort]
         return fetchRequest
     }
-    
 }
-
-
 
 extension RecipeListViewController: NSFetchedResultsControllerDelegate {
     
@@ -273,7 +267,9 @@ extension RecipeListViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
         switch type {
+            
         case .insert:
             recipeListTableView.insertRows(at: [newIndexPath!], with: .automatic)
         case .delete:
