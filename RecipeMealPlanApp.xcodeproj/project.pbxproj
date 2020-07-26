@@ -57,6 +57,7 @@
 		84097E5B24AAD36500484C6A /* ShoppingListTableViewCellSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCellSection.swift; sourceTree = "<group>"; };
 		841B5553248B115000CDE586 /* ShoppingListTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCells.swift; sourceTree = "<group>"; };
 		843C8193248C30A100C5C184 /* RecipeMealPlanApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RecipeMealPlanApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		848A7CA024CDE26A00528AC4 /* RecipeMealPlanApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RecipeMealPlanApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		848AC3E5245CB279002197AB /* RecipeMealTypeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMealTypeListTableViewCell.swift; sourceTree = "<group>"; };
 		84BADA5724AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeMealPlanApp.xcdatamodel; sourceTree = "<group>"; };
 		84BADA5924B0BBDD00F68286 /* functions for the new view controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "functions for the new view controller.swift"; sourceTree = "<group>"; };
@@ -597,9 +598,10 @@
 		84BADA5624AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				848A7CA024CDE26A00528AC4 /* RecipeMealPlanApp 2.xcdatamodel */,
 				84BADA5724AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodel */,
 			);
-			currentVersion = 84BADA5724AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodel */;
+			currentVersion = 848A7CA024CDE26A00528AC4 /* RecipeMealPlanApp 2.xcdatamodel */;
 			name = RecipeMealPlanApp.xcdatamodeld;
 			path = RecipeMealPlanApp/RecipeMealPlanApp.xcdatamodeld;
 			sourceTree = "<group>";

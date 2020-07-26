@@ -53,8 +53,6 @@ class ShoppingListViewController: UIViewController {
         setupTableView()
         
         getStartAndEndDates(for: calendar)
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,9 +62,7 @@ class ShoppingListViewController: UIViewController {
         
     }
     //MARK: - Setup my Views
-    
 
-    
     func setCalendarView() {
         
         let calendar = FSCalendar(frame: CGRect(x: 0, y: 180, width: self.view.frame.width, height: 300))
@@ -84,7 +80,6 @@ class ShoppingListViewController: UIViewController {
         calendar.appearance.todayColor = .blue
         calendar.appearance.titleDefaultColor = .white
         calendar.appearance.titleWeekendColor = .red
-        
         
         view.addSubview(calendar)
         self.thisCalendar = calendar
@@ -336,13 +331,10 @@ extension ShoppingListViewController: FSCalendarDelegate, FSCalendarDataSource {
     }
 }
 
-
-
-
 // MARK: - TableView Methods
 
 extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let dataIndex = indexPath.row - 1
@@ -407,6 +399,7 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
             checkMarkButtonClicked(sender: cell.checkMarkButton)
         }
     }
+    
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
@@ -478,4 +471,5 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
         }
     }
 }
+
 

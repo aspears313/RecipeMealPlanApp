@@ -68,4 +68,5 @@ class ShoppingListTableViewCells: UITableViewCell {
         ingredientLabel.leftAnchor.constraint(equalTo: cellView.leftAnchor, constant: 10).isActive = true
         ingredientLabel.centerYAnchor.constraint(equalTo: cellView.centerYAnchor).isActive = true
         
+    }
 }

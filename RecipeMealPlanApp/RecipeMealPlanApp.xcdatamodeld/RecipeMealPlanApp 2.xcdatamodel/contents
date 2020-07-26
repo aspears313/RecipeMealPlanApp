@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Ingredients" representedClassName="Ingredients" syncable="YES" codeGenerationType="class">
+        <attribute name="ingredientList" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+        <attribute name="ingredientName" optional="YES" attributeType="String"/>
+        <attribute name="isExpanded" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="measurement" optional="YES" attributeType="String"/>
+        <relationship name="forRecipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="theseIngredients" inverseEntity="Recipe"/>
+    </entity>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES" codeGenerationType="class">
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="mealType" attributeType="String"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="recipeDescription" optional="YES" attributeType="String" defaultValueString="&quot;Please enter a brief Description of the recipe&quot;"/>
+        <relationship name="theseIngredients" toMany="YES" deletionRule="Nullify" destinationEntity="Ingredients" inverseName="forRecipe" inverseEntity="Ingredients"/>
+    </entity>
+    <entity name="Selections" representedClassName="Selections" syncable="YES" codeGenerationType="class">
+        <attribute name="selectedDate" optional="YES" attributeType="String"/>
+        <attribute name="selectedRecipes" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
+    </entity>
+    <elements>
+        <element name="Ingredients" positionX="-36" positionY="36" width="128" height="118"/>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Selections" positionX="-54" positionY="18" width="128" height="73"/>
+    </elements>
+</model>

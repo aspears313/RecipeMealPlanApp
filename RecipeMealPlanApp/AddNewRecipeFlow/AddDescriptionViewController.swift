@@ -8,9 +8,10 @@
 
 import UIKit
 
-class AddDescriptionViewController: UIViewController {
+class AddDescriptionViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var descriptionView: UITextView!
     
     var newRecipe: Recipe?
 
@@ -20,10 +21,12 @@ class AddDescriptionViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = newRecipe!.name!
         
+        descriptionView.text = newRecipe?.recipeDescription
+        
         nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         // Do any additional setup after loading the view.
     }
-    
+        
     @IBAction func nextBtnClicked(_ sender: Any) {
         performSegue(withIdentifier: "toAddIngredientsVC", sender: self)
     }

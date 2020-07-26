@@ -546,7 +546,7 @@
                                     <action selector="nextBtnClicked:" destination="PbH-7S-8X5" eventType="touchUpInside" id="pR7-8g-Vad"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Enter your description here...." textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8n7-Kt-saH">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8n7-Kt-saH">
                                 <rect key="frame" x="27" y="268" width="360" height="360"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -554,8 +554,8 @@
                                     <constraint firstAttribute="width" constant="360" id="tUF-FG-7uZ"/>
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" spellCheckingType="yes" enablesReturnKeyAutomatically="YES" smartInsertDeleteType="yes"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter a brief description." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RIu-Sc-ztW">
                                 <rect key="frame" x="37" y="187" width="340" height="73"/>
@@ -582,6 +582,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="v9v-JA-Nn3"/>
                     <connections>
+                        <outlet property="descriptionView" destination="8n7-Kt-saH" id="9jq-UI-h5r"/>
                         <outlet property="nextBtn" destination="t7H-YV-9rN" id="ilf-Zd-Cl9"/>
                         <segue destination="IlT-05-Io2" kind="show" identifier="toAddIngredientsVC" id="V6a-Yo-wIV"/>
                     </connections>
