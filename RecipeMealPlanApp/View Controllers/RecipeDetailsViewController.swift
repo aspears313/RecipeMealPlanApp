@@ -21,7 +21,7 @@ class RecipeDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipe?.name
 
         setupView()
@@ -58,10 +58,10 @@ class RecipeDetailsViewController: UIViewController {
         
         switch segmentedControl.selectedSegmentIndex {
                 case 0:
-                    let descriptionViewController: DescriptionViewController = {
+                    let descriptionViewController: DescriptionAndPicutreViewController = {
                         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
                         
-                        let viewController = storyboard.instantiateViewController(identifier: "descriptionViewController") as! DescriptionViewController
+                        let viewController = storyboard.instantiateViewController(identifier: "descriptionViewController") as! DescriptionAndPicutreViewController
                         viewController.recipe = recipe
                         
                         self.addViewControllerAsChildViewController(childViewController: viewController)

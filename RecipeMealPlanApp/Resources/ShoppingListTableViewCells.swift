@@ -50,7 +50,7 @@ class ShoppingListTableViewCells: UITableViewCell {
     }
     
     func setupView() {
-        
+                
         addSubview(cellView)
         cellView.addSubview(ingredientLabel)
         //cellView.addSubview(checkMarkImageView)

@@ -91,7 +91,6 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
             return [Recipe]()
         }
         return fetchResults
-
     }
 
     // MARK: - Navigation
@@ -108,7 +107,4 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
             }
         }
     }
-    
-    
-
 }

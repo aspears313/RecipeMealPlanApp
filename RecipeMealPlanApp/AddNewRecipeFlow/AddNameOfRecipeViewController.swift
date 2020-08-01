@@ -28,9 +28,9 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         
         //setView()
         
-        let tapGestutreRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
-        tapGestutreRecognizer.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapGestutreRecognizer)
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer)
 
         nextToAddPhotoViewBtn.isHidden = true
         nextToAddPhotoViewBtn.layer.cornerRadius = nextToAddPhotoViewBtn.frame.height / 2.0
@@ -44,7 +44,7 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         //self.navigationItem.title = recipeTitle
         //setNavigationBar()
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        //self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipeTitle
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         
@@ -55,13 +55,11 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         hideKeyboard()
     }
     
-    
     private func setNavigationBar() {
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipeTitle
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer? = nil) {
@@ -75,11 +73,11 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         return true
     }
      
-    func hideKeyboard () {
+    func hideKeyboard() {
         if let text = nameOfRecipeTextField.text, text.isEmpty {
             nextToAddPhotoViewBtn.isHidden = true
         } else {
-            nextToAddPhotoViewBtn.isHidden = false
+//            nextToAddPhotoViewBtn.isHidden = false
             recipeTitle = nameOfRecipeTextField.text!.capitalized
             setNavigationBar()
             nameOfRecipeTextField.resignFirstResponder()
@@ -99,6 +97,7 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         if let btnlabel = sender.titleLabel?.text {
             selectedMealType = btnlabel
             selectMealTypeBtn.titleLabel?.text = selectedMealType
+            nextToAddPhotoViewBtn.isHidden = false
         
             mealTypeChoices.forEach{ (mealTypeBtn) in
                 UIView.animate(withDuration: 0.4, animations: {

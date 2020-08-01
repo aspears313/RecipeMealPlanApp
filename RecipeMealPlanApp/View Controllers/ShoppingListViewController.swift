@@ -32,6 +32,7 @@ class ShoppingListViewController: UIViewController {
     }()
 
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
+    //var coreDataStack: CoreDataStack!
     
     var ingredientsList = [Ingredients]()
     var selectedRecipes = [Recipe]()
@@ -87,7 +88,7 @@ class ShoppingListViewController: UIViewController {
     
     func setNavigationBar() {
         
-        self.navigationBar.prefersLargeTitles = true
+        //self.navigationBar.prefersLargeTitles = true
         self.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         self.navigationBar.backgroundColor = .black
     }
@@ -345,11 +346,11 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
             cell.checkMarkButton.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
             return cell
         } else {
-            //Use different cell identfier if needed
             let cell = shoppingListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ShoppingListTableViewCells
             cell.backgroundColor = UIColor.black
             cell.ingredientLabel.font = UIFont.boldSystemFont(ofSize: 22)
             cell.ingredientLabel.text = "          \(ingredientsList[indexPath.section].ingredientList![dataIndex])"
+            cell.isUserInteractionEnabled = false
             return cell
         }
     }
@@ -378,7 +379,6 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.row == 0 {
             
             if ingredientsList[indexPath.section].isExpanded == true {
-                
                 ingredientsList[indexPath.section].isExpanded = false
                 let sections = IndexSet.init(integer: indexPath.section)
                 shoppingListTableView.reloadSections(sections, with: .none)
@@ -387,16 +387,20 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
                     ingredientsList[indexPath.section].isExpanded = true
                     let sections = IndexSet.init(integer: indexPath.section)
                     shoppingListTableView.reloadSections(sections, with: .none)
-                   // checkMarkButtonClicked(sender: cell.checkMarkButton)
+                    let image = UIImage(named: "checked") as UIImage?
+                    cell.checkMarkButton.setImage(image, for: .normal)
+                    shoppingListTableView.reloadData()
+                    //cell.checkMarkButton.isSelected = true
+                    //(sender: cell.checkMarkButton)
                 } else {
                     ingredientsList[indexPath.section].isExpanded = true
                     let sections = IndexSet.init(integer: indexPath.section)
                     shoppingListTableView.reloadSections(sections, with: .none)
-                    cell.checkMarkButton.isSelected = true
-                    cell.checkMarkButton.setImage(UIImage(named: "checked"), for: .normal)
+                    //cell.checkMarkButton.isSelected = true
+                    //cell.checkMarkButton.setImage(UIImage(named: "checked"), for: .normal)
                 }
             }
-            checkMarkButtonClicked(sender: cell.checkMarkButton)
+            //checkMarkButtonClicked(sender: cell.checkMarkButton)
         }
     }
     

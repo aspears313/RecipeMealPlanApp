@@ -24,6 +24,10 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
         self.ingredientListTableView.delegate = self
         
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (recipe?.theseIngredients!.count)!

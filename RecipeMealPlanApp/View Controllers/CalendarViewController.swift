@@ -12,7 +12,6 @@ import CoreData
 
 class CalendarViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
-    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var calendar: FSCalendar!
     @IBOutlet weak var mealChoiceView: UIView!
@@ -60,7 +59,6 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
                 mealPlannerVC.view.topAnchor.constraint(equalTo: mealChoiceView.topAnchor),
                 mealPlannerVC.view.bottomAnchor.constraint(equalTo: mealChoiceView.bottomAnchor)
             ])
-            
             mealPlannerVC.didMove(toParent: self)
     }
     
@@ -139,6 +137,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
         }
     }
 }
+
 //MARK: - Conforming to Delegate method for meals
 extension CalendarViewController: MealSelectDelegate {
     func didSelectMeals(selectedMeals: [String]) {

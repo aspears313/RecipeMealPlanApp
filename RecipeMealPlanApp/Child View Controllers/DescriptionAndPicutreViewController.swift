@@ -8,7 +8,8 @@
 
 import UIKit
 
-class DescriptionViewController: UIViewController {
+class DescriptionAndPicutreViewController: UIViewController {
+    
     @IBOutlet weak var recipePic: UIImageView!
     @IBOutlet weak var recipeDescription: UITextView!
     
@@ -19,17 +20,22 @@ class DescriptionViewController: UIViewController {
         
         if let image = recipe?.image {
             recipePic.image = UIImage(data: image)
-               } else {
+        } else {
             recipePic.image = UIImage(named: "No photo")
-               }
+        }
         
-        recipePic.layer.cornerRadius = recipePic.frame.size.width / 2
+        if let description = recipe?.recipeDescription {
+            recipeDescription.text = description
+        } else {
+            recipeDescription.text = "No description available."
+        }
+        
+        //recipePic.layer.cornerRadius = recipePic.frame.size.width / 2
         recipePic.clipsToBounds = true
 
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 

@@ -25,7 +25,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     }()
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
-//    var coreDataStack: CoreDataStack!
+    
     var fetchedResultsController: NSFetchedResultsController<Recipe> = NSFetchedResultsController()
     
 //    lazy var fetchedResultsController: NSFetchedResultsController<Recipe> = {
@@ -50,9 +50,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        //loadSampleRecipes()
-       // setNavigationBar()
         setupTableView()
         
         view.backgroundColor = UIColor.black
@@ -63,13 +60,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
         self.navigationItem.title = "Recipe List"
-        
-//        do {
-//            try fetchedResultsController.performFetch()
-//        } catch let error as NSError {
-//            print("Fetching error: \(error), \(error.userInfo)")
-//        }
-        
     }
     
    private func setNavigationBar() {
@@ -103,7 +93,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(recipeListTableView)
         
         NSLayoutConstraint.activate([
-            recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150),
+            recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 125),
             recipeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             recipeListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             recipeListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)])
@@ -193,6 +183,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         newRecipe.name = addDirectionsVC.newRecipe?.name
         newRecipe.image = addDirectionsVC.newRecipe?.image
         newRecipe.mealType = addDirectionsVC.newRecipe?.mealType
+        newRecipe.recipeDescription = addDirectionsVC.newRecipe?.recipeDescription
         
         let newIngredients = addDirectionsVC.newIngredients
 

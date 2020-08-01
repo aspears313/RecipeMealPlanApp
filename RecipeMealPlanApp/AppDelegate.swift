@@ -22,18 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-//        let recipeListViewController = RecipeListViewController()
-//        recipeListViewController.coreDataStack = coreDataStack
-//        _ = coreDataStack.managedContext
-//
-        //insertPredefinedObjects()
         
         let previouslyLaunched = UserDefaults.standard.bool(forKey: "previouslyLaunched")
         if !previouslyLaunched {
             UserDefaults.standard.set(true, forKey: "previouslyLaunched")
             insertPredefinedObjects()
         }
+        
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.rootViewController = UINavigationController(rootViewController: StartingTabBarViewController())
+//        window?.makeKeyAndVisible()
         
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count - 1] as URL)
@@ -85,8 +83,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
         let recipeOneInThree = Ingredients(entity: entity!, insertInto: coreDataStack.mainContext)
-        recipeOneInTwo.ingredientName = "Red Sauce"
-        recipeOneInTwo.measurement = "2/3 cup(s)"
+        recipeOneInThree.ingredientName = "Red Sauce"
+        recipeOneInThree.measurement = "2/3 cup(s)"
         ingredsForRecipeOne.insert(recipeOneInThree)
 
 
