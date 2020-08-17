@@ -18,6 +18,7 @@ protocol MealSelectDelegate: class {
 class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var mealTypeTableView: UITableView!
+    @IBOutlet weak var doneBtn: UIButton!
     
     weak var selectionDelegate: MealSelectDelegate?
     
@@ -31,7 +32,10 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         
         self.mealTypeTableView.dataSource = self
         self.mealTypeTableView.delegate = self
-        //totalMealsPerType()
+        self.mealTypeTableView.backgroundColor = .white
+        
+        self.view.backgroundColor = .white
+        self.doneBtn.layer.cornerRadius = doneBtn.frame.height / 2.0
         mealTypeAndCount = totalMealsPerType()
    
     }

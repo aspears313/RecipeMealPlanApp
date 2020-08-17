@@ -29,6 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             insertPredefinedObjects()
         }
         
+//        let attrOne = NSDictionary(object: UIFont(name: "Helvetica", size: 16.0)!, forKey: NSAttributedString.Key.font as NSCopying)
+//        
+//        UISegmentedControl.appearance().setTitleTextAttributes(attrOne as! [NSAttributedString.Key : Any], for: .normal)
+        
 //        window = UIWindow(frame: UIScreen.main.bounds)
 //        window?.rootViewController = UINavigationController(rootViewController: StartingTabBarViewController())
 //        window?.makeKeyAndVisible()
@@ -317,19 +321,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var ingredsForRecipeTen = Set<Ingredients>()
 
         let recipeTenInOne = Ingredients(entity: entity!, insertInto: coreDataStack.mainContext)
-        recipeTenInOne.ingredientName = "Burger Bun"
+        recipeTenInOne.ingredientName = "Frozen Pie Shell"
         recipeTenInOne.measurement = "1"
         ingredsForRecipeTen.insert(recipeTenInOne)
 
         let recipeTenInTwo = Ingredients(entity: entity!, insertInto: coreDataStack.mainContext)
-        recipeTenInTwo.ingredientName = "Ground Beef"
-        recipeTenInTwo.measurement = "1/2 lb(s)"
+        recipeTenInTwo.ingredientName = "Pumpkin Puree"
+        recipeTenInTwo.measurement = "1 can(s)"
         ingredsForRecipeTen.insert(recipeTenInTwo)
 
 
         let recipeTenInThree = Ingredients(entity: entity!, insertInto: coreDataStack.mainContext)
-        recipeTenInThree.ingredientName = "Leaf Lettuce"
-        recipeTenInThree.measurement = "1"
+        recipeTenInThree.ingredientName = "Evaporated Milk"
+        recipeTenInThree.measurement = "1 can(s)"
         ingredsForRecipeTen.insert(recipeTenInThree)
 
         recipeTen.theseIngredients = ingredsForRecipeTen as NSSet

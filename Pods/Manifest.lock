@@ -1,16 +1,20 @@
 PODS:
   - FSCalendar (2.8.1)
+  - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - FSCalendar
+  - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - FSCalendar
+    - TextFieldEffects
 
 SPEC CHECKSUMS:
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: b6c3596cc90892b1512dda93e382d138e98810a0
+PODFILE CHECKSUM: c3a7179d37aba8dade8cddadead00d0fb1b6ae8c
 
 COCOAPODS: 1.9.1
