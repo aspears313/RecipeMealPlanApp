@@ -34,7 +34,7 @@ class ShoppingListTableViewCellSection: UITableViewCell {
     let ingredientNameLabel: UILabel = {
         let label = UILabel()
         //label.text = "Ingredient Name"
-        label.textColor = UIColor.black
+        label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -42,7 +42,7 @@ class ShoppingListTableViewCellSection: UITableViewCell {
     
     let checkMarkButton: UIButton = {
         let button = UIButton()
-        let image = UIImage(named: "unchecked") as UIImage?
+        let image = UIImage(named: "unchecked-white") as UIImage?
         button.clipsToBounds = true
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(image, for: .normal)

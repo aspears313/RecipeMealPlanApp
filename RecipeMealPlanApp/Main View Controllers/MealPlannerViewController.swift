@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 import CoreData
 
-class CalendarViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var calendar: FSCalendar!
@@ -20,8 +20,6 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
     let coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
     var theSelectedDate: String = ""
-
-    //var mealsForTheDay: [String:[Recipes]] = [:]
     
     fileprivate lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -44,7 +42,6 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
     //MARK: - Set Views()
     func setMealPlannerView() {
             
-            //view.addSubview(mealPlannerView)
             mealChoiceView.isHidden = false
             let mealPlannerVC = storyboard?.instantiateViewController(withIdentifier: "MealPlannerViewController") as! MealTypeAndCountViewController
             mealPlannerVC.selectionDelegate = self
@@ -52,7 +49,6 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
             mealPlannerVC.view.translatesAutoresizingMaskIntoConstraints = false
             
             mealChoiceView.addSubview(mealPlannerVC.view)
-            //self.view.addSubview(mealPlannerView)
             
             NSLayoutConstraint.activate([
                 mealPlannerVC.view.leadingAnchor.constraint(equalTo: mealChoiceView.leadingAnchor),
@@ -83,8 +79,8 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
     
     func setNavigationBar() {
         
-        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        navigationBar.backgroundColor = .white
+        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.backgroundColor = .red
     }
     
     @IBAction func toggleCalendarView() {
@@ -116,7 +112,7 @@ class CalendarViewController: UIViewController, NSFetchedResultsControllerDelega
 
 //MARK: - Calendar DataSource and Delegate Methods
 
-extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
+extension MealPlannerViewController: FSCalendarDataSource, FSCalendarDelegate {
     
     func minimumDate(for calendar: FSCalendar) -> Date {
         return calendar.currentPage
@@ -146,7 +142,7 @@ extension CalendarViewController: FSCalendarDataSource, FSCalendarDelegate {
 }
 
 //MARK: - Conforming to Delegate method for meals
-extension CalendarViewController: MealSelectDelegate {
+extension MealPlannerViewController: MealSelectDelegate {
     func didSelectMeals(selectedMeals: [String]) {
         let theSelectedMeals = selectedMeals
         plannedMeal(selectedMeals: theSelectedMeals)

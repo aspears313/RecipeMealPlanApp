@@ -38,6 +38,8 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         nameOfRecipeTextField.layer.cornerRadius = nameOfRecipeTextField.frame.height / 2.0
         selectMealTypeBtn.titleLabel?.textAlignment = .center
         
+        nextToAddPhotoViewBtn.isHidden = true
+        
         mealTypeChoices.forEach { (mealTypeBtn) in
             mealTypeBtn.layer.cornerRadius = mealTypeBtn.frame.height / 2.0
             mealTypeBtn.isHidden = true
@@ -75,14 +77,10 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
     }
      
     func hideKeyboard() {
-        if let text = nameOfRecipeTextField.text, text.isEmpty {
-            nextToAddPhotoViewBtn.isHidden = true
-        } else {
 //            nextToAddPhotoViewBtn.isHidden = false
             recipeTitle = nameOfRecipeTextField.text!.capitalized
             setNavigationBar()
             nameOfRecipeTextField.resignFirstResponder()
-        }
     }
     
     @IBAction func selectMealTypeBtnClicked(_ sender: Any) {
@@ -109,7 +107,11 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func nextBtnClicked(_ sender: Any) {
+        if let text = nameOfRecipeTextField.text, !text.isEmpty {
             performSegue(withIdentifier: "toAddPhotoVC", sender: self)
+        } else {
+            displayMessage(userMessage: "Please enter a name for the new recipe")
+        }
     }
     
     // MARK: - Navigation

@@ -17,6 +17,14 @@ class DescriptionAndPicutreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        setUpView()
+        
+    }
+    
+    func setUpView() {
+        
+        recipeDescription.backgroundColor = .white
         
         if let image = recipe?.image {
             recipePic.image = UIImage(data: image)
@@ -30,12 +38,9 @@ class DescriptionAndPicutreViewController: UIViewController {
             recipeDescription.text = "No description available."
         }
         
-        //recipePic.layer.cornerRadius = recipePic.frame.size.width / 2
         recipePic.clipsToBounds = true
 
-        // Do any additional setup after loading the view.
     }
-    
     /*
     // MARK: - Navigation
 

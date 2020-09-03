@@ -34,6 +34,7 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = newRecipe?.name!
         
+        self.view.backgroundColor = .white
         nextBtn.isHidden = true
         nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         addIngredientBtn.layer.cornerRadius = addIngredientBtn.frame.height / 2.0
@@ -41,21 +42,19 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         measurementPickerView.dataSource = self
         measurementPickerView.delegate = self
         
-        //Listen for keyboard events
+        
+        //Lister for keyboard events
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChange(notification:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
         // Do any additional setup after loading the view.
     }
-    
     deinit {
-        //Stop listening for keyboard hide/show events
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
-        
     }
+
     //MARK: - PickerView Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 3
@@ -105,32 +104,6 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
         //hideKeyboard()
         addToIngredients()
-//        if let ingredientName = ingredientNameTextField.text {
-//            if thisMeasure == "" {
-//                displayMessage(userMessage: "Please enter an amount before adding an ingredient")
-//            } else if ingredientName.isEmpty {
-//                displayMessage(userMessage: "Please enter the ingredients name to add the ingredient")
-//            } else {
-//                let newIngredient = NSEntityDescription.insertNewObject(forEntityName: "Ingredients", into: coreDataStack.mainContext) as! Ingredients
-//
-//                newIngredient.measurement = thisMeasure
-//                newIngredient.ingredientName = ingredientName.capitalized
-//
-//                ingredientsForNewRecipe.append(newIngredient)
-//
-//                labelForIngredient.text = "\(newIngredient.measurement!) \(newIngredient.ingredientName!)"
-//
-//                //To Reset the pickerView
-//                measurementPickerView.selectRow(0, inComponent: 0, animated: true)
-//                measurementPickerView.selectRow(0, inComponent: 1, animated: true)
-//                measurementPickerView.selectRow(0, inComponent: 2, animated: true)
-//                //To Reset UITextfield
-//                ingredientNameTextField.text = ""
-//                thisMeasure = ""
-//
-//                nextBtn.isHidden = false
-//            }
-//        }
     }
     
     func addToIngredients() {
@@ -168,13 +141,16 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
     }
     
     @objc func keyboardWillChange(notification: Notification) {
-        
+
         guard let keyboardRect = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
             return
         }
+        
+        
         if notification.name == UIResponder.keyboardWillShowNotification || notification.name == UIResponder.keyboardWillChangeFrameNotification {
-            
-            view.frame.origin.y = -keyboardRect.height
+            if let tabBarHeight = self.tabBarController?.tabBar.frame.height {
+                view.frame.origin.y = -keyboardRect.height + tabBarHeight
+            }
         } else {
             view.frame.origin.y = 0
         }

@@ -10,17 +10,11 @@ import Foundation
 import UIKit
 
 class IngredientsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
-
-    //@IBOutlet weak var ingredientListTableView: UITableView!
-    
+        
     var recipe: Recipe?
     
     let ingredientListTableView: UITableView = {
         let tv = UITableView()
-        tv.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tv.backgroundColor = UIColor.white
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -49,6 +43,7 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
         ])
         
         ingredientListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        ingredientListTableView.backgroundColor = .white
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -72,13 +67,12 @@ class IngredientsViewController: UIViewController, UITableViewDelegate, UITableV
                     cell.ingredientLabel.text = "\(measure) \(name)"
                     cell.ingredientLabel.textAlignment = .center
                 }
-//                cell.ingredientLabel.text = "\(ingredient[indexPath.row].measurement!) \()"
-//                cell.textLabel?.text = "\(ingredients[indexPath.row].measurement!) \(ingredients[indexPath.row].ingredientName!)"
-//                cell.textLabel?.textAlignment = .center
+
             } else {
                 cell.textLabel?.text = "No Ingredients"
                 cell.textLabel?.textAlignment = .center
             }
+            cell.backgroundColor = .white
             return cell
         }
         

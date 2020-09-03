@@ -42,8 +42,18 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
         descriptionView.textColor = UIColor.lightGray
         descriptionView.delegate = self
         descriptionView.textAlignment = .center
-        
+        descriptionView.layer.cornerRadius = 25.0
+        descriptionView.layer.borderWidth = 2.0
+        descriptionView.layer.borderColor = UIColor.red.cgColor
+        descriptionView.addDoneButton(title: "Done", target: self, selector: #selector(tapDone(sender:)))
         nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
+        
+    }
+    
+    @objc func tapDone(sender: Any) {
+        descriptionView.resignFirstResponder()
+        self.view.endEditing(true)
+        hideKeyboard()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -63,12 +73,14 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-        if textView.text.isEmpty{
+        if textView.text.isEmpty {
             textView.text = "Your description here."
             textView.textColor = UIColor.lightGray
+        } else {
+            descriptionView.resignFirstResponder()
+            self.view.endEditing(true)
+            hideKeyboard()
         }
-        self.view.endEditing(true)
-        hideKeyboard()
         return true
     }
     

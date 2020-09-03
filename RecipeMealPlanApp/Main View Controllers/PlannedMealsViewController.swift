@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class MealPlanViewController: UIViewController {
+class PlannedMealsViewController: UIViewController, UINavigationBarDelegate {
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
@@ -17,14 +17,21 @@ class MealPlanViewController: UIViewController {
     var selectedRecipes = [Recipe]()
     var newRecipesToAdd = [Recipe]()
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var forwardBtn: UIButton!
     
-    //@IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dayOfWeekLabel: UILabel!
     @IBOutlet weak var calendarView: UIView!
+    
+//    let navBar: UINavigationBar = {
+//        let bar = UINavigationBar()
+//        bar.backgroundColor = .white
+//        bar.translatesAutoresizingMaskIntoConstraints = false
+//        return bar
+//    }()
     
     let mealForTheDayTableView: UITableView = {
         let tv = UITableView()
@@ -60,9 +67,10 @@ class MealPlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = .white
 
         setUpView()
-        //selectedRecipes = fetchSelectedRecipesForCurrentDate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +82,6 @@ class MealPlanViewController: UIViewController {
     //MARK: - Initial Set up of View Controller
     
     func setUpView() {
-        self.view.backgroundColor = .white
         setSegmentControl()
         setNavigationBar()
         setLabels()
@@ -94,7 +101,10 @@ class MealPlanViewController: UIViewController {
             mealForTheDayTableView.topAnchor.constraint(equalTo: self.calendarView.bottomAnchor),
             mealForTheDayTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             mealForTheDayTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            mealForTheDayTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)])
+            mealForTheDayTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        ])
+        mealForTheDayTableView.backgroundColor = .white
+        mealForTheDayTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
     }
     
     func setLabels() {
@@ -103,20 +113,30 @@ class MealPlanViewController: UIViewController {
     }
     
     func setNavigationBar() {
+        
+//        navigationBar.barTintColor = .white
+//        navigationBar.backgroundColor = .white
+//        navigationBar.isTranslucent = false
+//        navigationBar.prefersLargeTitles = true
+//        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+//        navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
         //self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        self.navigationController?.navigationBar.barTintColor = .white
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        self.navigationController?.navigationBar.backgroundColor = .white
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = .red
+        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         self.navigationController?.navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
+        
+//        self.navigationController?.navigationBar.barTintColor = .white
+//        self.navigationController?.navigationBar.isTranslucent = false
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
 //        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-//        self.navigationItem.title = listTitle
-//        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-//        navigationBar.isTranslucent = false
-//        navigationBar.barTintColor = .white
-//        navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
+//        self.navigationController?.navigationBar.backgroundColor = .white
+//        self.navigationController?.navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
     }
     
     func setSegmentControl() {
@@ -137,7 +157,6 @@ class MealPlanViewController: UIViewController {
         if let newDate = previousDay {
             currentDate = newDate
             self.navigationController?.navigationBar.topItem?.title = self.monthFormatter.string(from: newDate)
-            //navigationBar.topItem?.title = self.monthFormatter.string(from: newDate)
             dayLabel.text = self.dayFormatter.string(from: newDate)
             dayOfWeekLabel.text = self.dayOfWeekFormatter.string(from: newDate)
         }
@@ -150,7 +169,6 @@ class MealPlanViewController: UIViewController {
         
         if let newDate = futureDay {
             self.navigationController?.navigationBar.topItem?.title = self.monthFormatter.string(from: newDate)
-            //navigationBar.topItem?.title = self.monthFormatter.string(from: newDate)
             currentDate = newDate
             dayLabel.text = self.dayFormatter.string(from: newDate)
             dayOfWeekLabel.text = self.dayOfWeekFormatter.string(from: newDate)
@@ -162,7 +180,6 @@ class MealPlanViewController: UIViewController {
         
         selectedRecipes.removeAll()
         selectedRecipes.append(contentsOf: fetchSelectedRecipesForCurrentDate())
-       
         
         mealForTheDayTableView.reloadData()
     }
@@ -186,8 +203,8 @@ class MealPlanViewController: UIViewController {
             for result in results {
                 let date = result.value(forKey: "selectedDate") as! String
                 let recipe = result.value(forKey: "selectedRecipes") as! [String]
-                print("Date: \(date)")
-                print("Recipe: \(recipe)")
+//                print("Date: \(date)")
+//                print("Recipe: \(recipe)")
                
                 if date == currentDate {
                     //print("Dates match")
@@ -259,7 +276,7 @@ class MealPlanViewController: UIViewController {
 }
 
 //MARK: - TableView DataSource & Delegate Methods
-extension MealPlanViewController: UITableViewDataSource, UITableViewDelegate {
+extension PlannedMealsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedRecipes.count
@@ -278,6 +295,7 @@ extension MealPlanViewController: UITableViewDataSource, UITableViewDelegate {
             cell.recipeImage.image = UIImage(named: "No photo")
         }
         
+        cell.backgroundColor = .white
         return cell
     }
     

@@ -11,8 +11,7 @@ import FSCalendar
 
 class ShoppingListViewController: UIViewController {
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var weekOfLabel: UILabel!
+    //@IBOutlet weak var weekOfLabel: UILabel!
     
     fileprivate weak var thisCalendar: FSCalendar!
     
@@ -22,9 +21,20 @@ class ShoppingListViewController: UIViewController {
         return formatter
     }()
     
+    @IBOutlet weak var navigationBar: UINavigationItem!
+    
+    let weekOfLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.textAlignment = .center
+        label.textColor = .red
+        label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        return label
+    }()
+    
     let shoppingListTableView: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = .white
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -43,7 +53,7 @@ class ShoppingListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialSetup()
+        setView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,13 +64,37 @@ class ShoppingListViewController: UIViewController {
     }
     //MARK: - Setup my Views
     
-    func initialSetup() {
-        self.view.backgroundColor = .white
-        setCalendarView()
+    func setView() {
+        self.view.backgroundColor = .black
         setNavigationBar()
+        
+        view.addSubview(weekOfLabel)
+                
+        NSLayoutConstraint.activate([
+            weekOfLabel.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            weekOfLabel.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            weekOfLabel.heightAnchor.constraint(equalToConstant: 36),
+            weekOfLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 139)
+        ])
+        
+        setCalendarView()
         setupTableView()
         getStartAndEndDates(for: calendar)
     }
+    
+    func setNavigationBar() {
+            
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = .red
+        navigationBar.standardAppearance = navBarAppearance
+        navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationBar.title = "Shopping List"
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+
+        }
 
     func setCalendarView() {
         
@@ -86,13 +120,6 @@ class ShoppingListViewController: UIViewController {
         self.thisCalendar = calendar
     }
     
-    func setNavigationBar() {
-        
-        //self.navigationBar.prefersLargeTitles = true
-        self.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        self.navigationBar.backgroundColor = .white
-    }
-    
     func setupTableView() {
         shoppingListTableView.delegate = self
         shoppingListTableView.dataSource = self
@@ -114,6 +141,8 @@ class ShoppingListViewController: UIViewController {
             shoppingListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             shoppingListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
             ])
+        
+        shoppingListTableView.backgroundColor = .white
     }
     
     func refreshView() {
@@ -183,52 +212,40 @@ class ShoppingListViewController: UIViewController {
        fetchRequest.sortDescriptors = [sort]
        
        var userSelectedRecipes = [Recipe]()
-       var recipeNamesAndDates: [String:[String]] = [:]
+       var selectedRecipeString = [String]()
+       //var recipeNamesAndDates: [String:[String]] = [:]
        
        //This works but needs some refining
        do {
            let results = try coreDataStack.mainContext.fetch(fetchRequest) as! [NSManagedObject]
            for result in results {
                
-               if let date = dateFormatter.date(from: result.value(forKey: "selectedDate") as! String) {
-                print(startOfWeekDate)
-                print(endOfWeekDate)
-                print(date)
+            let date = dateFormatter.date(from: result.value(forKey: "selectedDate") as! String)
+            let recipe = result.value(forKey: "selectedRecipes") as! [String]
                    
-                   if startOfWeekDate <= date && date <= endOfWeekDate {
-                      
-                       recipeNamesAndDates.updateValue(result.value(forKey: "selectedRecipes") as! [String], forKey: result.value(forKey: "selectedDate") as! String)
-                   }
+               if startOfWeekDate <= date! && date! <= endOfWeekDate {
+                selectedRecipeString.append(contentsOf: recipe)
                }
-           }
+            }
            //Get the recipe array
-           userSelectedRecipes = getRecipeObjects(dictionary: recipeNamesAndDates)
+        userSelectedRecipes = getRecipeObjects(selectedRecipeString: selectedRecipeString)
        } catch let error as NSError {
            print("ERROR: \(error.localizedDescription)")
        }
-       
        return userSelectedRecipes
    }
 // MARK: - 2nd
     // Convert the array for the name of recipes to an array of Recipe objects
-   func getRecipeObjects(dictionary: [String:[String]]) -> [Recipe] {
-          var userSelectedRecipes = [Recipe]()
-          let allRecipes = fetchAllRecipes()
+   func getRecipeObjects(selectedRecipeString: [String]) -> [Recipe] {
+        var userSelectedRecipes = [Recipe]()
+        let allRecipes = fetchAllRecipes()
 
-          //First convert the [String] to [Recipe]
-          for (_,recipeNames) in dictionary {
-              for recipeName in recipeNames {
-                  for recipe in allRecipes {
-                      if let name = recipe.name {
-                          if recipeName == name {
-                              //This is the important part collects the selectedRecipes if there is a match
-                              userSelectedRecipes.append(recipe)
-                              }
-                          }
-                      }
-                  }
-              }
-          return userSelectedRecipes
+        for recipeName in selectedRecipeString {
+            if let recipe = allRecipes.first(where: {$0.name == recipeName}) {
+                userSelectedRecipes.append(recipe)
+            }
+        }
+        return userSelectedRecipes
        }
     // MARK: - 3rd
     // Fetch all the recipes for comparison
@@ -364,12 +381,12 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
         
         if sender.isSelected {
             //Uncheck the button
-            let image = UIImage(named: "unchecked") as UIImage?
+            let image = UIImage(named: "unchecked-white") as UIImage?
             sender.setImage(image, for: .normal)
             sender.isSelected = false
         } else {
             //Check the button
-            let image = UIImage(named: "checked") as UIImage?
+            let image = UIImage(named: "checked-white") as UIImage?
             sender.setImage(image, for: .normal)
             sender.isSelected = true
         }
@@ -391,7 +408,7 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
                     ingredientsList[indexPath.section].isExpanded = true
                     let sections = IndexSet.init(integer: indexPath.section)
                     shoppingListTableView.reloadSections(sections, with: .none)
-                    let image = UIImage(named: "checked") as UIImage?
+                    let image = UIImage(named: "checked-white") as UIImage?
                     cell.checkMarkButton.setImage(image, for: .normal)
                     shoppingListTableView.reloadData()
                     //cell.checkMarkButton.isSelected = true

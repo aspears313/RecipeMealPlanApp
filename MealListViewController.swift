@@ -13,8 +13,6 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
    
     let mealsForTypeTableView: UITableView = {
         let tv = UITableView()
-        tv.separatorStyle = UITableViewCell.SeparatorStyle.none
-        tv.backgroundColor = .white
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
     }()
@@ -51,7 +49,7 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
         ])
         
         mealsForTypeTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
+        mealsForTypeTableView.backgroundColor = .white
     }
     
     func setupNavBar() {
@@ -99,7 +97,7 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         configure(cell: cell, for: indexPath)
-        
+        cell.backgroundColor = .white
         return cell
     }
     

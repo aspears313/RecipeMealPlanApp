@@ -12,7 +12,10 @@ class ListedRecipesTableViewCell: UITableViewCell {
     
     let cellView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.red
+        view.backgroundColor = .white
+        //view.backgroundColor = UIColor.red
+        view.layer.borderWidth = 3.0
+        view.layer.borderColor = UIColor.red.cgColor
         view.layer.cornerRadius = 25.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
@@ -30,7 +33,8 @@ class ListedRecipesTableViewCell: UITableViewCell {
     let recipeName: UILabel = {
         let label = UILabel()
         label.text = "Recipe 1"
-        label.textColor = UIColor.white
+        label.textColor = .red
+        //label.textColor = UIColor.white
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 26)
         label.translatesAutoresizingMaskIntoConstraints = false

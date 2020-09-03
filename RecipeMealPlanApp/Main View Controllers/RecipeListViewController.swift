@@ -12,11 +12,9 @@ import CoreData
 class RecipeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //@IBOutlet weak var recipeListTableView: UITableView!
-    let listTitle = "Recipe List"
     
     let recipeListTableView: UITableView = {
         let tv = UITableView()
-        tv.separatorStyle = UITableViewCell.SeparatorStyle.none
         tv.backgroundColor = UIColor.white
         tv.translatesAutoresizingMaskIntoConstraints = false
         return tv
@@ -30,35 +28,45 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         super.viewDidLoad()
         
         setupTableView()
+        setNavigationBar()
         //Was black
         view.backgroundColor = UIColor.white
         
         fetchedResultsController = recipeListFetchedResultsController()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        self.navigationItem.title = listTitle
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+//        self.navigationItem.title = title
     }
     
    private func setNavigationBar() {
-    let title = listTitle
     
-    let maxWidth = UIScreen.main.bounds.size.width - 60
-    var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
-    var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
-       
-    while width > maxWidth {
-        fontSize -= 1
-        width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
-    }
-    if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
-        titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
-        titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
-        
-        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-        navigationItem.title = title
-       }
-    navigationController?.navigationBar.backgroundColor = UIColor.white
+    let navBarAppearance = UINavigationBarAppearance()
+    navBarAppearance.configureWithOpaqueBackground()
+    navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+    navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    navBarAppearance.backgroundColor = .red
+    self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+    self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    self.navigationController?.navigationBar.prefersLargeTitles = true
+    self.navigationController?.navigationBar.topItem?.title = "Recipes"
+//
+//    let maxWidth = UIScreen.main.bounds.size.width - 60
+//    var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
+//    var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+//
+//    while width > maxWidth {
+//        fontSize -= 1
+//        width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
+//    }
+//    if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
+//        titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
+//        titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
+//
+//        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
+//        navigationItem.title = title
+//       }
+//    navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func setupTableView() {
@@ -78,6 +86,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         ])
         
         recipeListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
+        recipeListTableView.backgroundColor = .white
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -259,15 +268,3 @@ extension RecipeListViewController: NSFetchedResultsControllerDelegate {
         self.recipeListTableView.endUpdates()
     }
 }
-
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */

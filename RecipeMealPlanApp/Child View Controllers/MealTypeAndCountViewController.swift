@@ -22,7 +22,6 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
     
     weak var selectionDelegate: MealSelectDelegate?
     
-    //var selectedMeals: [Recipe] = []
     var selectedMeals: [String] = []
     var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     var mealTypeAndCount: [[String: String]] = []
@@ -37,7 +36,6 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         self.view.backgroundColor = .white
         self.doneBtn.layer.cornerRadius = doneBtn.frame.height / 2.0
         mealTypeAndCount = totalMealsPerType()
-   
     }
     
     //MARK: TableView Methods
