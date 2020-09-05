@@ -51,6 +51,8 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     self.navigationController?.navigationBar.prefersLargeTitles = true
     self.navigationController?.navigationBar.topItem?.title = "Recipes"
 //
+    //This is will be used to some degree
+    
 //    let maxWidth = UIScreen.main.bounds.size.width - 60
 //    var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
 //    var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
@@ -79,7 +81,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         view.addSubview(recipeListTableView)
         
         NSLayoutConstraint.activate([
-            recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 125),
+            recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 140),
             recipeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             recipeListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             recipeListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)

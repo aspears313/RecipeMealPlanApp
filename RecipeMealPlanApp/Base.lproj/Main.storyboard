@@ -81,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="1977" y="117"/>
         </scene>
-        <!--Calendar-->
+        <!--Meal Planner-->
         <scene sceneID="XQM-3A-0DK">
             <objects>
                 <viewController storyboardIdentifier="CalendarViewController" id="uzP-LW-bJD" customClass="MealPlannerViewController" customModule="RecipeMealPlanApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NQn-3p-V74" customClass="FSCalendar">
-                                <rect key="frame" x="0.0" y="140" width="375" height="325"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="325"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="325" id="Kt9-1a-rtp"/>
@@ -109,58 +109,39 @@
                                     <outlet property="delegate" destination="uzP-LW-bJD" id="ywZ-OV-vT6"/>
                                 </connections>
                             </view>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZsD-J9-nhM">
-                                <rect key="frame" x="0.0" y="44" width="375" height="96"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="96" id="lbc-kN-8kj"/>
-                                </constraints>
-                                <textAttributes key="largeTitleTextAttributes">
-                                    <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Meal Planner" id="3Mj-3Z-zga">
-                                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="l3O-A1-9ZF">
-                                            <inset key="largeContentSizeImageInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                                            <color key="tintColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="toggleCalendarView" destination="uzP-LW-bJD" id="tRk-jx-MCo"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oZj-ZG-zSI">
-                                <rect key="frame" x="0.0" y="260" width="375" height="469"/>
+                                <rect key="frame" x="0.0" y="218" width="375" height="511"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="NQn-3p-V74" firstAttribute="top" secondItem="ZsD-J9-nhM" secondAttribute="bottom" id="1KI-mW-ohd"/>
                             <constraint firstItem="oZj-ZG-zSI" firstAttribute="leading" secondItem="mLO-u4-qD9" secondAttribute="leading" id="7Yj-dq-KXU"/>
-                            <constraint firstItem="ZsD-J9-nhM" firstAttribute="top" secondItem="mLO-u4-qD9" secondAttribute="top" id="Ajz-S8-0jL"/>
                             <constraint firstItem="oZj-ZG-zSI" firstAttribute="bottom" secondItem="mLO-u4-qD9" secondAttribute="bottom" id="AlZ-Mw-to2"/>
-                            <constraint firstItem="ZsD-J9-nhM" firstAttribute="trailing" secondItem="mLO-u4-qD9" secondAttribute="trailing" id="BRW-f4-xkU"/>
-                            <constraint firstItem="oZj-ZG-zSI" firstAttribute="top" secondItem="ZsD-J9-nhM" secondAttribute="bottom" constant="120" id="FTo-zd-k5z"/>
+                            <constraint firstItem="oZj-ZG-zSI" firstAttribute="top" secondItem="mLO-u4-qD9" secondAttribute="top" constant="130" id="IHI-sj-znR"/>
                             <constraint firstItem="NQn-3p-V74" firstAttribute="trailing" secondItem="mLO-u4-qD9" secondAttribute="trailing" id="NUS-wZ-UtF"/>
+                            <constraint firstItem="NQn-3p-V74" firstAttribute="top" secondItem="mLO-u4-qD9" secondAttribute="top" id="bOK-Cn-5tM"/>
                             <constraint firstItem="oZj-ZG-zSI" firstAttribute="trailing" secondItem="mLO-u4-qD9" secondAttribute="trailing" id="fSc-bG-jxe"/>
                             <constraint firstItem="NQn-3p-V74" firstAttribute="leading" secondItem="mLO-u4-qD9" secondAttribute="leading" id="hRL-dV-smd"/>
-                            <constraint firstItem="ZsD-J9-nhM" firstAttribute="leading" secondItem="mLO-u4-qD9" secondAttribute="leading" id="uye-dA-M6h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mLO-u4-qD9"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" selectedImage="calendar" id="aTI-4H-JHC"/>
-                    <navigationItem key="navigationItem" id="oeo-di-oZp"/>
+                    <navigationItem key="navigationItem" title="Meal Planner" id="oeo-di-oZp">
+                        <barButtonItem key="rightBarButtonItem" title="Toggle" id="Dx5-wP-0wl">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="toggleCalendarView" destination="uzP-LW-bJD" id="0CV-va-Wht"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="calendar" destination="NQn-3p-V74" id="aHD-zw-lS3"/>
-                        <outlet property="calendarViewBtn" destination="l3O-A1-9ZF" id="hMc-UM-qR8"/>
+                        <outlet property="calendarViewBtn" destination="Dx5-wP-0wl" id="V9d-eZ-P05"/>
                         <outlet property="mealChoiceView" destination="oZj-ZG-zSI" id="bTR-5E-K4k"/>
-                        <outlet property="navigationBar" destination="ZsD-J9-nhM" id="0V2-rk-84V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UHq-uZ-nBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="849.7536945812808"/>
+            <point key="canvasLocation" x="1234" y="850"/>
         </scene>
         <!--Shopping List View Controller-->
         <scene sceneID="5s5-5O-dtk">
@@ -194,7 +175,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="6lj-7i-XQz" kind="relationship" relationship="viewControllers" id="QTo-Qw-faw"/>
-                        <segue destination="uzP-LW-bJD" kind="relationship" relationship="viewControllers" id="x2z-6B-Ddp"/>
+                        <segue destination="b9j-hy-b0d" kind="relationship" relationship="viewControllers" id="x2z-6B-Ddp"/>
                         <segue destination="He7-en-9s7" kind="relationship" relationship="viewControllers" id="Jnh-3f-6HI"/>
                         <segue destination="cje-sq-77Q" kind="relationship" relationship="viewControllers" id="Jd8-Cz-Wgs"/>
                     </connections>
@@ -1020,7 +1001,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvO-hh-tb4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="850"/>
+            <point key="canvasLocation" x="1977" y="850"/>
         </scene>
         <!--Meal List View Controller-->
         <scene sceneID="dPD-3w-yuJ">
@@ -1047,7 +1028,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxu-jh-BJE" sceneMemberID="firstResponder"/>
                 <exit id="xoD-DD-8Mi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2729" y="850"/>
+            <point key="canvasLocation" x="3671.1999999999998" y="849.7536945812808"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RUq-71-6yZ">
@@ -1070,7 +1051,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q1o-fd-Wd5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1977" y="850"/>
+            <point key="canvasLocation" x="2919.1999999999998" y="849.7536945812808"/>
         </scene>
         <!--Planned Meals View Controller-->
         <scene sceneID="HvY-ED-nt8">
@@ -1223,6 +1204,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mid-AX-AiA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="516" y="1557"/>
+        </scene>
+        <!--Calendar-->
+        <scene sceneID="UZN-cc-Ac6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="b9j-hy-b0d" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" selectedImage="calendar" id="aTI-4H-JHC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ghJ-A7-XYb">
+                        <rect key="frame" x="0.0" y="44" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uzP-LW-bJD" kind="relationship" relationship="rootViewController" id="jny-yL-Lij"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BgI-I2-2xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="516" y="849.7536945812808"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

@@ -36,6 +36,7 @@ class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDel
         
         mealChoiceView.isHidden = true
         
+        calendarViewBtn.tintColor = .white
         calendarViewBtn.title = "Week"
        
     }
@@ -79,8 +80,17 @@ class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDel
     
     func setNavigationBar() {
         
-        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        navigationBar.backgroundColor = .red
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = .red
+        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        navigationBar.backgroundColor = .red
     }
     
     @IBAction func toggleCalendarView() {
