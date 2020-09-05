@@ -19,6 +19,7 @@ class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDel
     
     let coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
+    var viewTitle = "Meal Planner"
     var theSelectedDate: String = ""
     
     fileprivate lazy var dateFormatter: DateFormatter = {
@@ -80,17 +81,13 @@ class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDel
     
     func setNavigationBar() {
         
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = .red
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        let navigation = ReusableNavigation()
         
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-//        navigationBar.backgroundColor = .red
+        self.navigationController?.navigationBar.topItem?.title = viewTitle
+        
     }
     
     @IBAction func toggleCalendarView() {

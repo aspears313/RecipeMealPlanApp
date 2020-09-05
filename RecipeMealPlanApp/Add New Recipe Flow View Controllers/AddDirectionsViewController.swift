@@ -19,9 +19,6 @@ class AddDirectionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = newRecipe!.name!
-        
         doneBtn.layer.cornerRadius = doneBtn.frame.height / 2.0
     }
     

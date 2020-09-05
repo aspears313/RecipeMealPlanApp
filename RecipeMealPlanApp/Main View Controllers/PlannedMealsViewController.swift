@@ -114,21 +114,11 @@ class PlannedMealsViewController: UIViewController, UINavigationBarDelegate {
     
     func setNavigationBar() {
         
-//        navigationBar.barTintColor = .white
-//        navigationBar.backgroundColor = .white
-//        navigationBar.isTranslucent = false
-//        navigationBar.prefersLargeTitles = true
-//        navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-//        navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
-        //self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-        
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = .red
-        self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        let navigation = ReusableNavigation()
+
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.topItem?.title = self.monthFormatter.string(from: currentDate)
         
 //        self.navigationController?.navigationBar.barTintColor = .white

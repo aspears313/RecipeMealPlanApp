@@ -20,19 +20,10 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
         
         setController()
 
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationItem.title = newRecipe!.name!
-//
-//        descriptionView.text = newRecipe?.recipeDescription
-//
-//        nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         // Do any additional setup after loading the view.
     }
     
     func setController() {
-        
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = newRecipe!.name!
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
         tapGesture.cancelsTouchesInView = false
@@ -100,6 +91,7 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
         if segue.identifier == "toAddIngredientsVC" {
             let addIngredientsVC = segue.destination as! AddIngredientsViewController
             addIngredientsVC.newRecipe = self.newRecipe!
+            addIngredientsVC.navigationItem.title = self.newRecipe?.name
         }
     }
 }

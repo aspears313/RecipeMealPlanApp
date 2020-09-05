@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q65-ea-sXp">
-                                <rect key="frame" x="8" y="149" width="359" height="36"/>
+                                <rect key="frame" x="8" y="97" width="359" height="36"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="doE-O6-UFJ"/>
@@ -160,7 +160,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8te-he-Tr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="1557"/>
+            <point key="canvasLocation" x="1270" y="1557"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="JMd-mz-oVe">
@@ -1226,7 +1226,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3DB-ME-qwG"/>
+        <segue reference="Sj1-eh-dmv"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="No photo" width="225" height="225"/>

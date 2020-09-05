@@ -30,9 +30,6 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = newRecipe?.name!
         
         self.view.backgroundColor = .white
         nextBtn.isHidden = true
@@ -225,6 +222,7 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
             let addDirectionsVC = segue.destination as! AddDirectionsViewController
             addDirectionsVC.newRecipe = self.newRecipe!
             addDirectionsVC.newIngredients = self.ingredientsForNewRecipe
+            addDirectionsVC.navigationItem.title = self.newRecipe?.name
         }
     }
 }

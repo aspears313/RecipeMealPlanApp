@@ -25,8 +25,7 @@ class AddPhotoViewController: UIViewController {
 //        recipePic.layer.cornerRadius = recipePic.frame.height / 2.0
 //        recipePic.clipsToBounds = true
 
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = newRecipe!.name!
+       // self.navigationItem.title = newRecipe!.name!
                 nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         if let name = newRecipe?.name {
@@ -66,6 +65,7 @@ class AddPhotoViewController: UIViewController {
         if segue.identifier == "toAddDescriptionVC" {
             let addDescriptionVC = segue.destination as! AddDescriptionViewController
             addDescriptionVC.newRecipe = self.newRecipe!
+            addDescriptionVC.navigationItem.title = self.newRecipe?.name
         }
     }
 }

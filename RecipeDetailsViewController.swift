@@ -19,7 +19,6 @@ class RecipeDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         //self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipe?.name
 
         setupView()
     }

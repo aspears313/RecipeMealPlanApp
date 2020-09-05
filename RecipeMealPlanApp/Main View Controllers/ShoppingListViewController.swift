@@ -12,6 +12,7 @@ import FSCalendar
 class ShoppingListViewController: UIViewController {
     
     //@IBOutlet weak var weekOfLabel: UILabel!
+    var viewTitle = "Shopping List"
     
     fileprivate weak var thisCalendar: FSCalendar!
     
@@ -84,16 +85,12 @@ class ShoppingListViewController: UIViewController {
     
     func setNavigationBar() {
             
-        let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = .red
-        navigationBar.standardAppearance = navBarAppearance
-        navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationBar.title = "Shopping List"
+       let navigation = ReusableNavigation()
+        
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
+        self.navigationController?.navigationBar.topItem?.title = viewTitle
         }
 
     func setCalendarView() {

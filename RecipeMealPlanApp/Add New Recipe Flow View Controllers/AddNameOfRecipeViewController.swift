@@ -44,12 +44,8 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
             mealTypeBtn.layer.cornerRadius = mealTypeBtn.frame.height / 2.0
             mealTypeBtn.isHidden = true
         }
-        //self.navigationItem.title = recipeTitle
-        //setNavigationBar()
-
-        //self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = recipeTitle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        
+        setNavigationBar()
         
         nameOfRecipeTextField.delegate = self
     }
@@ -60,9 +56,7 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
     
     private func setNavigationBar() {
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.title = recipeTitle
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
     }
     
     @objc func tap(_ sender: UITapGestureRecognizer? = nil) {
@@ -124,6 +118,7 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
             
             let addPhotoVC = segue.destination as! AddPhotoViewController
             addPhotoVC.newRecipe = newRecipe
+            addPhotoVC.navigationItem.title = newRecipe.name
         }
     }
     

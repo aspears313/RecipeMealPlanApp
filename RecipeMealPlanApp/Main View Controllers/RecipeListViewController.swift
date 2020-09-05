@@ -20,6 +20,8 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         return tv
     }()
     
+    var viewTitle = "Recipes"
+    
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
     var fetchedResultsController: NSFetchedResultsController<Recipe> = NSFetchedResultsController()
@@ -34,23 +36,17 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         fetchedResultsController = recipeListFetchedResultsController()
         
-//        self.navigationController?.navigationBar.prefersLargeTitles = true
-//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
-//        self.navigationItem.title = title
     }
     
    private func setNavigationBar() {
+
+    let navigation = ReusableNavigation()
     
-    let navBarAppearance = UINavigationBarAppearance()
-    navBarAppearance.configureWithOpaqueBackground()
-    navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-    navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-    navBarAppearance.backgroundColor = .red
-    self.navigationController?.navigationBar.standardAppearance = navBarAppearance
-    self.navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+    self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
     self.navigationController?.navigationBar.prefersLargeTitles = true
-    self.navigationController?.navigationBar.topItem?.title = "Recipes"
-//
+    self.navigationController?.navigationBar.topItem?.title = viewTitle
+
     //This is will be used to some degree
     
 //    let maxWidth = UIScreen.main.bounds.size.width - 60
@@ -207,6 +203,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
                 let recipeDetailsViewController = segue.destination as! RecipeDetailsViewController
                 recipeDetailsViewController.recipe = self.fetchedResultsController.object(at: indexPath)
                 recipeDetailsViewController.addMealBtn.isEnabled = false
+                recipeDetailsViewController.navigationItem.title = self.fetchedResultsController.object(at: indexPath).name
             }
         }
     }
