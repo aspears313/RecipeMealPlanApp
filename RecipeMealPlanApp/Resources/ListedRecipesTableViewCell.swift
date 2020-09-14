@@ -56,7 +56,7 @@ class ListedRecipesTableViewCell: UITableViewCell {
         addSubview(cellView)
         cellView.addSubview(recipeName)
         cellView.addSubview(recipeImage)
-        self.selectionStyle = .none
+        self.selectionStyle = .default
         
         NSLayoutConstraint.activate([
             cellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 5),

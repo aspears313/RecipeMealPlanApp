@@ -29,7 +29,7 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
         tapGesture.cancelsTouchesInView = false
         view.addGestureRecognizer(tapGesture)
         descriptionView.backgroundColor = .white
-        descriptionView.text = "Your description here."
+        descriptionView.text = "Please enter your description here."
         descriptionView.textColor = UIColor.lightGray
         descriptionView.delegate = self
         descriptionView.textAlignment = .center

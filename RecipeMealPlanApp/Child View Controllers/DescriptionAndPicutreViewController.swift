@@ -23,7 +23,7 @@ class DescriptionAndPicutreViewController: UIViewController {
     }
     
     func setUpView() {
-        
+        print(recipe!)
         recipeDescription.backgroundColor = .white
         
         if let image = recipe?.image {

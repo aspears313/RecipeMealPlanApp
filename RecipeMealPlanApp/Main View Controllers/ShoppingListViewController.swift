@@ -120,6 +120,8 @@ class ShoppingListViewController: UIViewController {
     func setupTableView() {
         shoppingListTableView.delegate = self
         shoppingListTableView.dataSource = self
+        shoppingListTableView.emptyDataSetDelegate = self
+        shoppingListTableView.emptyDataSetSource = self
         
         shoppingListTableView.allowsMultipleSelection = true
         shoppingListTableView.allowsMultipleSelectionDuringEditing = true
@@ -494,4 +496,23 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
     }
 }
 
+extension ShoppingListViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Shopping List Not Made"
+        let attrs = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Go to the calendar to select some meals"
+        let attrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        let backColor = UIColor.lightGray
+        return backColor
+    }
+}
 

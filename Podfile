@@ -8,5 +8,6 @@ target 'RecipeMealPlanApp' do
   # Pods for RecipeMealPlanApp
   pod 'FSCalendar'
   pod 'TextFieldEffects'
+  pod 'DZNEmptyDataSet'
 
 end

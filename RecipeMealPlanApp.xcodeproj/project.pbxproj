@@ -13,6 +13,7 @@
 		841B5554248B115000CDE586 /* ShoppingListTableViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B5553248B115000CDE586 /* ShoppingListTableViewCells.swift */; };
 		8445C01A24EB2FA70069E010 /* UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8445C01924EB2FA70069E010 /* UITextView.swift */; };
 		84496C8D24E7016000A6CD31 /* IngredientsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84496C8C24E7016000A6CD31 /* IngredientsListTableViewCell.swift */; };
+		846640B7250DB15500EFE4B9 /* DirectionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846640B6250DB15500EFE4B9 /* DirectionsTableViewCell.swift */; };
 		84BADA5824AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84BADA5624AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodeld */; };
 		84BCA0EA24DB48070027356F /* PlannedMealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BCA0E924DB48070027356F /* PlannedMealsViewController.swift */; };
 		84C6C1BB2458A73C00A14F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C1BA2458A73C00A14F49 /* AppDelegate.swift */; };
@@ -53,6 +54,8 @@
 		841B5553248B115000CDE586 /* ShoppingListTableViewCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListTableViewCells.swift; sourceTree = "<group>"; };
 		8445C01924EB2FA70069E010 /* UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView.swift; sourceTree = "<group>"; };
 		84496C8C24E7016000A6CD31 /* IngredientsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsListTableViewCell.swift; sourceTree = "<group>"; };
+		846640B6250DB15500EFE4B9 /* DirectionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsTableViewCell.swift; sourceTree = "<group>"; };
+		846640B8250E631A00EFE4B9 /* RecipeMealPlanApp 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RecipeMealPlanApp 4.xcdatamodel"; sourceTree = "<group>"; };
 		848A7CA024CDE26A00528AC4 /* RecipeMealPlanApp 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "RecipeMealPlanApp 2.xcdatamodel"; sourceTree = "<group>"; };
 		84BADA5724AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeMealPlanApp.xcdatamodel; sourceTree = "<group>"; };
 		84BCA0E824D9F3A20027356F /* RecipeMealPlanApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RecipeMealPlanApp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 			children = (
 				8445C01924EB2FA70069E010 /* UITextView.swift */,
 				84C6C1F32458AB3C00A14F49 /* ListedRecipesTableViewCell.swift */,
+				846640B6250DB15500EFE4B9 /* DirectionsTableViewCell.swift */,
 				84C6C1F02458AB3C00A14F49 /* MealPlannerTableViewCell.swift */,
 				841B5553248B115000CDE586 /* ShoppingListTableViewCells.swift */,
 				84097E5B24AAD36500484C6A /* ShoppingListTableViewCellSection.swift */,
@@ -335,6 +339,7 @@
 				84C6C1E42458AB2600A14F49 /* AddPhotoViewController.swift in Sources */,
 				84C6C1EA2458AB3000A14F49 /* DescriptionAndPicutreViewController.swift in Sources */,
 				84C6C1D82458AB1900A14F49 /* ShoppingListViewController.swift in Sources */,
+				846640B7250DB15500EFE4B9 /* DirectionsTableViewCell.swift in Sources */,
 				84C6C20D2458AB7600A14F49 /* CoreDataStack.swift in Sources */,
 				84C6C1F82458AB3C00A14F49 /* MealPlannerTableViewCell.swift in Sources */,
 				84C6C1ED2458AB3000A14F49 /* IngredientsViewController.swift in Sources */,
@@ -574,11 +579,12 @@
 		84BADA5624AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				846640B8250E631A00EFE4B9 /* RecipeMealPlanApp 4.xcdatamodel */,
 				840D5CC124CDF0CD003DEACD /* RecipeMealPlanApp 3.xcdatamodel */,
 				848A7CA024CDE26A00528AC4 /* RecipeMealPlanApp 2.xcdatamodel */,
 				84BADA5724AEB3BA00F68286 /* RecipeMealPlanApp.xcdatamodel */,
 			);
-			currentVersion = 840D5CC124CDF0CD003DEACD /* RecipeMealPlanApp 3.xcdatamodel */;
+			currentVersion = 846640B8250E631A00EFE4B9 /* RecipeMealPlanApp 4.xcdatamodel */;
 			name = RecipeMealPlanApp.xcdatamodeld;
 			path = RecipeMealPlanApp/RecipeMealPlanApp.xcdatamodeld;
 			sourceTree = "<group>";

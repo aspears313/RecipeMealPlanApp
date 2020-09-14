@@ -92,6 +92,8 @@ class PlannedMealsViewController: UIViewController, UINavigationBarDelegate {
         
         mealForTheDayTableView.delegate = self
         mealForTheDayTableView.dataSource = self
+        mealForTheDayTableView.emptyDataSetSource = self
+        mealForTheDayTableView.emptyDataSetDelegate = self
         
         mealForTheDayTableView.register(ListedRecipesTableViewCell.self, forCellReuseIdentifier: "Cell")
         
@@ -273,6 +275,7 @@ extension PlannedMealsViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = mealForTheDayTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListedRecipesTableViewCell
         
         let currentRecipe = selectedRecipes[indexPath.row]
@@ -305,5 +308,25 @@ extension PlannedMealsViewController: UITableViewDataSource, UITableViewDelegate
 
         self.performSegue(withIdentifier: "toDetailVC", sender: indexPath.row)
         mealForTheDayTableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension PlannedMealsViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No selected meals"
+        let attrs = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 30)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Go to the calendar to select meals for this day."
+        let attrs = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        let backColor = UIColor.lightGray
+        return backColor
     }
 }

@@ -20,6 +20,8 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         return tv
     }()
     
+    let placeholderView = UIView()
+    
     var viewTitle = "Recipes"
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
@@ -31,7 +33,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         setupTableView()
         setNavigationBar()
-        //Was black
         view.backgroundColor = UIColor.white
         
         fetchedResultsController = recipeListFetchedResultsController()
@@ -47,24 +48,6 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     self.navigationController?.navigationBar.prefersLargeTitles = true
     self.navigationController?.navigationBar.topItem?.title = viewTitle
 
-    //This is will be used to some degree
-    
-//    let maxWidth = UIScreen.main.bounds.size.width - 60
-//    var fontSize = UIFont.preferredFont(forTextStyle: .largeTitle).pointSize
-//    var width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
-//
-//    while width > maxWidth {
-//        fontSize -= 1
-//        width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
-//    }
-//    if var titleAttributes = navigationController?.navigationBar.largeTitleTextAttributes {
-//        titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
-//        titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
-//
-//        navigationController?.navigationBar.largeTitleTextAttributes = titleAttributes
-//        navigationItem.title = title
-//       }
-//    navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func setupTableView() {
@@ -74,29 +57,41 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         
         recipeListTableView.register(ListedRecipesTableViewCell.self, forCellReuseIdentifier: "Cell")
         
+        //placeholderView.backgroundColor = .white
+        placeholderView.backgroundColor = .clear
+        placeholderView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(placeholderView)
         view.addSubview(recipeListTableView)
+        
+        NSLayoutConstraint.activate([
+            placeholderView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            placeholderView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            placeholderView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            placeholderView.heightAnchor.constraint(equalToConstant: 0)
+        ])
         
         NSLayoutConstraint.activate([
             recipeListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 140),
             recipeListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            recipeListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            recipeListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+            recipeListTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            recipeListTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor)
         ])
         
         recipeListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         recipeListTableView.backgroundColor = .white
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let springTransform = CGAffineTransform(translationX: 0, y: recipeListTableView.bounds.size.height)
-        cell.transform = springTransform
-        
-        UIView.animate(withDuration: 1.0, delay: 0.08, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options:
-            .curveEaseInOut, animations: {
-                cell.transform = CGAffineTransform.identity
-        }, completion: nil)
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        
+//        let springTransform = CGAffineTransform(translationX: 0, y: recipeListTableView.bounds.size.height)
+//        cell.transform = springTransform
+//        
+//        UIView.animate(withDuration: 1.0, delay: 0.08, usingSpringWithDamping: 0.6, initialSpringVelocity: 0, options:
+//            .curveEaseInOut, animations: {
+//                cell.transform = CGAffineTransform.identity
+//        }, completion: nil)
+//    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.fetchedObjects?.count ?? 0
@@ -171,6 +166,7 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         newRecipe.image = addDirectionsVC.newRecipe?.image
         newRecipe.mealType = addDirectionsVC.newRecipe?.mealType
         newRecipe.recipeDescription = addDirectionsVC.newRecipe?.recipeDescription
+        newRecipe.directions = addDirectionsVC.directionsForRecipe
         
         let newIngredients = addDirectionsVC.newIngredients
 
