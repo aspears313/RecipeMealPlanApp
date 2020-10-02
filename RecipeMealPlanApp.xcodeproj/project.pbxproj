@@ -40,6 +40,9 @@
 		84C6C1FD2458AB3C00A14F49 /* MealTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C1F52458AB3C00A14F49 /* MealTypeTableViewCell.swift */; };
 		84C6C1FE2458AB3C00A14F49 /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C1F62458AB3C00A14F49 /* PickerViewDataSource.swift */; };
 		84C6C20D2458AB7600A14F49 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C20C2458AB7600A14F49 /* CoreDataStack.swift */; };
+		8A9A8A672526143400843E12 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A662526143400843E12 /* StartViewController.swift */; };
+		8A9A8A6A2526144600843E12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A692526144600843E12 /* LoginViewController.swift */; };
+		8A9A8A6D2526145300843E12 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A6C2526145300843E12 /* SignUpViewController.swift */; };
 		95336548DFE71A4D5106227E /* Pods_RecipeMealPlanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D00073E66CD9D5AC4520B05 /* Pods_RecipeMealPlanApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +89,9 @@
 		84C6C1F52458AB3C00A14F49 /* MealTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTypeTableViewCell.swift; sourceTree = "<group>"; };
 		84C6C1F62458AB3C00A14F49 /* PickerViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerViewDataSource.swift; sourceTree = "<group>"; };
 		84C6C20C2458AB7600A14F49 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		8A9A8A662526143400843E12 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		8A9A8A692526144600843E12 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8A9A8A6C2526145300843E12 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +155,7 @@
 		84C6C1B92458A73C00A14F49 /* RecipeMealPlanApp */ = {
 			isa = PBXGroup;
 			children = (
+				8A9A8A5E252610F500843E12 /* Login View Controllers */,
 				84C6C1D12458AB1900A14F49 /* Main View Controllers */,
 				84496C8E24EB02FB00A6CD31 /* Secondary View Controllers */,
 				84C6C1DA2458AB2600A14F49 /* Add New Recipe Flow View Controllers */,
@@ -218,6 +225,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		8A9A8A5E252610F500843E12 /* Login View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A9A8A662526143400843E12 /* StartViewController.swift */,
+				8A9A8A692526144600843E12 /* LoginViewController.swift */,
+				8A9A8A6C2526145300843E12 /* SignUpViewController.swift */,
+			);
+			path = "Login View Controllers";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -247,7 +264,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Anthony;
 				TargetAttributes = {
 					84C6C1B62458A73C00A14F49 = {
@@ -334,6 +351,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9A8A6D2526145300843E12 /* SignUpViewController.swift in Sources */,
+				8A9A8A672526143400843E12 /* StartViewController.swift in Sources */,
 				84C6C1D72458AB1900A14F49 /* RecipeListViewController.swift in Sources */,
 				84C6C1FE2458AB3C00A14F49 /* PickerViewDataSource.swift in Sources */,
 				84C6C1E42458AB2600A14F49 /* AddPhotoViewController.swift in Sources */,
@@ -345,6 +364,7 @@
 				84C6C1ED2458AB3000A14F49 /* IngredientsViewController.swift in Sources */,
 				84097E5A24AACC7600484C6A /* MealListViewController.swift in Sources */,
 				84C6C1E22458AB2600A14F49 /* AddIngredientsViewController.swift in Sources */,
+				8A9A8A6A2526144600843E12 /* LoginViewController.swift in Sources */,
 				84C6C1BB2458A73C00A14F49 /* AppDelegate.swift in Sources */,
 				84BCA0EA24DB48070027356F /* PlannedMealsViewController.swift in Sources */,
 				84C6C1E32458AB2600A14F49 /* AddDirectionsViewController.swift in Sources */,
@@ -417,6 +437,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -477,6 +498,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -515,6 +537,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UP2L94S3K;
 				INFOPLIST_FILE = RecipeMealPlanApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -539,6 +562,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3UP2L94S3K;
 				INFOPLIST_FILE = RecipeMealPlanApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

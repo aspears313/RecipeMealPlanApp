@@ -43,8 +43,8 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
         
         NSLayoutConstraint.activate([
             mealsForTypeTableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            mealsForTypeTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            mealsForTypeTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            mealsForTypeTableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            mealsForTypeTableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             mealsForTypeTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
         
@@ -53,9 +53,16 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func setupNavBar() {
+        let navigation = ReusableNavigation()
+        
+        self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = mealType
-        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
+        self.navigationController?.navigationBar.topItem?.title = mealType
+        
+//        self.navigationController?.navigationBar.prefersLargeTitles = true
+//        self.navigationItem.title = mealType
+//        self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.red]
     }
     
     func configure(cell: UITableViewCell, for indexPath: IndexPath) {

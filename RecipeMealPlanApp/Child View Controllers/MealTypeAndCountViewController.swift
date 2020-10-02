@@ -11,7 +11,6 @@ import CoreData
 
 protocol MealSelectDelegate: class {
     //func didSelectMeals(selectedMeals: [Recipe])
-    
     func didSelectMeals(selectedMeals: [String])
 }
 
@@ -48,9 +47,11 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         
         return 100
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mealTypeAndCount.count
     }
@@ -106,8 +107,8 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
                 
                 mealListVC.coreDataStack = coreDataStack
                 mealListVC.mealType = mealType!
-                }
             }
+        }
     }
     
     @IBAction func cancel(_ unwindSegue: UIStoryboardSegue) {
@@ -115,8 +116,6 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func doneBtnTapped(_ sender: Any) {
-
-
         print(selectedMeals.count)
         selectionDelegate?.didSelectMeals(selectedMeals: selectedMeals)
         selectedMeals.removeAll()
