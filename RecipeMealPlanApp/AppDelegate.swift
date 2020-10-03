@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             insertPredefinedObjects()
         }
         
+        
 //        let attrOne = NSDictionary(object: UIFont(name: "Helvetica", size: 16.0)!, forKey: NSAttributedString.Key.font as NSCopying)
 //        
 //        UISegmentedControl.appearance().setTitleTextAttributes(attrOne as! [NSAttributedString.Key : Any], for: .normal)
@@ -36,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window = UIWindow(frame: UIScreen.main.bounds)
 //        window?.rootViewController = UINavigationController(rootViewController: StartingTabBarViewController())
 //        window?.makeKeyAndVisible()
-        
+        FirebaseApp.configure()
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         print(urls[urls.count - 1] as URL)
         return true

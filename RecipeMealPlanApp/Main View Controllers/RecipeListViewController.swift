@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Firebase
 
 class RecipeListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -30,6 +31,8 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         setupTableView()
         setNavigationBar()
@@ -153,6 +156,34 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
         self.performSegue(withIdentifier: "toAddRecipeFlow", sender: self)
     }
 
+    @IBAction func signOutBtnClicked(_ sender: Any) {
+        
+        do {
+            try Auth.auth().signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+        
+        performSegue(withIdentifier: "toStartView", sender: self)
+        
+        
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let initial = storyboard.instantiateInitialViewController()
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//        appDelegate.window?.rootViewController = initial
+        
+//         do {
+//                try Auth.auth().signOut()
+//            }
+//         catch let signOutError as NSError {
+//                print ("Error signing out: %@", signOutError)
+//            }
+//
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let initial = storyboard.instantiateInitialViewController()
+//            UIApplication.shared.keyWindow?.rootViewController = initial
+     
+    }
     
     @IBAction func unwindToRecipeList(_ unwindSegue: UIStoryboardSegue) {
         
