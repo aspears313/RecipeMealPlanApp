@@ -32,14 +32,11 @@ class RecipeListViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         setupTableView()
         setNavigationBar()
         view.backgroundColor = UIColor.white
         
         fetchedResultsController = recipeListFetchedResultsController()
-        
     }
     
    private func setNavigationBar() {

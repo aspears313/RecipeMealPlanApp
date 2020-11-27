@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var forgotPasswordBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,24 @@ class LoginViewController: UIViewController {
     
     func setUp() {
         loginBtn.layer.cornerRadius = loginBtn.frame.height / 2.0
+        
+        self.view.backgroundColor = .white
+        
+        email.delegate = self
+        password.delegate = self
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    
+    
+    
+    @IBAction func forgotPasswordBtnClicked(_ sender: Any) {
+        
+    }
     @IBAction func loginBtnClicked(_ sender: Any) {
         Auth.auth().signIn(withEmail: email.text!, password: password.text!)
         { (user, error) in
@@ -40,7 +57,6 @@ class LoginViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        
     }
     
     /*
@@ -53,4 +69,27 @@ class LoginViewController: UIViewController {
     }
     */
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        hideKeyboard()
+    }
+    
+    @objc func tap(_ sender: UITapGestureRecognizer? = nil) {
+        self.view.endEditing(true)
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
+        email.resignFirstResponder()
+        password.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        hideKeyboard()
+        return false
+    }
 }

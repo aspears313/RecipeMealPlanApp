@@ -16,6 +16,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var passwordConfirm: UITextField!
     
     @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,25 @@ class SignUpViewController: UIViewController {
     
     func setUp() {
         signUpBtn.layer.cornerRadius = signUpBtn.frame.height / 2.0
+        email.textColor = .white
+        password.textColor = .white
+        passwordConfirm.textColor = .white
+//        cancelBtn.layer.cornerRadius = cancelBtn.frame.height / 2.0
+//        cancelBtn.layer.borderWidth = 2.0
+//        cancelBtn.layer.borderColor = UIColor.red.cgColor
+        
+        email.delegate = self
+        password.delegate = self
+        passwordConfirm.delegate = self
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tap(_:)))
+        tapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    
+    @IBAction func cancelBtnClicked(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func signUpBtnClicked(_ sender: Any) {
@@ -63,4 +83,28 @@ class SignUpViewController: UIViewController {
     }
     */
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        hideKeyboard()
+    }
+    
+    @objc func tap(_ sender: UITapGestureRecognizer? = nil) {
+        self.view.endEditing(true)
+        hideKeyboard()
+    }
+    
+    func hideKeyboard() {
+        email.resignFirstResponder()
+        password.resignFirstResponder()
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        hideKeyboard()
+        return false
+    }
+    
 }
