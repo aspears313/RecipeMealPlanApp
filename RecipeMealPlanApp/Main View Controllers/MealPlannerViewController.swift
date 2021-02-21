@@ -19,7 +19,7 @@ class MealPlannerViewController: UIViewController, NSFetchedResultsControllerDel
     
     let coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
-    var viewTitle = "Meal Planner"
+    let viewTitle = "Meal Planner"
     var theSelectedDate: String = ""
     
     fileprivate lazy var dateFormatter: DateFormatter = {

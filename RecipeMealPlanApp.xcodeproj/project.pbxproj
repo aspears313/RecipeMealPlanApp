@@ -40,9 +40,10 @@
 		84C6C1FD2458AB3C00A14F49 /* MealTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C1F52458AB3C00A14F49 /* MealTypeTableViewCell.swift */; };
 		84C6C1FE2458AB3C00A14F49 /* PickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C1F62458AB3C00A14F49 /* PickerViewDataSource.swift */; };
 		84C6C20D2458AB7600A14F49 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C6C20C2458AB7600A14F49 /* CoreDataStack.swift */; };
+		8A0952A32583BFEA00012D56 /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB44CAF257FE60900DCACB5 /* RecipeCollectionViewCell.swift */; };
 		8A3113FD2527780E00E6FCF8 /* extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3113FC2527780E00E6FCF8 /* extra.swift */; };
 		8A9A8A672526143400843E12 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A662526143400843E12 /* StartViewController.swift */; };
-		8A9A8A6A2526144600843E12 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A692526144600843E12 /* LoginViewController.swift */; };
+		8A9A8A6A2526144600843E12 /* FogotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A692526144600843E12 /* FogotPassViewController.swift */; };
 		8A9A8A6D2526145300843E12 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A6C2526145300843E12 /* SignUpViewController.swift */; };
 		8A9A8A722526A95F00843E12 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A9A8A712526A95F00843E12 /* GoogleService-Info.plist */; };
 		95336548DFE71A4D5106227E /* Pods_RecipeMealPlanApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D00073E66CD9D5AC4520B05 /* Pods_RecipeMealPlanApp.framework */; };
@@ -93,9 +94,10 @@
 		84C6C20C2458AB7600A14F49 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8A3113FC2527780E00E6FCF8 /* extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extra.swift; sourceTree = "<group>"; };
 		8A9A8A662526143400843E12 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
-		8A9A8A692526144600843E12 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		8A9A8A692526144600843E12 /* FogotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogotPassViewController.swift; sourceTree = "<group>"; };
 		8A9A8A6C2526145300843E12 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8A9A8A712526A95F00843E12 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8AB44CAF257FE60900DCACB5 /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +229,7 @@
 				84C6C1F52458AB3C00A14F49 /* MealTypeTableViewCell.swift */,
 				84C6C1F22458AB3C00A14F49 /* ImagePicker.swift */,
 				84C6C1F62458AB3C00A14F49 /* PickerViewDataSource.swift */,
+				8AB44CAF257FE60900DCACB5 /* RecipeCollectionViewCell.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -235,7 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				8A9A8A662526143400843E12 /* StartViewController.swift */,
-				8A9A8A692526144600843E12 /* LoginViewController.swift */,
+				8A9A8A692526144600843E12 /* FogotPassViewController.swift */,
 				8A9A8A6C2526145300843E12 /* SignUpViewController.swift */,
 			);
 			path = "Login View Controllers";
@@ -372,7 +375,7 @@
 				84C6C1ED2458AB3000A14F49 /* IngredientsViewController.swift in Sources */,
 				84097E5A24AACC7600484C6A /* MealListViewController.swift in Sources */,
 				84C6C1E22458AB2600A14F49 /* AddIngredientsViewController.swift in Sources */,
-				8A9A8A6A2526144600843E12 /* LoginViewController.swift in Sources */,
+				8A9A8A6A2526144600843E12 /* FogotPassViewController.swift in Sources */,
 				84C6C1BB2458A73C00A14F49 /* AppDelegate.swift in Sources */,
 				84BCA0EA24DB48070027356F /* PlannedMealsViewController.swift in Sources */,
 				84C6C1E32458AB2600A14F49 /* AddDirectionsViewController.swift in Sources */,
@@ -390,6 +393,7 @@
 				84C6C1FB2458AB3C00A14F49 /* ListedRecipesTableViewCell.swift in Sources */,
 				84496C8D24E7016000A6CD31 /* IngredientsListTableViewCell.swift in Sources */,
 				84C6C1EB2458AB3000A14F49 /* DirectionsViewController.swift in Sources */,
+				8A0952A32583BFEA00012D56 /* RecipeCollectionViewCell.swift in Sources */,
 				841B5554248B115000CDE586 /* ShoppingListTableViewCells.swift in Sources */,
 				84C6C1E12458AB2600A14F49 /* AddDescriptionViewController.swift in Sources */,
 			);

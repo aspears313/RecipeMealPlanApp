@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 class ReusableNavigation: UIView {
     
@@ -17,9 +18,9 @@ class ReusableNavigation: UIView {
         let navBarAppearance = UINavigationBarAppearance()
         
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = .red
+        navBarAppearance.backgroundColor = FlatRedDark()
     
         return navBarAppearance
     }

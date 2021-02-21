@@ -100,13 +100,15 @@ class MealTypeAndCountViewController: UIViewController, UITableViewDelegate, UIT
         
         if segue.identifier == "toMealTypeListVC" {
             if let indexPath = mealTypeTableView.indexPathForSelectedRow{
-                let navigationController = segue.destination as! UINavigationController
-                let mealListVC = navigationController.topViewController as! MealListViewController 
+                //let navigationController = segue.destination as! UINavigationController
+                //let mealListVC = navigationController.topViewController as! MealListViewController
+                let mealListVC = segue.destination as! MealListViewController
                 let mealtypeDictionary = mealTypeAndCount[indexPath.row]
-                let mealType = mealtypeDictionary["mealType"]
-                
+                if let mealType = mealtypeDictionary["mealType"] {
+                    mealListVC.mealType = mealType
+                    mealListVC.navigationItem.title = mealType
+                }
                 mealListVC.coreDataStack = coreDataStack
-                mealListVC.mealType = mealType!
             }
         }
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class StartViewController: UIViewController {
 
@@ -45,13 +46,14 @@ class StartViewController: UIViewController {
         signInBtn.layer.cornerRadius = signInBtn.frame.height / 2.0
         //signInBtn.backgroundColor = .clear
         //signInBtn.layer.borderWidth = 2.0
-        //signInBtn.layer.borderColor = UIColor.red.cgColor
+        signInBtn.layer.borderColor = FlatRed().cgColor
         
         
         signUpBtn.layer.cornerRadius = signUpBtn.frame.height / 2.0
         signUpBtn.backgroundColor = .clear
         signUpBtn.layer.borderWidth = 2.0
-        signUpBtn.layer.borderColor = UIColor.red.cgColor
+        signUpBtn.layer.borderColor = FlatRedDark().cgColor
+        
     }
     
     @IBAction func loginBtnClicked(_ sender: Any) {

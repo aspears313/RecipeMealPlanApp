@@ -256,15 +256,17 @@ class PlannedMealsViewController: UIViewController, UINavigationBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toDetailVC" {
+            
             if let indexPath = mealForTheDayTableView.indexPathForSelectedRow {
-                let recipeDetailsViewController = segue.destination as! RecipeDetailsViewController
-                recipeDetailsViewController.recipe = self.selectedRecipes[indexPath.row]
-                recipeDetailsViewController.addMealBtn.isEnabled = false
+                
+                let recipe = self.selectedRecipes[indexPath.row]
+                let recipeDetailsVC = segue.destination as! RecipeDetailsViewController
+                recipeDetailsVC.recipe = recipe
+                recipeDetailsVC.navigationItem.title = recipe.name
+                recipeDetailsVC.addMealBtn.isEnabled = false
             }
         }
     }
-    
-
 }
 
 //MARK: - TableView DataSource & Delegate Methods

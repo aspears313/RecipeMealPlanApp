@@ -31,7 +31,7 @@ class RecipeDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.topItem?.title = recipe?.name!
+        //self.navigationController?.navigationBar.topItem?.title = recipe?.name!
 //        guard let title = recipe?.name, #available(iOS 11.0, *) else { return}
 //
 //        let maxWidth = UIScreen.main.bounds.size.width - 60

@@ -14,9 +14,9 @@ class ListedRecipesTableViewCell: UITableViewCell {
         let view = UIView()
         view.backgroundColor = .white
         //view.backgroundColor = UIColor.red
-        view.layer.borderWidth = 3.0
-        view.layer.borderColor = UIColor.red.cgColor
-        view.layer.cornerRadius = 25.0
+        //view.layer.borderWidth = 3.0
+        //view.layer.borderColor = UIColor.red.cgColor
+        //view.layer.cornerRadius = 25.0
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -25,6 +25,8 @@ class ListedRecipesTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.layer.cornerRadius = 25.0
         image.clipsToBounds = true
+        image.layer.borderWidth = 1.0
+        image.layer.borderColor = UIColor.black.cgColor
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(named: "No photo")
         return image
@@ -33,7 +35,7 @@ class ListedRecipesTableViewCell: UITableViewCell {
     let recipeName: UILabel = {
         let label = UILabel()
         label.text = "Recipe 1"
-        label.textColor = .red
+        label.textColor = .black
         //label.textColor = UIColor.white
         label.adjustsFontSizeToFitWidth = true
         label.font = UIFont.boldSystemFont(ofSize: 26)

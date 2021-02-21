@@ -2,6 +2,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - CollectionViewSlantedLayout (3.1.1)
   - DZNEmptyDataSet (1.8.1)
   - Firebase/Analytics (6.33.0):
     - Firebase/Core
@@ -42,6 +43,7 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
   - FSCalendar (2.8.1)
+  - Gemini (1.4.0)
   - GoogleAppMeasurement (6.8.3):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -80,15 +82,18 @@ PODS:
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
+  - CollectionViewSlantedLayout (~> 3.1)
   - DZNEmptyDataSet
   - Firebase/Analytics
   - Firebase/Auth
   - FSCalendar
+  - Gemini (~> 1.4)
   - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - ChameleonFramework
+    - CollectionViewSlantedLayout
     - DZNEmptyDataSet
     - Firebase
     - FirebaseAnalytics
@@ -97,6 +102,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseInstallations
     - FSCalendar
+    - Gemini
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -107,6 +113,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  CollectionViewSlantedLayout: 24397455acd2461960bc45d394e0ef99c17d03ce
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
   FirebaseAnalytics: 5dd088bd2e67bb9d13dbf792d1164ceaf3052193
@@ -115,6 +122,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
   FSCalendar: 5245140456fcbcac5824c203b98bd8068bdfee1a
+  Gemini: 4ad915cca8805577fe3021e02feeca2b77dcdbfc
   GoogleAppMeasurement: 966e88df9d19c15715137bb2ddaf52373f111436
   GoogleDataTransport: b7f406340a291370045a270c599e53c6fa6ec20f
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -123,6 +131,6 @@ SPEC CHECKSUMS:
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: c75b51a17af8985dd747df0376fa211d3d1ea6a7
+PODFILE CHECKSUM: b332d0fbaf2c8ffb185ffa934abac563db181fdc
 
 COCOAPODS: 1.10.0.rc.1

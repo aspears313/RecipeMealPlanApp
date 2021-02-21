@@ -57,8 +57,10 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
         
         self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
+        self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.topItem?.title = mealType
+        
+        //self.navigationController?.navigationBar.topItem?.title = mealType
         
 //        self.navigationController?.navigationBar.prefersLargeTitles = true
 //        self.navigationItem.title = mealType
@@ -135,6 +137,7 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
                 let recipeDetailsViewController = segue.destination as! RecipeDetailsViewController
                 recipeDetailsViewController.recipe = mealTypeRecipes[indexPath.row]
                 recipeDetailsViewController.addMealBtn.isEnabled = true
+                recipeDetailsViewController.navigationItem.title = mealTypeRecipes[indexPath.row].name
             }
         }
     }

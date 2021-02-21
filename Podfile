@@ -12,6 +12,8 @@ target 'RecipeMealPlanApp' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'ChameleonFramework/Swift'
+  pod 'CollectionViewSlantedLayout', '~> 3.1'
+  pod 'Gemini', '~> 1.4'
 
 end
 
