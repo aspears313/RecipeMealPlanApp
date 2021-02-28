@@ -10,8 +10,6 @@ import UIKit
 import CoreData
 import Firebase
 import ChameleonFramework
-import CollectionViewSlantedLayout
-import Gemini
 
 class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITableViewDelegate*/ {
     
@@ -20,7 +18,6 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
     //@IBOutlet weak var recipeListCollectionViewLayout: CollectionViewSlantedLayout!
     //@IBOutlet weak var recipeListCollectionView: GeminiCollectionView!
     
-    //let slantedLayout = CollectionViewSlantedLayout()
     var recipeListCollectionView: UICollectionView!
 //    let recipeListTableView: UITableView = {
 //        let tv = UITableView()
@@ -32,13 +29,9 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
     let placeholderView = UIView()
     
     let viewTitle = "Recipes"
-    var fetchedRecipes: [Recipe]?
-    //var recipe: Recipe?
     var cell: UICollectionViewCell?
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
-    
-    //lazy var dataSource = configureDataSource()
     
     var fetchedResultsController: NSFetchedResultsController<Recipe>!
         /*= NSFetchedResultsController()*/
@@ -105,7 +98,7 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         recipeListCollectionView.delegate = self
         recipeListCollectionView.backgroundColor = .white
         
-        recipeListCollectionView.register(RecipeCollectionViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
+        recipeListCollectionView.register(RecipeCell.self, forCellWithReuseIdentifier: "RecipeCell")
         
         view.addSubview(recipeListCollectionView)
         
@@ -230,7 +223,7 @@ extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recipeListCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCollectionViewCell
+        let cell = recipeListCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
         
             let recipe = self.fetchedResultsController.object(at: indexPath)
             if let recipeImage = recipe.image {
@@ -238,58 +231,13 @@ extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDa
             } else {
                 cell.recipeImage.image = UIImage(named: "No photo")
             }
-        
-//        cell.layer.cornerRadius = 15
-//        cell.clipsToBounds = true
-//
-//        cell.layer.shadowColor = UIColor.black.cgColor
-//        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        cell.layer.shadowOpacity = 0.8
-//        cell.layer.shadowRadius = 15
-        //cell.recipeName.text = recipe.name
-//        if let layout = collectionView.collectionViewLayout as? CollectionViewSlantedLayout {
-//            cell.contentView.transform = CGAffineTransform(rotationAngle: layout.slantingAngle)
-//        }
-        //Animate
-        //self.recipeListCollectionView.animateCell(cell)
-        
         return cell
     }
-    
-    
-    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        self.recipeListCollectionView.animateVisibleCells()
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        
-//        if let cell = cell as? RecipeCollectionViewCell {
-//            self.recipeListCollectionView.animateCell(cell)
-//        }
-//    }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 30
-//    }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 5
     }
 
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0)
-//    }
-
-//    func collectionView(_ collectionView: UICollectionView,
-//                            layout collectionViewLayout: UICollectionViewLayout,
-//                            sizeForItemAt indexPath: IndexPath) -> CGSize {
-//
-//        return CGSize(width: view.frame.width-60, height: 400)
-//
-//        }
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         cell = recipeListCollectionView.cellForItem(at: indexPath)
