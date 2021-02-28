@@ -11,16 +11,17 @@ import CoreData
 import Firebase
 import ChameleonFramework
 import CollectionViewSlantedLayout
+import Gemini
 
 class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITableViewDelegate*/ {
     
     //@IBOutlet weak var recipeListTableView: UITableView!
     
-    @IBOutlet weak var recipeListCollectionViewLayout: CollectionViewSlantedLayout!
-    @IBOutlet weak var recipeListCollectionView: UICollectionView!
+    //@IBOutlet weak var recipeListCollectionViewLayout: CollectionViewSlantedLayout!
+    //@IBOutlet weak var recipeListCollectionView: GeminiCollectionView!
     
-    let slantedLayout = CollectionViewSlantedLayout()
-    
+    //let slantedLayout = CollectionViewSlantedLayout()
+    var recipeListCollectionView: UICollectionView!
 //    let recipeListTableView: UITableView = {
 //        let tv = UITableView()
 //        tv.backgroundColor = UIColor.white
@@ -51,50 +52,71 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         setNavigationBar()
         view.backgroundColor = UIColor.white
         fetchedResultsController = fetchedResults()
+        setupCollectionView()
+//        recipeListCollectionView.dataSource = self
+//        recipeListCollectionView.delegate = self
+//        recipeListCollectionView.backgroundColor = .white
+        //configure animation
+        
+        
+        
+        
         //recipeListCollectionView.dataSource = dataSource
         //updateSnapshot()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        recipeListCollectionView.collectionViewLayout.invalidateLayout()
-    }
-    
-    func setUpViewLayout() {
-        recipeListCollectionViewLayout.isFirstCellExcluded = true
-        recipeListCollectionViewLayout.isLastCellExcluded = true
-    }
-    
-//    func configureDataSource() -> UICollectionViewDiffableDataSource<Int, Recipe> {
-//        let dataSource = UICollectionViewDiffableDataSource<Int, Recipe>(collectionView: recipeListCollectionView) { (recipeListCollectionView, indexPath, recipe) -> UICollectionViewCell in
+//    func setupTableView() {
+//        shoppingListTableView.delegate = self
+//        shoppingListTableView.dataSource = self
+//        shoppingListTableView.emptyDataSetDelegate = self
+//        shoppingListTableView.emptyDataSetSource = self
 //
-//            let cell = recipeListCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCollectionViewCell
+//        shoppingListTableView.allowsMultipleSelection = true
+//        shoppingListTableView.allowsMultipleSelectionDuringEditing = true
 //
-//            let recipe = self.fetchedResultsController.object(at: indexPath)
-//            if let recipeImage = recipe.image {
-//                cell.recipeImage.image = UIImage(data: recipeImage)
-//            } else {
-//                cell.recipeImage.image = UIImage(named: "No photo")
-//            }
+//        shoppingListTableView.backgroundView?.backgroundColor = .white
+//        shoppingListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
 //
-//            if let layout = recipeListCollectionView.collectionViewLayout as? CollectionViewSlantedLayout {
-//                cell.contentView.transform = CGAffineTransform(rotationAngle: layout.slantingAngle)
-//            }
-//            return cell
-//        }
-//        return dataSource
+//        shoppingListTableView.register(ShoppingListTableViewCellSection.self, forCellReuseIdentifier: "CellSection")
+//        shoppingListTableView.register(ShoppingListTableViewCells.self, forCellReuseIdentifier: "Cell")
+//
+//        view.addSubview(shoppingListTableView)
+//
+//        NSLayoutConstraint.activate([
+//            shoppingListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
+//            shoppingListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+//            shoppingListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+//            shoppingListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+//            ])
+//
+//        shoppingListTableView.backgroundColor = .white
 //    }
-    
-//    func updateSnapshot(animatingChange: Bool = false) {
-//        var snapshot = NSDiffableDataSourceSnapshot<Int, Recipe>()
-//        snapshot.appendSections([1])
-//        fetchedResultsController = fetchedResults()
-//        print(fetchedResultsController.fetchedObjects?.count ?? 0)
-//        if let recipes = fetchedResultsController.fetchedObjects {
-//            snapshot.appendItems(recipes, toSection: 1)
-//        }
-//        dataSource.apply(snapshot, animatingDifferences: true)
-//    }
+    func setupCollectionView() {
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: view.frame.width-60, height: 400)
+        layout.minimumLineSpacing = 30
+        
+        
+        recipeListCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        recipeListCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        recipeListCollectionView.dataSource = self
+        recipeListCollectionView.delegate = self
+        recipeListCollectionView.backgroundColor = .white
+        
+        recipeListCollectionView.register(RecipeCollectionViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
+        
+        view.addSubview(recipeListCollectionView)
+        
+        NSLayoutConstraint.activate([
+                                        recipeListCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+                                        recipeListCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+                                        recipeListCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+                                        recipeListCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+        ])
+    }
+
     
     
     private func setNavigationBar() {
@@ -200,6 +222,8 @@ private extension RecipeListViewController {
     
 }
 
+// MARK: - Collection View Methods
+
 extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         fetchedResultsController.fetchedObjects?.count ?? 0
@@ -215,37 +239,73 @@ extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDa
                 cell.recipeImage.image = UIImage(named: "No photo")
             }
         
+//        cell.layer.cornerRadius = 15
+//        cell.clipsToBounds = true
+//
+//        cell.layer.shadowColor = UIColor.black.cgColor
+//        cell.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        cell.layer.shadowOpacity = 0.8
+//        cell.layer.shadowRadius = 15
+        //cell.recipeName.text = recipe.name
+//        if let layout = collectionView.collectionViewLayout as? CollectionViewSlantedLayout {
+//            cell.contentView.transform = CGAffineTransform(rotationAngle: layout.slantingAngle)
+//        }
+        //Animate
+        //self.recipeListCollectionView.animateCell(cell)
         
-        
-        if let layout = collectionView.collectionViewLayout as? CollectionViewSlantedLayout {
-            cell.contentView.transform = CGAffineTransform(rotationAngle: layout.slantingAngle)
-        }
         return cell
     }
     
-        
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
+    
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        self.recipeListCollectionView.animateVisibleCells()
 //    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-//        return 5
+    
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        
+//        if let cell = cell as? RecipeCollectionViewCell {
+//            self.recipeListCollectionView.animateCell(cell)
+//        }
+//    }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 30
 //    }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
+//        return UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0)
 //    }
 
 //    func collectionView(_ collectionView: UICollectionView,
 //                            layout collectionViewLayout: UICollectionViewLayout,
 //                            sizeForItemAt indexPath: IndexPath) -> CGSize {
 //
-//            return CGSize(width: recipeListCollectionView.bounds.size.width, height: 250)
+//        return CGSize(width: view.frame.width-60, height: 400)
+//
 //        }
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         cell = recipeListCollectionView.cellForItem(at: indexPath)
+        
+        //Briefly fade the cell on selection
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+                        //Fade-out
+                        self.cell?.alpha = 0.5
+                       }) { (completed) in
+            UIView.animate(withDuration: 0.5,
+                           animations: {
+                            //Fade-out
+                            self.cell?.alpha = 1
+                           })
+        }
         
         self.performSegue(withIdentifier: "toDetailVC", sender: indexPath.row)
         recipeListCollectionView.deselectItem(at: indexPath, animated: true)
