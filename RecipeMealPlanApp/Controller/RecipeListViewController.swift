@@ -11,86 +11,40 @@ import CoreData
 import Firebase
 import ChameleonFramework
 
-class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITableViewDelegate*/ {
-    
-    //@IBOutlet weak var recipeListTableView: UITableView!
-    
-    //@IBOutlet weak var recipeListCollectionViewLayout: CollectionViewSlantedLayout!
-    //@IBOutlet weak var recipeListCollectionView: GeminiCollectionView!
+class RecipeListViewController: UIViewController {
     
     var recipeListCollectionView: UICollectionView!
-//    let recipeListTableView: UITableView = {
-//        let tv = UITableView()
-//        tv.backgroundColor = UIColor.white
-//        tv.translatesAutoresizingMaskIntoConstraints = false
-//        return tv
-//    }()
-//
+
     let placeholderView = UIView()
-    
+    var cell: UICollectionViewCell!
     let viewTitle = "Recipes"
-    var cell: UICollectionViewCell?
-    
+    var recipeViewModels = [RecipeViewModel]()
+    var fetchedResultsController: NSFetchedResultsController<Recipe>!
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
-    var fetchedResultsController: NSFetchedResultsController<Recipe>!
-        /*= NSFetchedResultsController()*/
-    
-
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavigationBar()
-        view.backgroundColor = UIColor.white
-        fetchedResultsController = fetchedResults()
         setupCollectionView()
-//        recipeListCollectionView.dataSource = self
-//        recipeListCollectionView.delegate = self
-//        recipeListCollectionView.backgroundColor = .white
-        //configure animation
-        
-        
-        
-        
-        //recipeListCollectionView.dataSource = dataSource
-        //updateSnapshot()
+        fetchData()
+        view.backgroundColor = UIColor.white
     }
     
-//    func setupTableView() {
-//        shoppingListTableView.delegate = self
-//        shoppingListTableView.dataSource = self
-//        shoppingListTableView.emptyDataSetDelegate = self
-//        shoppingListTableView.emptyDataSetSource = self
-//
-//        shoppingListTableView.allowsMultipleSelection = true
-//        shoppingListTableView.allowsMultipleSelectionDuringEditing = true
-//
-//        shoppingListTableView.backgroundView?.backgroundColor = .white
-//        shoppingListTableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-//
-//        shoppingListTableView.register(ShoppingListTableViewCellSection.self, forCellReuseIdentifier: "CellSection")
-//        shoppingListTableView.register(ShoppingListTableViewCells.self, forCellReuseIdentifier: "Cell")
-//
-//        view.addSubview(shoppingListTableView)
-//
-//        NSLayoutConstraint.activate([
-//            shoppingListTableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 300),
-//            shoppingListTableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-//            shoppingListTableView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-//            shoppingListTableView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
-//            ])
-//
-//        shoppingListTableView.backgroundColor = .white
-//    }
+    //MARK: - Initial Setup
+    
+    fileprivate func fetchData() {
+        fetchedResultsController = DataManager.shared.fetchedResults()
+        
+        recipeViewModels = fetchedResultsController.fetchedObjects?.map({return RecipeViewModel(recipe: $0)}) ?? []
+    }
+    
     func setupCollectionView() {
         
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 0, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
         layout.itemSize = CGSize(width: view.frame.width-60, height: 400)
         layout.minimumLineSpacing = 30
-        
         
         recipeListCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         recipeListCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -103,15 +57,13 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         view.addSubview(recipeListCollectionView)
         
         NSLayoutConstraint.activate([
-                                        recipeListCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
-                                        recipeListCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-                                        recipeListCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-                                        recipeListCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
+            recipeListCollectionView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            recipeListCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            recipeListCollectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            recipeListCollectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor)
         ])
     }
 
-    
-    
     private func setNavigationBar() {
 
         let navigation = ReusableNavigation()
@@ -121,6 +73,8 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationController?.navigationBar.topItem?.title = viewTitle
     }
+    
+    //MARK: - IBAction functions
     
     @IBAction func toAddRecipeVC(_ sender: Any) {
         self.performSegue(withIdentifier: "toAddRecipeFlow", sender: self)
@@ -133,18 +87,16 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
-        
         performSegue(withIdentifier: "toStartView", sender: self)
-        
     }
     
     @IBAction func unwindToRecipeList(_ unwindSegue: UIStoryboardSegue) {
         
         let addDirectionsVC = unwindSegue.source as! AddDirectionsViewController
         
-        let entityDescription = NSEntityDescription.entity(forEntityName: "Recipe", in: coreDataStack.mainContext)
+        let entityDescription = NSEntityDescription.entity(forEntityName: "Recipe", in: coreDataStack.mainContext)!
         
-        let newRecipe = Recipe(entity: entityDescription!, insertInto: coreDataStack.mainContext)
+        let newRecipe = Recipe(entity: entityDescription, insertInto: coreDataStack.mainContext)
 
         newRecipe.name = addDirectionsVC.newRecipe?.name
         newRecipe.image = addDirectionsVC.newRecipe?.image
@@ -167,17 +119,18 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
 
             newIngredientsSet.insert(ingredient)
         }
-        
         newRecipe.theseIngredients = newIngredientsSet as NSSet
         coreDataStack.saveContext()
-        //updateSnapshot()
+        recipeListCollectionView.reloadData()
     }
     
+    //MARK: - Prepare for Segue
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
         if segue.identifier == "toDetailVC" {
             let recipeDetailsVC = segue.destination as! RecipeDetailsViewController
-            if let indexPath = self.recipeListCollectionView.indexPath(for:cell! ) {
+            if let indexPath = self.recipeListCollectionView.indexPath(for:cell ) {
                 recipeDetailsVC.recipe = fetchedResultsController.object(at: indexPath)
                 recipeDetailsVC.addMealBtn.isEnabled = false
                 recipeDetailsVC.navigationItem.title = fetchedResultsController.object(at: indexPath).name
@@ -185,53 +138,12 @@ class RecipeListViewController: UIViewController /*,UITableViewDataSource, UITab
         }
     }
 }
+// MARK: - CollectionView Delegate
 
-private extension RecipeListViewController {
-    
-    func fetchedResults() -> NSFetchedResultsController<Recipe> {
-        
-        let fetchedResultsController = NSFetchedResultsController(
-            fetchRequest: fetchRequest(),
-            managedObjectContext: coreDataStack.mainContext,
-            sectionNameKeyPath: nil,
-            cacheName: nil)
-        
-        do {
-            try fetchedResultsController.performFetch()
-        } catch let error as NSError {
-            print("Fetching error: \(error), \(error.userInfo)")
-        }
-
-        return fetchedResultsController
-    }
-    
-    func fetchRequest() -> NSFetchRequest<Recipe> {
-        
-        let fetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
-        let sort = NSSortDescriptor(key: #keyPath(Recipe.name), ascending: true)
-        fetchRequest.sortDescriptors = [sort]
-        return fetchRequest
-    }
-    
-}
-
-// MARK: - Collection View Methods
-
-extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecipeListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        fetchedResultsController.fetchedObjects?.count ?? 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = recipeListCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
-        
-            let recipe = self.fetchedResultsController.object(at: indexPath)
-            if let recipeImage = recipe.image {
-                cell.recipeImage.image = UIImage(data: recipeImage)
-            } else {
-                cell.recipeImage.image = UIImage(named: "No photo")
-            }
-        return cell
+        //fetchedResultsController.fetchedObjects?.count ?? 0
+        return recipeViewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -240,32 +152,24 @@ extension RecipeListViewController: UICollectionViewDelegate, UICollectionViewDa
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        cell = recipeListCollectionView.cellForItem(at: indexPath)
         
-        //Briefly fade the cell on selection
-        UIView.animate(withDuration: 0.5,
-                       animations: {
-                        //Fade-out
-                        self.cell?.alpha = 0.5
-                       }) { (completed) in
-            UIView.animate(withDuration: 0.5,
-                           animations: {
-                            //Fade-out
-                            self.cell?.alpha = 1
-                           })
-        }
+        cell = recipeListCollectionView.cellForItem(at: indexPath)
         
         self.performSegue(withIdentifier: "toDetailVC", sender: indexPath.row)
         recipeListCollectionView.deselectItem(at: indexPath, animated: true)
     }
 }
 
-extension RecipeListViewController: NSFetchedResultsControllerDelegate {
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        //updateSnapshot()
-    }
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //updateSnapshot()
+//MARK: - CollectionView DataSource
+
+extension RecipeListViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = recipeListCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as! RecipeCell
+                
+        let recipe = self.recipeViewModels[indexPath.row]
+        cell.recipeViewModel = recipe
+            
+        return cell
     }
 }
-

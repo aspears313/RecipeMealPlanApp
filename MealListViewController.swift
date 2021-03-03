@@ -55,7 +55,8 @@ class MealListViewController: UIViewController, UITableViewDelegate, UITableView
     func setupNavBar() {
         let navigation = ReusableNavigation()
         
-        self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        let extractedExpr = self.navigationController?.navigationBar.scrollEdgeAppearance = navigation.setNavigationBar()
+        extractedExpr
         self.navigationController?.navigationBar.standardAppearance = navigation.setNavigationBar()
         self.navigationController?.navigationBar.barTintColor = .white
         self.navigationController?.navigationBar.prefersLargeTitles = true

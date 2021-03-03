@@ -13,15 +13,12 @@ class ReusableNavigation: UIView {
     
     func setNavigationBar() -> UINavigationBarAppearance {
         
-        
-        //let navController = UINavigationController()
         let navBarAppearance = UINavigationBarAppearance()
-        
         navBarAppearance.configureWithOpaqueBackground()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.backgroundColor = FlatRedDark()
-    
+        
         return navBarAppearance
     }
     
@@ -35,13 +32,13 @@ class ReusableNavigation: UIView {
             fontSize -= 1
             width = title.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSize)]).width
         }
+        
         if var titleAttributes = navigationBar.largeTitleTextAttributes {
             titleAttributes[NSAttributedString.Key.font] = UIFont.boldSystemFont(ofSize: fontSize)
             titleAttributes[NSAttributedString.Key.foregroundColor] = UIColor.red
     
             navigationBar.largeTitleTextAttributes = titleAttributes
             navigationBar.topItem?.title = title
-            //navigationItem.title = title
         }
     }
     //    navigationController?.navigationBar.backgroundColor = UIColor.white
