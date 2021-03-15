@@ -478,7 +478,6 @@ extension ShoppingListViewController: UITableViewDelegate, UITableViewDataSource
 //
     }
     
-    
     func reloadWithAnimation() {
         shoppingListTableView.reloadData()
         let tableViewHeight = shoppingListTableView.bounds.size.height

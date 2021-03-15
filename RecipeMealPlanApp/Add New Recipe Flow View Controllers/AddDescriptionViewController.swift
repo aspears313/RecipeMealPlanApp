@@ -77,7 +77,6 @@ class AddDescriptionViewController: UIViewController, UITextViewDelegate {
     
     func hideKeyboard() {
         newRecipe?.recipeDescription = descriptionView.text
-        //print(newRecipe!)
         descriptionView.resignFirstResponder()
     }
         

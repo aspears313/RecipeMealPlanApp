@@ -29,7 +29,7 @@ class AddPhotoViewController: UIViewController {
                 nextBtn.layer.cornerRadius = nextBtn.frame.height / 2.0
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
         if let name = newRecipe?.name {
-            addPhotoVCTitleLabel.text = "Do you have a picture for '\(name)'?"
+            addPhotoVCTitleLabel.text = "Do you have a picture for \(name)?"
         }
         
 //        let tap = UITapGestureRecognizer(target: self, action: #selector(tapGesture(recognizer:)))

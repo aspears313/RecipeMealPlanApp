@@ -43,8 +43,7 @@
 		8A0952A32583BFEA00012D56 /* RecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB44CAF257FE60900DCACB5 /* RecipeCell.swift */; };
 		8A3113FD2527780E00E6FCF8 /* extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3113FC2527780E00E6FCF8 /* extra.swift */; };
 		8A6897CF25EC0EAA008DE0BF /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897CE25EC0EAA008DE0BF /* RecipeViewModel.swift */; };
-		8A6897D925EC6FF5008DE0BF /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897D825EC6FF5008DE0BF /* DataManager.swift */; };
-		8A6E016425EF0D60003D25EA /* SharedCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6E016325EF0D60003D25EA /* SharedCollectionView.swift */; };
+		8A6897D925EC6FF5008DE0BF /* FetchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6897D825EC6FF5008DE0BF /* FetchManager.swift */; };
 		8A9A8A672526143400843E12 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A662526143400843E12 /* StartViewController.swift */; };
 		8A9A8A6A2526144600843E12 /* FogotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A692526144600843E12 /* FogotPassViewController.swift */; };
 		8A9A8A6D2526145300843E12 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8A6C2526145300843E12 /* SignUpViewController.swift */; };
@@ -97,8 +96,7 @@
 		84C6C20C2458AB7600A14F49 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		8A3113FC2527780E00E6FCF8 /* extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extra.swift; sourceTree = "<group>"; };
 		8A6897CE25EC0EAA008DE0BF /* RecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
-		8A6897D825EC6FF5008DE0BF /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		8A6E016325EF0D60003D25EA /* SharedCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedCollectionView.swift; sourceTree = "<group>"; };
+		8A6897D825EC6FF5008DE0BF /* FetchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchManager.swift; sourceTree = "<group>"; };
 		8A9A8A662526143400843E12 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		8A9A8A692526144600843E12 /* FogotPassViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FogotPassViewController.swift; sourceTree = "<group>"; };
 		8A9A8A6C2526145300843E12 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -276,9 +274,8 @@
 		8A6E016025EDBBB1003D25EA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				8A6897D825EC6FF5008DE0BF /* DataManager.swift */,
+				8A6897D825EC6FF5008DE0BF /* FetchManager.swift */,
 				8414E6B62503D53600CCBA88 /* ReusableNavigation.swift */,
-				8A6E016325EF0D60003D25EA /* SharedCollectionView.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -417,7 +414,6 @@
 				84C6C1E42458AB2600A14F49 /* AddPhotoViewController.swift in Sources */,
 				84C6C1EA2458AB3000A14F49 /* DescriptionAndPicutreViewController.swift in Sources */,
 				84C6C1D82458AB1900A14F49 /* ShoppingListViewController.swift in Sources */,
-				8A6E016425EF0D60003D25EA /* SharedCollectionView.swift in Sources */,
 				846640B7250DB15500EFE4B9 /* DirectionsTableViewCell.swift in Sources */,
 				8A3113FD2527780E00E6FCF8 /* extra.swift in Sources */,
 				84C6C20D2458AB7600A14F49 /* CoreDataStack.swift in Sources */,
@@ -436,7 +432,7 @@
 				84C6C1FD2458AB3C00A14F49 /* MealTypeTableViewCell.swift in Sources */,
 				84C6C1D62458AB1900A14F49 /* RecipeDetailsViewController.swift in Sources */,
 				8414E6B72503D53600CCBA88 /* ReusableNavigation.swift in Sources */,
-				8A6897D925EC6FF5008DE0BF /* DataManager.swift in Sources */,
+				8A6897D925EC6FF5008DE0BF /* FetchManager.swift in Sources */,
 				84C6C1FA2458AB3C00A14F49 /* ImagePicker.swift in Sources */,
 				84097E5C24AAD36500484C6A /* ShoppingListTableViewCellSection.swift in Sources */,
 				8445C01A24EB2FA70069E010 /* UITextView.swift in Sources */,

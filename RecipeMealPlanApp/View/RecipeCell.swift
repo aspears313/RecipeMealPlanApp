@@ -7,17 +7,7 @@
 //
 import UIKit
 
-
-class RecipeCell: UICollectionViewCell/*CollectionViewSlantedCell*/ {
-    
-//    @IBOutlet weak var recipeImage: UIImageView!
-//    @IBOutlet weak var recipeName: UILabel!
-    var recipeViewModel: RecipeViewModel! {
-        didSet {
-            recipeLabel.text = recipeViewModel.name
-            recipeImage.image = recipeViewModel.image
-        }
-    }
+class RecipeCell: UICollectionViewCell {
     
     let containerView: UIView = {
        let view = UIView()
@@ -44,6 +34,17 @@ class RecipeCell: UICollectionViewCell/*CollectionViewSlantedCell*/ {
         return imageView
     }()
     
+    let deleteButton: UIButton = {
+        let button = UIButton()
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let image = UIImage(named: "deleteBtn") as UIImage?
+        button.backgroundColor = .clear
+        button.setImage(image, for: .normal)
+        button.isSelected = false
+        return button
+    }()
+    
     let recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Name"
@@ -56,23 +57,18 @@ class RecipeCell: UICollectionViewCell/*CollectionViewSlantedCell*/ {
         return label
     }()
     
+    var recipeViewModel: RecipeViewModel! {
+        didSet {
+            recipeLabel.text = recipeViewModel.name
+            recipeImage.image = recipeViewModel.image
+        }
+    }
     
-//    var recipe: Recipe? {
-//        didSet {
-//            if let image = recipe?.image {
-//                recipeImage.image = UIImage(data: image)
-//            }
-//            recipeLabel.text = recipe?.name
-//        }
-//    }
-    
-//    var recipeViewModel: RecipeViewModel? {
-//        didSet {
-//            recipeLabel.text = recipeViewModel?.name
-//            recipeImage.image = recipeViewModel?.image
-//            
-//        }
-//    }
+    var isEditing: Bool = false {
+        didSet {
+            deleteButton.isHidden = !isEditing
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,12 +90,19 @@ class RecipeCell: UICollectionViewCell/*CollectionViewSlantedCell*/ {
         addSubview(containerView)
         containerView.addSubview(recipeImage)
         containerView.addSubview(labelView)
+        containerView.addSubview(deleteButton)
         labelView.addSubview(recipeLabel)
         
         containerView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         containerView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         containerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        deleteButton.isHidden = true
+        deleteButton.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 5).isActive = true
+        deleteButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 5).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         
         recipeImage.leftAnchor.constraint(equalTo: containerView.leftAnchor).isActive = true
         recipeImage.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
@@ -115,15 +118,5 @@ class RecipeCell: UICollectionViewCell/*CollectionViewSlantedCell*/ {
         recipeLabel.rightAnchor.constraint(equalTo: labelView.rightAnchor).isActive = true
         recipeLabel.bottomAnchor.constraint(equalTo: labelView.bottomAnchor).isActive = true
         recipeLabel.topAnchor.constraint(equalTo: labelView.topAnchor).isActive = true
-        
-//        recipeLabel.leftAnchor.constraint(equalTo:
-//                                            containerView.leftAnchor).isActive = true
-//        r.rightAnchor.constraint(equalTo:
-//                                            containerView.rightAnchor).isActive = true
-//        recipeName.bottomAnchor.constraint(equalTo:
-//                                            containerView.bottomAnchor).isActive = true
-//        recipeName.heightAnchor.constraint(equalToConstant: (containerView.heightAnchor / 4.0)).isActive = true
-        
-        
     }
 }

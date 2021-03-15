@@ -7,7 +7,7 @@
 //
 import UIKit
 
-struct RecipeViewModel {
+struct RecipeViewModel: Hashable {
     
     let name: String
     let image: UIImage
@@ -15,6 +15,12 @@ struct RecipeViewModel {
     //Dependency Injection
     init(recipe: Recipe) {
         self.name = recipe.name!
-        self.image = UIImage(data: recipe.image!) ?? UIImage(named: "No photo")!
+        if recipe.image == nil {
+            self.image = UIImage(named: "No photo")!
+        } else {
+            self.image = UIImage(data: recipe.image!)!
+        }
+        //self.image = UIImage(data: recipe.image!) ?? UIImage(named: "No photo")!
     }
+
 }

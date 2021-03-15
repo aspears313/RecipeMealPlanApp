@@ -188,7 +188,7 @@ class AddIngredientsViewController: UIViewController, UIPickerViewDelegate, UIPi
     func displayMessage(userMessage:String) -> Void {
         DispatchQueue.main.async {
         let alertController = UIAlertController(title: "Alert", message: userMessage, preferredStyle: .alert)
-        
+
             let OKAction = UIAlertAction(title: "OK", style: .default) {
                 (action:UIAlertAction!) in
                 print("Ok button tapped")

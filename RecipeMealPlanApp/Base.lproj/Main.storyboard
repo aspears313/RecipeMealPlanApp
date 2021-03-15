@@ -20,12 +20,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="mFf-aJ-t9e">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="HNF-nL-JyL">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="signOutBtnClicked:" destination="5Iv-nw-lwq" id="rld-Di-ASr"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="Px6-TT-bPV">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -34,6 +28,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addRecipe" destination="Px6-TT-bPV" id="RoL-7R-NaJ"/>
                         <segue destination="lnQ-gv-qGW" kind="show" identifier="toDetailVC" id="Sj1-eh-dmv"/>
                         <segue destination="aA3-5F-272" kind="presentation" identifier="toStartView" modalPresentationStyle="fullScreen" id="5Vw-eD-QCp"/>
                     </connections>
@@ -52,7 +47,7 @@
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="q65-ea-sXp">
                                 <rect key="frame" x="8" y="97" width="374" height="36"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.67455112934112549" green="0.15692374110221863" blue="0.10914970934391022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="doE-O6-UFJ"/>
                                 </constraints>
@@ -61,7 +56,8 @@
                                     <segment title="Ingredients"/>
                                     <segment title="Directions"/>
                                 </segments>
-                                <color key="selectedSegmentTintColor" systemColor="systemRedColor"/>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QXR-nk-xYe"/>
@@ -1398,26 +1394,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxu-jh-BJE" sceneMemberID="firstResponder"/>
                 <exit id="xoD-DD-8Mi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4578.2608695652179" y="849.45652173913049"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="RUq-71-6yZ">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8J4-X8-NAz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="tlu-zr-CpT"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1YI-pF-3Lk">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ufg-wp-0Rh">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="q1o-fd-Wd5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3686" y="945"/>
+            <point key="canvasLocation" x="3652" y="849"/>
         </scene>
         <!--Planned Meals View Controller-->
         <scene sceneID="HvY-ED-nt8">
@@ -1439,7 +1416,6 @@
                                         <segments>
                                             <segment title="Day"/>
                                             <segment title="Week"/>
-                                            <segment title="Month"/>
                                         </segments>
                                         <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1518,7 +1494,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pzr-Tj-yR4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233.8461538461538" y="2273.4597156398104"/>
+            <point key="canvasLocation" x="2175" y="2273"/>
         </scene>
         <!--Meals-->
         <scene sceneID="NeP-27-l9v">
@@ -1540,7 +1516,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7H-a9-4Ts" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="514" y="2274"/>
+            <point key="canvasLocation" x="1423" y="2273"/>
         </scene>
         <!--Shopping List-->
         <scene sceneID="TPl-ie-dUX">
@@ -1581,20 +1557,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BgI-I2-2xa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1423.1884057971015" y="849.45652173913049"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MfS-Tc-yos">
-            <objects>
-                <viewController id="hNG-qo-buK" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Iki-hO-VWQ">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Lgw-Br-hVq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1755" y="-975"/>
         </scene>
     </scenes>
     <designables>

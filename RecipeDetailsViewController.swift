@@ -17,9 +17,7 @@ class RecipeDetailsViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.navigationController?.navigationBar.prefersLargeTitles = true
-
+    
         setupView()
     }
 
@@ -101,14 +99,18 @@ class RecipeDetailsViewController: UIViewController {
                 }
         
             }
-
+    
     private func setupSegmentedControl() {
         
-        let font = UIFont.systemFont(ofSize: 18)
-        segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        let font = UIFont.systemFont(ofSize: 20)
+        let normalAttribute: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: UIColor.black]
+        segmentedControl.setTitleTextAttributes(normalAttribute, for: .normal)
+        let selectedAttribute: [NSAttributedString.Key: Any] = [.font: font, .foregroundColor: UIColor.red]
+        segmentedControl.setTitleTextAttributes(selectedAttribute, for: .selected)
+        segmentedControl.selectedSegmentTintColor = .white
         
         segmentedControl.addTarget(self, action: #selector(selectionDidChange), for: .valueChanged)
-        
+
         segmentedControl.selectedSegmentIndex = 0
     }
     

@@ -9,8 +9,8 @@
 import Foundation
 import CoreData
 
-class DataManager {
-    static let shared = DataManager()
+class FetchManager {
+    static let shared = FetchManager()
     
     lazy var coreDataStack = CoreDataStack(modelName: "RecipeMealPlanApp")
     
@@ -38,4 +38,5 @@ class DataManager {
         fetchRequest.sortDescriptors = [sort]
         return fetchRequest
     }
+    
 }
