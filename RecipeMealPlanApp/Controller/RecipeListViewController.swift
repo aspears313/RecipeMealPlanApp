@@ -65,12 +65,11 @@ class RecipeListViewController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 30, left: 0, bottom: 30, right: 0)
-        layout.itemSize = CGSize(width: view.frame.width-60, height: 400)
+        layout.itemSize = CGSize(width: view.frame.width-60, height: 225)
         layout.minimumLineSpacing = 30
         
         recipeListCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
         recipeListCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        //recipeListCollectionView.dataSource = self
         recipeListCollectionView.delegate = self
         recipeListCollectionView.backgroundColor = .white
         
