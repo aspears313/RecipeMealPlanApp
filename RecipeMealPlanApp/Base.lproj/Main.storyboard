@@ -251,7 +251,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1576,7 +1576,7 @@
             <size key="intrinsicContentSize" width="55" height="39"/>
         </designable>
         <designable name="rtf-a0-lqr">
-            <size key="intrinsicContentSize" width="89.666666666666671" height="39"/>
+            <size key="intrinsicContentSize" width="89.666666666666671" height="37.666666666666664"/>
         </designable>
         <designable name="xte-gm-i7p">
             <size key="intrinsicContentSize" width="162.33333333333334" height="43"/>
