@@ -42,7 +42,10 @@ class AddNameOfRecipeViewController: UIViewController, UITextFieldDelegate {
         
         mealTypeChoices.forEach { (mealTypeBtn) in
             mealTypeBtn.layer.cornerRadius = mealTypeBtn.frame.height / 2.0
-            
+            mealTypeBtn.backgroundColor = .white
+            mealTypeBtn.layer.borderWidth = 1.0
+            mealTypeBtn.layer.borderColor = UIColor.red.cgColor
+            mealTypeBtn.setTitleColor(.flatRedColorDark(), for: .normal)
             mealTypeBtn.isHidden = true
         }
         
