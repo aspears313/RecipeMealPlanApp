@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "FE14C2BD-D6B1-4213-9841-CAC71F06A5DA"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A1835A0-B608-49E4-8964-C97975B6FE71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "90E31F7F-ABE7-4D43-B638-8979E2AE9AE8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0DAA2D87-1310-4958-A1DE-EFD2B83B59E1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "991E08EE-03E6-47E3-933E-32AE0A05728E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67B080C9-EA6D-4446-A918-AC934E80F0A1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AEF10AA1-49AB-4519-B2E2-6FA64A913412"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/AppDelegate.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65E8E9FF-4C5D-41D7-8D60-14689926C280"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Child View Controllers/DescriptionAndPicutreViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "setUpView()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "641A96F6-63C4-4097-90A1-E179C09B4931"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "setNavigationBar()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MealListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "MealListViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - 83a4308e02d0f9aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.mealType.getter : Swift.String"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "139">
+               </Location>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - e31de368314fefbe"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.mealType.setter : Swift.String"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "174">
+               </Location>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - 4433cff00c560875"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.mealType.modify : Swift.String"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - 9dd0804f6ddbf716"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.mealType.modify : Swift.String with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - 42394861dc728a18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RecipeMealPlanApp.MealListViewController"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "F8C829B8-4DE8-479B-95D6-75F52FA322FC - 9efae3ffb2dadbd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.MealListViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RecipeMealPlanApp.MealListViewController&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/MealListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "289">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "59B85F7B-1E12-4E4C-8196-71ACD6A8409E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MealListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8CB405AA-25AD-4C67-BB40-97272982F3DF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MealListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "mealsForTypeTableView"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "290354C7-069F-4123-A349-A3230A292A67"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "RecipeListViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "290354C7-069F-4123-A349-A3230A292A67 - 46d05ae9344c31b1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.placeholderView.getter : __C.UIView"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "290354C7-069F-4123-A349-A3230A292A67 - f02482a1844d7fe3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RecipeMealPlanApp.RecipeListViewController"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "494">
+               </Location>
+               <Location
+                  uuid = "290354C7-069F-4123-A349-A3230A292A67 - 8ba76cb4cb1460ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RecipeMealPlanApp.RecipeListViewController&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "448">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "099324D5-314E-4AB1-A3E3-8CBDDD3F65F5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1A8B69D5-D290-4E26-A24F-8E169E580D0C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
+            landmarkName = "controller(_:didChangeContentWith:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04F8A03A-F325-4BD2-AE22-46FD2EF73383"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "controllerDidChangeContent(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6BD4BDB9-2BFA-4664-AE8E-24B1824FC460"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
+            landmarkName = "fetchedResults()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6BD4BDB9-2BFA-4664-AE8E-24B1824FC460 - 3731616a52f4a8dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.(fetchedResults in _938470E458C34B65C55900EB68352C06)() -&gt; __C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "6BD4BDB9-2BFA-4664-AE8E-24B1824FC460 - 3731616a52f4a8dc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.(fetchedResults in _938470E458C34B65C55900EB68352C06)() -&gt; __C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "290"
+                  endingLineNumber = "290"
+                  offsetFromSymbolStart = "1064">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "438C3677-A17F-4671-B734-40CE7F752A96"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "RecipeListViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - 17e1af604a413b6e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.fetchedResultsController.getter : Swift.Optional&lt;__C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "126">
+               </Location>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - 370944566067bf5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.fetchedResultsController.setter : Swift.Optional&lt;__C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "164">
+               </Location>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - ed862514dd9dd50f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.fetchedResultsController.modify : Swift.Optional&lt;__C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "18">
+               </Location>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - 57cbe9abf9e4152d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.fetchedResultsController.modify : Swift.Optional&lt;__C.NSFetchedResultsController&lt;RecipeMealPlanApp.Recipe&gt;&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - f02482a1844d6178"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; RecipeMealPlanApp.RecipeListViewController"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "959">
+               </Location>
+               <Location
+                  uuid = "438C3677-A17F-4671-B734-40CE7F752A96 - 8ba76cb4cb147e55"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RecipeMealPlanApp.RecipeListViewController&gt;"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Main%20View%20Controllers/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "38"
+                  endingLineNumber = "38"
+                  offsetFromSymbolStart = "894">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EC4B7F41-5BF4-44D6-B145-44DEDDFFB763"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "fetchedResults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D644BE4E-8E06-4723-81E4-5D32F245B35D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "fetchedResults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DA522961-43EE-447A-9B22-BC24810B5664"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Main View Controllers/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
+            landmarkName = "fetchedResults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C8BA328-3A8D-4D8F-81E2-56355BFFFF5A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/DataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "fetchedResults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A320D59E-94D7-4F2F-ADAF-280856352B6F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/DataManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "fetchRequest()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EDC6988C-A841-456A-9678-57CCB261E2DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Controller/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EDC6988C-A841-456A-9678-57CCB261E2DC - 4a721bb56e0d83b7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RecipeMealPlanApp.RecipeListViewController.(fetchData in _938470E458C34B65C55900EB68352C06)() -&gt; ()"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Controller/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "137">
+               </Location>
+               <Location
+                  uuid = "EDC6988C-A841-456A-9678-57CCB261E2DC - 18678d5f1a9277ff"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RecipeMealPlanApp.Recipe) -&gt; RecipeMealPlanApp.RecipeViewModel in RecipeMealPlanApp.RecipeListViewController.(fetchData in _938470E458C34B65C55900EB68352C06)() -&gt; ()"
+                  moduleName = "RecipeMealPlanApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aspears313/Desktop/Documents/Coding%20Folder/iOS/My%20XCode%20Projects/RecipeMealPlanApp/RecipeMealPlanApp/Controller/RecipeListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "69FBC617-6945-4EC5-8AD0-CB29016BC091"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Controller/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "unwindToRecipeList(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "959DAB8D-0506-452E-A73A-051D3CFDEC5D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMealPlanApp/Controller/RecipeListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "fetchData()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "528F6E1E-F2F9-46BF-A0B5-4C6AD25D504E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeDetailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "7"
+            endingLineNumber = "7"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
